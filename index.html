@@ -43,6 +43,7 @@ h1{font-size:clamp(26px,4vw,36px);line-height:1.15;margin:0;text-wrap:balance}
 .tabs button{font:600 15px var(--sans);padding:12px 14px;border:0;border-bottom:3px solid transparent;background:none;color:var(--muted);cursor:pointer;white-space:nowrap}
 .tabs button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--accent)}
 button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.pane[hidden]{display:none!important}
 .pane{display:grid;grid-template-columns:240px minmax(0,1fr);gap:40px;margin-top:28px}
 .toc{position:sticky;top:72px;align-self:start;font-size:14px}
 .toc-h{font:500 12px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 8px}
