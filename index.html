@@ -1,0 +1,1832 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Курс S1 Ташкент</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a flight-strip header with live frequencies, then a two-column reader (contents rail + text). */
+:root{
+  --bg:#f5f7f8; --surface:#ffffff; --ink:#18232b; --muted:#5a6873; --rule:#dbe2e6;
+  --accent:#0f6f8a; --strip:#fff4d6; --strip-edge:#e3b341; --code:#eef3f5;
+  --sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#10171c; --surface:#16212a; --ink:#e3eaee; --muted:#9aa9b3; --rule:#2a3843;
+  --accent:#5cc2dc; --strip:#2b2614; --strip-edge:#c9982f; --code:#1d2b35; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#10171c; --surface:#16212a; --ink:#e3eaee; --muted:#9aa9b3; --rule:#2a3843;
+  --accent:#5cc2dc; --strip:#2b2614; --strip-edge:#c9982f; --code:#1d2b35; color-scheme:dark}
+html{scroll-padding-top:120px}
+body{background:var(--bg);color:var(--ink);font:16px/1.6 var(--sans);
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+.wrap{max-width:1120px;margin:0 auto;padding-block:24px 64px}
+header.top{display:flex;flex-wrap:wrap;gap:16px 24px;align-items:flex-end;justify-content:space-between}
+.eyebrow{font:500 12px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 8px}
+h1{font-size:clamp(26px,4vw,36px);line-height:1.15;margin:0;text-wrap:balance}
+.lede{color:var(--muted);margin:8px 0 0;max-width:60ch}
+.lang{display:flex;border:1px solid var(--rule);border-radius:8px;overflow:hidden;background:var(--surface)}
+.lang button{font:500 14px var(--sans);padding:8px 14px;border:0;background:none;color:var(--ink);cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--accent);color:var(--surface)}
+.strip{margin:20px 0 0;display:flex;flex-wrap:wrap;gap:0;border:1px solid var(--strip-edge);border-left:6px solid var(--strip-edge);
+  background:var(--strip);border-radius:4px;font:500 13px/1.3 var(--mono)}
+.strip div{padding:8px 14px;border-right:1px dashed var(--strip-edge);min-width:0}
+.strip div:last-child{border-right:0}
+.strip b{display:block;font-weight:500;font-size:11px;letter-spacing:.08em;color:var(--muted)}
+.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);display:flex;gap:4px;
+  margin-top:24px;border-bottom:1px solid var(--rule);overflow-x:auto}
+.tabs button{font:600 15px var(--sans);padding:12px 14px;border:0;border-bottom:3px solid transparent;background:none;color:var(--muted);cursor:pointer;white-space:nowrap}
+.tabs button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--accent)}
+button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.pane{display:grid;grid-template-columns:240px minmax(0,1fr);gap:40px;margin-top:28px}
+.toc{position:sticky;top:72px;align-self:start;font-size:14px}
+.toc-h{font:500 12px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 8px}
+.toc ol{list-style:none;margin:0;padding:0;display:grid;gap:2px}
+.toc a{display:block;padding:5px 8px;border-radius:6px;color:var(--ink);text-decoration:none}
+.toc a:hover{background:var(--surface)}
+.prose{min-width:0;max-width:72ch}
+.prose h2{font-size:22px;line-height:1.25;margin:40px 0 12px;padding-top:16px;border-top:1px solid var(--rule);text-wrap:balance}
+.prose h2:first-of-type{margin-top:8px}
+.prose h3{font-size:17px;margin:28px 0 8px}
+.prose p,.prose ul,.prose ol{margin:0 0 14px}
+.prose li{margin:3px 0}
+.prose a{color:var(--accent)}
+.prose strong{font-weight:600}
+.tw{overflow-x:auto;margin:0 0 18px;border:1px solid var(--rule);border-radius:8px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:14.5px;font-variant-numeric:tabular-nums}
+th,td{text-align:left;vertical-align:top;padding:9px 12px;border-bottom:1px solid var(--rule)}
+th{font-weight:600;background:var(--code)}
+tr:last-child td{border-bottom:0}
+pre{background:var(--code);border-radius:8px;padding:12px 14px;overflow-x:auto;font:14px/1.5 var(--mono)}
+code{font-family:var(--mono)}
+footer{margin-top:48px;color:var(--muted);font-size:13px;max-width:72ch}
+@media (max-width:820px){.tabs button{font-size:14px;padding:12px 8px}.pane{grid-template-columns:1fr;gap:16px}.toc{position:static;border:1px solid var(--rule);border-radius:8px;padding:12px;background:var(--surface)}}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div>
+      <p class="eyebrow" data-ru="VATRUS · Центральная Азия · Этап 1" data-uz="VATRUS · Markaziy Osiyo · 1-bosqich">VATRUS · Центральная Азия · Этап 1</p>
+      <h1 data-ru="Подготовка к S1 в Ташкенте" data-uz="Toshkentda S1 ga tayyorgarlik">Подготовка к S1 в Ташкенте</h1>
+      <p class="lede" data-ru="Всё, что нужно изучить до входного теста и вводного тренажёра: теория DEL и GND и местные процедуры аэродрома UZTT." data-uz="Kirish testi va kirish trenajyorigacha o‘rganish kerak bo‘lgan hamma narsa: DEL va GND nazariyasi va UZTT aerodromining mahalliy tartiblari.">Всё, что нужно изучить до входного теста и вводного тренажёра: теория DEL и GND и местные процедуры аэродрома UZTT.</p>
+    </div>
+    <div class="lang" role="group" aria-label="Язык / Til">
+      <button id="lang-ru" type="button" data-set="ru" aria-pressed="true">Русский</button>
+      <button id="lang-uz" type="button" data-set="uz" aria-pressed="false">O‘zbekcha</button>
+    </div>
+  </header>
+  <div class="strip" aria-label="UZTT">
+    <div><b>UZTT</b>Ташкент / Toshkent</div>
+    <div><b>DEL</b>129.400</div>
+    <div><b>GND</b>121.700</div>
+    <div><b>TWR</b>120.400</div>
+    <div><b>SQUAWK</b>2040–2077</div>
+    <div><b>TA / TL</b>13000 ft / FL150</div>
+  </div>
+  <div class="tabs" role="tablist">
+    <button id="tab-mat" type="button" role="tab" data-doc="mat" aria-selected="true" data-ru="Учебные материалы" data-uz="O‘quv materiallari">Учебные материалы</button>
+    <button id="tab-loc" type="button" role="tab" data-doc="loc" aria-selected="false" data-ru="Местные процедуры" data-uz="Mahalliy tartiblar">Местные процедуры</button>
+  </div>
+<section class="pane" data-doc="mat" data-lang="ru" hidden>
+<nav class="toc" aria-label="contents"><p class="toc-h">Содержание</p><ol><li><a href="#mat_ru-1">1. Подключение к VATSIM</a></li><li><a href="#mat_ru-2">2. Документы VATSIM и реальной авиации</a></li><li><a href="#mat_ru-3">3. Диспетчерские позиции и границы ответственности</a></li><li><a href="#mat_ru-4">4. Технология работы DEL и GND</a></li><li><a href="#mat_ru-5">5. Чтение AIP и аэродромных схем</a></li><li><a href="#mat_ru-6">6. Воздушное пространство и основы эшелонирования</a></li><li><a href="#mat_ru-7">7. План полёта и разрешение на вылет</a></li><li><a href="#mat_ru-8">8. METAR, TAF и рабочая ВПП</a></li><li><a href="#mat_ru-9">9. Фразеология, метки и листы</a></li><li><a href="#mat_ru-10">Источники</a></li></ol></nav>
+<article class="prose"><p>Материалы охватывают все темы входного теста и знания, которые нужны до вводного тренажёра (Типовая программа, пп. 2.3 и 2.5). Местные процедуры Ташкента даны во второй вкладке.</p>
+<h2 id="mat_ru-1">1. Подключение к VATSIM</h2>
+<p>Диспетчер подключается к сети через диспетчерский клиент (в РПИ Ташкент — EuroScope) и голосовой клиент и указывает четыре параметра. До получения S1 кандидат подключается только наблюдателем.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Параметр</th>
+<th>Что указывать</th>
+<th>Пример</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Позывной</td>
+<td>Код ИКАО аэродрома или района, подчёркивание и суффикс позиции. Наблюдатель ставит свои инициалы и суффикс _OBS</td>
+<td>UZTT_DEL, UZTT_GND, IV_OBS</td>
+</tr>
+<tr>
+<td>Имя</td>
+<td>Настоящее полное имя или разрешённый вариант: имя с инициалом фамилии, инициалы, номер VATSIM (CID). Никнеймы не допускаются</td>
+<td>Ivan Petrov</td>
+</tr>
+<tr>
+<td>Facility</td>
+<td>Тип позиции. Он должен совпадать с суффиксом позывного</td>
+<td>Delivery, Ground, Observer</td>
+</tr>
+<tr>
+<td>Range</td>
+<td>Радиус видимости в морских милях, не больше предела для позиции</td>
+<td>20</td>
+</tr>
+</tbody>
+</table></div>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Позиция</th>
+<th>Предел Range, NM</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Наблюдатель (OBS)</td>
+<td>300</td>
+</tr>
+<tr>
+<td>DEL, RMP, GND</td>
+<td>20</td>
+</tr>
+<tr>
+<td>TWR</td>
+<td>50</td>
+</tr>
+<tr>
+<td>APP, DEP</td>
+<td>150</td>
+</tr>
+<tr>
+<td>CTR</td>
+<td>600</td>
+</tr>
+<tr>
+<td>FSS</td>
+<td>1500</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Правила, которые нужно знать:</strong></p>
+<ul>
+<li>Рейтинг S1 даёт право работать на RMP, DEL и GND. Вышестоящие позиции открываются следующими рейтингами или соло-допуском.</li>
+<li>Наблюдатель не выходит в эфир и не обслуживает воздушное движение.</li>
+<li>Тип позиции выбирается только тот, который соответствует позывному.</li>
+<li>Где диспетчера нет, пилоты используют частоту 122,800.</li>
+<li>Текстовая версия ATIS всегда на английском языке.</li>
+<li>Новичку следует сначала понаблюдать за работой и изучить местные процедуры.</li>
+</ul>
+<p>Позывные и частоты Ташкента даны во вкладке «Местные процедуры». С 02.10.2025 аэродром имеет код UZTT (прежний UTTT), а РПИ — UZTR.</p>
+<h2 id="mat_ru-2">2. Документы VATSIM и реальной авиации</h2>
+<p>В сети действуют документы трёх уровней. При противоречии применяется документ более высокого уровня.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Уровень</th>
+<th>Документ</th>
+<th>Что регулирует</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>VATSIM</td>
+<td>Code of Conduct</td>
+<td>Поведение в сети, позывные, имена, Range, частоты</td>
+</tr>
+<tr>
+<td>VATSIM</td>
+<td>Global Controller Administration Policy (GCAP)</td>
+<td>Рейтинги, обучение, соло-допуски, экзамены</td>
+</tr>
+<tr>
+<td>VATSIM</td>
+<td>Transfer and Visiting Controller Policy (TVCP)</td>
+<td>Перевод и работа в других дивизионах</td>
+</tr>
+<tr>
+<td>VATRUS</td>
+<td>Положение об обучении и приложения к нему</td>
+<td>Порядок подготовки и оценивания</td>
+</tr>
+<tr>
+<td>Субдивизион</td>
+<td>Программа и местные процедуры</td>
+<td>Технология работы на конкретных позициях</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Документы реальной авиации</strong> — AIP Узбекистана, документы ИКАО (Doc 4444, Doc 9432) и национальные правила — служат основой процедур в сети. Это принцип «As real as it gets»: диспетчер работает как на реальном аэродроме.</p>
+<ul>
+<li>Реальные документы применяются, если не противоречат правилам VATSIM.</li>
+<li>Местные процедуры Субдивизиона могут упрощать реальные правила для сети. В этом случае действуют местные процедуры.</li>
+<li>Все данные и карты используются только для симуляции и не предназначены для реальной навигации.</li>
+<li>Важна актуальность: AIP меняется по циклам AIRAC каждые 28 дней, поэтому схемы и сектора должны соответствовать текущему циклу.</li>
+</ul>
+<h2 id="mat_ru-3">3. Диспетчерские позиции и границы ответственности</h2>
+<p>DEL и GND работают до того, как самолёт занял ВПП: взлётно-посадочная полоса всегда принадлежит вышке.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Позиция</th>
+<th>Позывной в эфире</th>
+<th>Отвечает за</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DEL</td>
+<td>Ташкент-Деливери (Tashkent Delivery)</td>
+<td>Проверку планов полёта, диспетчерские разрешения на вылет, коды ответчика. Движением не управляет</td>
+</tr>
+<tr>
+<td>GND</td>
+<td>Ташкент-Руление (Tashkent Ground)</td>
+<td>Буксировку и запуск, руление по перрону и РД до места ожидания перед ВПП и от ВПП до стоянки</td>
+</tr>
+<tr>
+<td>TWR</td>
+<td>Ташкент-Тауэр (Tashkent Tower)</td>
+<td>ВПП, взлёт, посадку, пересечение ВПП, зону аэродрома</td>
+</tr>
+<tr>
+<td>APP</td>
+<td>Ташкент-Подход (Tashkent Approach)</td>
+<td>Вылет и подход в районе аэродрома</td>
+</tr>
+<tr>
+<td>CTR</td>
+<td>Ташкент-Контроль (Tashkent Control)</td>
+<td>Полёты по маршруту в РПИ</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Принцип Top-down.</strong> Если нижестоящей позиции нет в сети, её функции выполняет вышестоящий диспетчер. Без DEL разрешения выдаёт GND, без DEL и GND — TWR. Сам DEL ничего за другие позиции не выполняет.</p>
+<h2 id="mat_ru-4">4. Технология работы DEL и GND</h2>
+<p><strong>Перед выходом на позицию</strong> диспетчер проверяет METAR и ATIS, рабочую ВПП, NOTAM, кто из смежных диспетчеров в сети, и настраивает клиенты.</p>
+<p><strong>Вылетающий рейс:</strong></p>
+<ol>
+<li>Пилот запрашивает разрешение у DEL.</li>
+<li>DEL проверяет план полёта, при необходимости исправляет его с пилотом и выдаёт разрешение с кодом ответчика.</li>
+<li>После правильного повторения DEL отмечает разрешение в метке и передаёт пилота на GND.</li>
+<li>GND разрешает буксировку и запуск, затем руление до места ожидания перед ВПП.</li>
+<li>На подходе к месту ожидания GND передаёт самолёт и метку на TWR.</li>
+</ol>
+<p><strong>Прилетающий рейс:</strong> TWR передаёт самолёт после освобождения ВПП, GND даёт руление на стоянку.</p>
+<p><strong>С вышкой согласуются:</strong></p>
+<ul>
+<li>пересечение действующей ВПП: без согласия TWR GND его не разрешает;</li>
+<li>вылет не от торца ВПП (с промежуточной РД);</li>
+<li>нестандартные условия вылета: другая ВПП, визуальный вылет, задержки.</li>
+</ul>
+<p><strong>С диспетчером подхода или района</strong> DEL согласует маршрут или начальный набор, если они отличаются от стандартных.</p>
+<p>Главное на земле — видеть обстановку целиком и действовать по приоритету. Сначала решаются конфликты на РД и у ВПП, затем передача на вышку, затем запросы на буксировку и разрешения.</p>
+<h2 id="mat_ru-5">5. Чтение AIP и аэродромных схем</h2>
+<p>AIP (сборник аэронавигационной информации) Узбекистана опубликован на сайте <a href="https://uzaeronavigation.com/ais/" target="_blank" rel="noopener">Узаэронавигации</a> и состоит из трёх частей.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Часть</th>
+<th>Содержание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GEN</td>
+<td>Общие сведения: единицы измерения, сокращения, указатели местоположения</td>
+</tr>
+<tr>
+<td>ENR</td>
+<td>Маршруты, воздушное пространство, правила полётов, высота перехода (ENR 1.7)</td>
+</tr>
+<tr>
+<td>AD</td>
+<td>Аэродромы. Для Ташкента — раздел AD 2 UZTT</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Что искать в AD 2:</strong> данные аэродрома и превышение, физические данные ВПП (AD 2.12), средства связи (AD 2.18), местные правила и схемы руления (AD 2.20), карты (AD 2.24).</p>
+<p><strong>Карты, нужные DEL и GND:</strong></p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Карта</th>
+<th>Что на ней читать</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Карта аэродрома</td>
+<td>ВПП и их магнитные курсы, РД и их обозначения, места ожидания перед ВПП, опасные места (hot spots)</td>
+</tr>
+<tr>
+<td>Карта стоянок и руления</td>
+<td>Номера стоянок, направление буксировки, ограничения по размаху крыла</td>
+</tr>
+<tr>
+<td>Стандартные маршруты руления</td>
+<td>Установленные маршруты от стоянок к ВПП и обратно</td>
+</tr>
+<tr>
+<td>SID (стандартный вылет)</td>
+<td>Название схемы, ВПП, точку выхода, начальный набор, ограничения высоты и скорости</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Как читать название SID.</strong> Пример «ABCDE 1A»: ABCDE — точка, где схема заканчивается и начинается маршрут; 1 — номер версии схемы; A — буква варианта, обычно связанная с ВПП. Первая точка маршрута в плане полёта должна совпадать с точкой выхода SID.</p>
+<p>На картах высоты даны в футах, расстояния — в морских милях или метрах, курсы — магнитные. Всегда проверяйте дату карты и текущий цикл AIRAC.</p>
+<h2 id="mat_ru-6">6. Воздушное пространство и основы эшелонирования</h2>
+<p><strong>Правила полётов.</strong> Полёт выполняется по правилам визуальных полётов (ПВП, VFR) или по правилам полётов по приборам (ППП, IFR). При ПВП экипаж сам видит землю и другие самолёты и отвечает за интервалы, при ППП летит по приборам, а интервалы обеспечивает диспетчер.</p>
+<p><strong>Классы воздушного пространства ИКАО:</strong></p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Класс</th>
+<th>Допускаются</th>
+<th>Эшелонирование</th>
+<th>Разрешение диспетчера</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>Только ППП</td>
+<td>Все воздушные суда</td>
+<td>Нужно</td>
+</tr>
+<tr>
+<td>B</td>
+<td>ППП и ПВП</td>
+<td>Все воздушные суда</td>
+<td>Нужно</td>
+</tr>
+<tr>
+<td>C</td>
+<td>ППП и ПВП</td>
+<td>ППП от ППП и от ПВП</td>
+<td>Нужно</td>
+</tr>
+<tr>
+<td>D</td>
+<td>ППП и ПВП</td>
+<td>ППП от ППП, остальным — информация о движении</td>
+<td>Нужно</td>
+</tr>
+<tr>
+<td>E</td>
+<td>ППП и ПВП</td>
+<td>ППП от ППП</td>
+<td>Только для ППП</td>
+</tr>
+<tr>
+<td>F</td>
+<td>ППП и ПВП</td>
+<td>ППП по возможности (консультативное обслуживание)</td>
+<td>Не нужно</td>
+</tr>
+<tr>
+<td>G</td>
+<td>ППП и ПВП</td>
+<td>Не обеспечивается, только полётная информация</td>
+<td>Не нужно</td>
+</tr>
+</tbody>
+</table></div>
+<p>Какие классы применяются в Узбекистане, указано в AIP, ENR 1.4 и ENR 2.</p>
+<p><strong>Структура.</strong> Район полётной информации (РПИ, FIR) делится на диспетчерские районы. Вокруг крупных аэродромов устанавливаются диспетчерские зоны (CTR) и зоны аэродрома.</p>
+<p><strong>Основы эшелонирования.</strong> Эшелонирование — это минимальные интервалы между воздушными судами.</p>
+<ul>
+<li>Вертикальное: разные эшелоны или высоты. До FL410 обычный интервал 1000 футов; в слое FL290–FL410 это допустимо только для самолётов с допуском RVSM.</li>
+<li>Горизонтальное: продольное (по времени или расстоянию) и боковое.</li>
+<li>Эшелон выбирается по направлению полёта (по таблице крейсерских эшелонов в AIP, ENR 1.7). DEL проверяет, что эшелон в плане ей соответствует.</li>
+</ul>
+<p><strong>Высота и эшелон перехода.</strong> Ниже высоты перехода набор и снижение выполняются по давлению QNH (высоты), выше — по стандартному давлению 1013 гПа (эшелоны). В Узбекистане с 02.10.2025 действуют единая высота перехода 13 000 футов и эшелон перехода FL150 (раньше были 6000 футов и FL080).</p>
+<p>На земле DEL и GND интервалы в воздухе не обеспечивают, но GND не допускает конфликтов на РД и перроне.</p>
+<h2 id="mat_ru-7">7. План полёта и разрешение на вылет</h2>
+<p>Пилот подаёт план полёта по форме ИКАО. DEL видит его в клиенте и проверяет до выдачи разрешения.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Поле плана</th>
+<th>Содержание</th>
+<th>Пример</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>7</td>
+<td>Позывной</td>
+<td>UZB123</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Правила полёта (I — ППП, V — ПВП) и тип полёта (S — регулярный)</td>
+<td>IS</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Тип ВС и категория турбулентности в следе (L, M, H, J)</td>
+<td>A320/M</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Оборудование и возможности</td>
+<td>SDE2FGIJ1RWY/LB1</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Аэродром и время вылета</td>
+<td>UZTT1200</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Скорость, эшелон, маршрут</td>
+<td>N0450F350 …</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Аэродром назначения, время в пути, запасные</td>
+<td>UUEE0400</td>
+</tr>
+<tr>
+<td>18</td>
+<td>Прочие сведения, в том числе PBN/</td>
+<td>PBN/A1B1C1D1</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Главные коды оборудования (поле 10).</strong> До косой черты — навигация и связь, после — ответчик.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Код</th>
+<th>Значение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S</td>
+<td>Стандартный комплект: VHF, VOR, ILS</td>
+</tr>
+<tr>
+<td>D</td>
+<td>DME</td>
+</tr>
+<tr>
+<td>G</td>
+<td>GNSS</td>
+</tr>
+<tr>
+<td>R</td>
+<td>Допуск PBN, уровни — в поле 18</td>
+</tr>
+<tr>
+<td>W</td>
+<td>Допуск RVSM</td>
+</tr>
+<tr>
+<td>Y</td>
+<td>VHF с сеткой 8,33 кГц</td>
+</tr>
+<tr>
+<td>C</td>
+<td>Ответчик режима C (с передачей высоты)</td>
+</tr>
+<tr>
+<td>S, L, E, H</td>
+<td>Ответчик режима S с разными функциями</td>
+</tr>
+<tr>
+<td>B1, B2</td>
+<td>ADS-B</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Что проверяет DEL:</strong></p>
+<ul>
+<li>аэродромы вылета и назначения указаны верно;</li>
+<li>маршрут начинается с точки выхода SID и соответствует местным правилам;</li>
+<li>эшелон соответствует направлению полёта;</li>
+<li>для эшелонов FL290–FL410 в поле 10 есть W (RVSM);</li>
+<li>для RNAV-схемы есть R и нужные уровни PBN;</li>
+<li>тип ВС может пользоваться аэродромом и стоянкой.</li>
+</ul>
+<p><strong>Состав разрешения на вылет:</strong></p>
+<ol>
+<li>Позывной.</li>
+<li>Пункт назначения, до которого разрешён полёт.</li>
+<li>Схема вылета (SID) или маршрут выхода и ВПП.</li>
+<li>Начальный набор (высота или эшелон).</li>
+<li>Код ответчика: четыре цифры от 0 до 7, цифр 8 и 9 в кодах не бывает.</li>
+<li>При необходимости частота после взлёта и другие указания.</li>
+</ol>
+<p>Пилот обязан повторить разрешение. DEL внимательно слушает повторение и исправляет ошибки, особенно в SID, наборе и коде ответчика.</p>
+<h2 id="mat_ru-8">8. METAR, TAF и рабочая ВПП</h2>
+<p><strong>METAR</strong> — регулярная сводка фактической погоды на аэродроме. Разбор примера:</p>
+<pre><code>METAR UZTT 101830Z 29010KT 4000 -SHRA BR OVC012CB 09/08 Q1026 NOSIG
+</code></pre>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Группа</th>
+<th>Значение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>UZTT</td>
+<td>Аэродром Ташкент</td>
+</tr>
+<tr>
+<td>101830Z</td>
+<td>10-е число, 18:30 UTC</td>
+</tr>
+<tr>
+<td>29010KT</td>
+<td>Ветер 290° (истинный), 10 узлов</td>
+</tr>
+<tr>
+<td>4000</td>
+<td>Видимость 4000 м</td>
+</tr>
+<tr>
+<td>-SHRA BR</td>
+<td>Слабый ливневый дождь, дымка</td>
+</tr>
+<tr>
+<td>OVC012CB</td>
+<td>Сплошная облачность на 1200 футах, кучево-дождевая</td>
+</tr>
+<tr>
+<td>09/08</td>
+<td>Температура 9 °C, точка росы 8 °C</td>
+</tr>
+<tr>
+<td>Q1026</td>
+<td>QNH 1026 гПа</td>
+</tr>
+<tr>
+<td>NOSIG</td>
+<td>Значительных изменений в ближайшие 2 часа не ожидается</td>
+</tr>
+</tbody>
+</table></div>
+<p>Облачность: FEW (1–2 октанта), SCT (3–4), BKN (5–7), OVC (8). CAVOK — видимость от 10 км, нет значимой облачности и опасных явлений.</p>
+<p><strong>TAF</strong> — прогноз погоды на аэродроме. После срока действия (например, 1018/1118) идут основные условия и группы изменений: FM (с момента), BECMG (постепенно), TEMPO (временами), PROB30/40 (вероятность).</p>
+<p><strong>Влияние погоды на работу DEL и GND:</strong></p>
+<ul>
+<li>ветер определяет рабочую ВПП, а значит SID и маршруты руления;</li>
+<li>низкая видимость вводит процедуры ограниченной видимости: руление по установленным маршрутам, для запуска и руления требуется больше времени;</li>
+<li>осадки при отрицательной или низкой температуре вызывают противообледенительную обработку перед вылетом;</li>
+<li>гроза (TS, CB) может привести к запросам изменить маршрут выхода.</li>
+</ul>
+<p><strong>Как определяется рабочая ВПП.</strong> Самолёты взлетают и садятся против ветра. Выбирается направление с встречной составляющей; при слабом ветре может оставаться предпочтительная ВПП по местным правилам. Учитываются также наличие ILS, состояние ВПП и NOTAM. Рабочую ВПП определяет вышка (вместе с подходом), а если их нет — старшая позиция в сети. DEL и GND при работе в одиночку выбирают её сами.</p>
+<p><strong>Пример.</strong> В Ташкенте ВПП 08/26 (магнитные курсы 076° и 256°). При ветре 290° 10 узлов встречная составляющая есть у направления 26, поэтому рабочие ВПП — 26L и 26R. Помните: ветер в METAR истинный, а курсы ВПП магнитные.</p>
+<h2 id="mat_ru-9">9. Фразеология, метки и листы</h2>
+<p>Радиообмен ведётся на русском и английском языках, диспетчер отвечает на языке пилота. В примерах SID, набор и РД условные; действующие значения даны в местных процедурах и AIP.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Ситуация</th>
+<th>По-русски</th>
+<th>In English</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Разрешение на вылет</td>
+<td>UZB123, Ташкент-Деливери, разрешено до Шереметьево, выход BAMUT 2C, ВПП 26R, набор по схеме, ответчик 2041</td>
+<td>UZB123, Tashkent Delivery, cleared to Sheremetyevo via BAMUT 2C departure, runway 26R, climb via SID, squawk 2041</td>
+</tr>
+<tr>
+<td>Повторение верное</td>
+<td>UZB123, правильно, работайте с Ташкент-Руление 121,7</td>
+<td>UZB123, readback correct, contact Tashkent Ground 121.7</td>
+</tr>
+<tr>
+<td>Буксировка и запуск</td>
+<td>UZB123, буксировку и запуск разрешаю, хвостом на восток</td>
+<td>UZB123, push and start-up approved, facing east</td>
+</tr>
+<tr>
+<td>Руление на вылет</td>
+<td>UZB123, рулите к месту ожидания ВПП 26L по РД …</td>
+<td>UZB123, taxi to holding point runway 26L via …</td>
+</tr>
+<tr>
+<td>Ожидание перед ВПП</td>
+<td>UZB123, ждите перед ВПП 26R</td>
+<td>UZB123, hold short of runway 26R</td>
+</tr>
+<tr>
+<td>Передача на вышку</td>
+<td>UZB123, работайте с Ташкент-Тауэр 120,4</td>
+<td>UZB123, contact Tashkent Tower 120.4</td>
+</tr>
+<tr>
+<td>Руление на стоянку</td>
+<td>UZB123, рулите на стоянку 5 по РД …</td>
+<td>UZB123, taxi to stand 5 via …</td>
+</tr>
+</tbody>
+</table></div>
+<p>Начальный набор задаёт схема SID. Если нужен другой, его назначает диспетчер, например «набор 8000 футов» / «climb altitude 8000 feet».</p>
+<p><strong>Обязательно повторяются:</strong> разрешения и указания на ВПП (включая «ждите перед ВПП»), маршрут, высота и эшелон, курс и скорость, код ответчика, давление, частоты. Диспетчер исправляет неверное повторение сразу.</p>
+<p><strong>Метки (формуляры сопровождения)</strong> — подписи самолётов на экране: позывной, тип, назначение, ВПП и SID, код ответчика, отметка о разрешении и статус на земле (запуск, буксировка, руление). Диспетчер обновляет их после каждого указания, чтобы смежные диспетчеры видели актуальное состояние.</p>
+<p><strong>Листы</strong> — списки в клиенте: вылетающие (Departure list), прилетающие (Arrival list), окно плана полёта. DEL работает в основном с листом вылета: назначает код, проверяет SID и набор, ставит отметку о выданном разрешении.</p>
+<h2 id="mat_ru-10">Источники</h2>
+<ul>
+<li>Типовая программа обучения в УТЦ ПД, Приложение № 1, пп. 2.3 и 2.5</li>
+<li><a href="https://vatsim.net/docs/policy/code-of-conduct" target="_blank" rel="noopener">VATSIM Code of Conduct</a></li>
+<li><a href="https://cdn.vatsim.net/policy-documents/GCAP%20v2.0%20Release%2008152026r1.pdf" target="_blank" rel="noopener">GCAP v2.0</a></li>
+<li><a href="https://vatrus.info/airport/UZTT" target="_blank" rel="noopener">Аэродром UZTT, VATRUS</a></li>
+<li><a href="https://uzaeronavigation.com/ais/" target="_blank" rel="noopener">AIP Узбекистана</a></li>
+<li><a href="https://ops.group/blog/uzbekistan-new-icao-codes-new-transition-levels/" target="_blank" rel="noopener">Новые коды ИКАО и высота перехода в Узбекистане, OPSGROUP</a></li>
+</ul></article></section>
+<section class="pane" data-doc="mat" data-lang="uz" hidden>
+<nav class="toc" aria-label="contents"><p class="toc-h">Mundarija</p><ol><li><a href="#mat_uz-1">1. VATSIM ga ulanish</a></li><li><a href="#mat_uz-2">2. VATSIM va real aviatsiya hujjatlari</a></li><li><a href="#mat_uz-3">3. Dispetcherlik pozitsiyalari va mas’uliyat chegaralari</a></li><li><a href="#mat_uz-4">4. DEL va GND ish texnologiyasi</a></li><li><a href="#mat_uz-5">5. AIP va aerodrom sxemalarini o‘qish</a></li><li><a href="#mat_uz-6">6. Havo hududi va eshelonlash asoslari</a></li><li><a href="#mat_uz-7">7. Parvoz rejasi va uchib ketishga ruxsat</a></li><li><a href="#mat_uz-8">8. METAR, TAF va ishchi UQY</a></li><li><a href="#mat_uz-9">9. Frazeologiya, metkalar va varaqlar</a></li><li><a href="#mat_uz-10">Manbalar</a></li></ol></nav>
+<article class="prose"><p>Materiallar kirish testining barcha mavzularini va kirish trenajyorigacha zarur bilimlarni qamrab oladi (Namunaviy dastur, 2.3 va 2.5-bandlar). Toshkentning mahalliy tartiblari ikkinchi bo‘limda berilgan.</p>
+<h2 id="mat_uz-1">1. VATSIM ga ulanish</h2>
+<p>Dispetcher tarmoqqa dispetcherlik klienti (Toshkent RPI da — EuroScope) va ovozli klient orqali ulanadi va to‘rtta parametrni ko‘rsatadi. S1 olinguncha nomzod faqat kuzatuvchi sifatida ulanadi.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Parametr</th>
+<th>Nima ko‘rsatiladi</th>
+<th>Misol</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Chaqiruv belgisi</td>
+<td>Aerodrom yoki hududning ICAO kodi, pastki chiziq va pozitsiya qo‘shimchasi. Kuzatuvchi o‘z bosh harflari va _OBS qo‘shimchasini qo‘yadi</td>
+<td>UZTT_DEL, UZTT_GND, IV_OBS</td>
+</tr>
+<tr>
+<td>Ism</td>
+<td>Haqiqiy to‘liq ism yoki ruxsat etilgan variant: ism va familiyaning bosh harfi, bosh harflar, VATSIM raqami (CID). Taxalluslarga yo‘l qo‘yilmaydi</td>
+<td>Ivan Petrov</td>
+</tr>
+<tr>
+<td>Facility</td>
+<td>Pozitsiya turi. U chaqiruv belgisi qo‘shimchasiga mos bo‘lishi kerak</td>
+<td>Delivery, Ground, Observer</td>
+</tr>
+<tr>
+<td>Range</td>
+<td>Ko‘rinish radiusi dengiz millarida, pozitsiya chegarasidan oshmasligi kerak</td>
+<td>20</td>
+</tr>
+</tbody>
+</table></div>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Pozitsiya</th>
+<th>Range chegarasi, NM</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Kuzatuvchi (OBS)</td>
+<td>300</td>
+</tr>
+<tr>
+<td>DEL, RMP, GND</td>
+<td>20</td>
+</tr>
+<tr>
+<td>TWR</td>
+<td>50</td>
+</tr>
+<tr>
+<td>APP, DEP</td>
+<td>150</td>
+</tr>
+<tr>
+<td>CTR</td>
+<td>600</td>
+</tr>
+<tr>
+<td>FSS</td>
+<td>1500</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Bilish kerak bo‘lgan qoidalar:</strong></p>
+<ul>
+<li>S1 reytingi RMP, DEL va GND da ishlash huquqini beradi. Yuqori pozitsiyalar keyingi reytinglar yoki solo-ruxsatnoma bilan ochiladi.</li>
+<li>Kuzatuvchi efirga chiqmaydi va havo harakatiga xizmat ko‘rsatmaydi.</li>
+<li>Faqat chaqiruv belgisiga mos pozitsiya turi tanlanadi.</li>
+<li>Dispetcher bo‘lmagan joyda uchuvchilar 122,800 chastotasidan foydalanadi.</li>
+<li>ATIS ning matnli versiyasi doimo ingliz tilida bo‘ladi.</li>
+<li>Yangi boshlovchi avval ishni kuzatishi va mahalliy tartiblarni o‘rganishi kerak.</li>
+</ul>
+<p>Toshkentning chaqiruv belgilari va chastotalari «Mahalliy tartiblar» bo‘limida berilgan. 02.10.2025 dan aerodrom kodi UZTT (avvalgi UTTT), RPI — UZTR.</p>
+<h2 id="mat_uz-2">2. VATSIM va real aviatsiya hujjatlari</h2>
+<p>Tarmoqda uch darajadagi hujjatlar amal qiladi. Ziddiyat bo‘lganda yuqori darajadagi hujjat qo‘llaniladi.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Daraja</th>
+<th>Hujjat</th>
+<th>Nimani tartibga soladi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>VATSIM</td>
+<td>Code of Conduct</td>
+<td>Tarmoqdagi xulq-atvor, chaqiruv belgilari, ismlar, Range, chastotalar</td>
+</tr>
+<tr>
+<td>VATSIM</td>
+<td>Global Controller Administration Policy (GCAP)</td>
+<td>Reytinglar, o‘qitish, solo-ruxsatnomalar, imtihonlar</td>
+</tr>
+<tr>
+<td>VATSIM</td>
+<td>Transfer and Visiting Controller Policy (TVCP)</td>
+<td>Boshqa divizionlarga o‘tish va ularda ishlash</td>
+</tr>
+<tr>
+<td>VATRUS</td>
+<td>O‘qitish to‘g‘risidagi Nizom va uning ilovalari</td>
+<td>Tayyorgarlik va baholash tartibi</td>
+</tr>
+<tr>
+<td>Subdivizion</td>
+<td>Dastur va mahalliy tartiblar</td>
+<td>Aniq pozitsiyalarda ish texnologiyasi</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Real aviatsiya hujjatlari</strong> — O‘zbekiston AIP, ICAO hujjatlari (Doc 4444, Doc 9432) va milliy qoidalar — tarmoqdagi tartiblarning asosi hisoblanadi. Bu «As real as it gets» tamoyili: dispetcher real aerodromdagidek ishlaydi.</p>
+<ul>
+<li>Real hujjatlar VATSIM qoidalariga zid bo‘lmasa qo‘llaniladi.</li>
+<li>Subdivizionning mahalliy tartiblari tarmoq uchun real qoidalarni soddalashtirishi mumkin. Bunday holda mahalliy tartiblar amal qiladi.</li>
+<li>Barcha ma’lumotlar va xaritalar faqat simulyatsiya uchun ishlatiladi va real navigatsiya uchun mo‘ljallanmagan.</li>
+<li>Dolzarblik muhim: AIP har 28 kunda AIRAC sikllari bo‘yicha o‘zgaradi, shuning uchun sxemalar va sektor joriy siklga mos bo‘lishi kerak.</li>
+</ul>
+<h2 id="mat_uz-3">3. Dispetcherlik pozitsiyalari va mas’uliyat chegaralari</h2>
+<p>DEL va GND samolyot UQYni egallaguncha ishlaydi: uchish-qo‘nish yo‘lagi doimo minoraga tegishli.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Pozitsiya</th>
+<th>Efirdagi chaqiruv belgisi</th>
+<th>Nima uchun javob beradi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DEL</td>
+<td>Toshkent-Delivery (Tashkent Delivery)</td>
+<td>Parvoz rejalarini tekshirish, uchib ketishga dispetcherlik ruxsatlari, javob qaytargich kodlari. Harakatni boshqarmaydi</td>
+</tr>
+<tr>
+<td>GND</td>
+<td>Toshkent-Ruleniye (Tashkent Ground)</td>
+<td>Shatakka olish va ishga tushirish, perron va RY bo‘ylab UQY oldidagi kutish joyigacha va UQYdan turargacha rulejka</td>
+</tr>
+<tr>
+<td>TWR</td>
+<td>Toshkent-Tauer (Tashkent Tower)</td>
+<td>UQY, uchish, qo‘nish, UQYni kesib o‘tish, aerodrom zonasi</td>
+</tr>
+<tr>
+<td>APP</td>
+<td>Toshkent-Podxod (Tashkent Approach)</td>
+<td>Aerodrom hududida uchib ketish va yaqinlashish</td>
+</tr>
+<tr>
+<td>CTR</td>
+<td>Toshkent-Kontrol (Tashkent Control)</td>
+<td>RPI da marshrut bo‘yicha parvozlar</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Top-down tamoyili.</strong> Quyi pozitsiya tarmoqda bo‘lmasa, uning vazifalarini yuqori dispetcher bajaradi. DEL bo‘lmasa ruxsatlarni GND beradi, DEL va GND bo‘lmasa — TWR. DEL o‘zi boshqa pozitsiyalar o‘rniga hech narsa bajarmaydi.</p>
+<h2 id="mat_uz-4">4. DEL va GND ish texnologiyasi</h2>
+<p><strong>Pozitsiyaga chiqishdan oldin</strong> dispetcher METAR va ATIS ni, ishchi UQYni, NOTAM ni, qo‘shni dispetcherlardan kim tarmoqdaligini tekshiradi va klientlarni sozlaydi.</p>
+<p><strong>Uchib ketayotgan reys:</strong></p>
+<ol>
+<li>Uchuvchi DEL dan ruxsat so‘raydi.</li>
+<li>DEL parvoz rejasini tekshiradi, zarur bo‘lsa uchuvchi bilan tuzatadi va javob qaytargich kodi bilan ruxsat beradi.</li>
+<li>To‘g‘ri takrorlangandan so‘ng DEL ruxsatni metkada belgilaydi va uchuvchini GND ga topshiradi.</li>
+<li>GND shatakka olish va ishga tushirishga, so‘ng UQY oldidagi kutish joyigacha rulejkaga ruxsat beradi.</li>
+<li>Kutish joyiga yaqinlashganda GND samolyot va metkani TWR ga topshiradi.</li>
+</ol>
+<p><strong>Qo‘nayotgan reys:</strong> TWR samolyotni UQY bo‘shatilgandan keyin topshiradi, GND turargacha rulejka beradi.</p>
+<p><strong>Minora bilan kelishiladi:</strong></p>
+<ul>
+<li>amaldagi UQYni kesib o‘tish: TWR roziligisiz GND bunga ruxsat bermaydi;</li>
+<li>UQY boshidan bo‘lmagan joydan (oraliq RY dan) uchib ketish;</li>
+<li>uchib ketishning nostandart shartlari: boshqa UQY, vizual uchib ketish, kechikishlar.</li>
+</ul>
+<p><strong>Yaqinlashish yoki hudud dispetcheri bilan</strong> DEL marshrut yoki dastlabki balandlik olishni kelishadi, agar ular standartdan farq qilsa.</p>
+<p>Yerdagi asosiy narsa — vaziyatni to‘liq ko‘rish va ustuvorlik bo‘yicha harakat qilish. Avval RY va UQY yonidagi nizolar hal qilinadi, so‘ng minoraga topshirish, so‘ng shatakka olish so‘rovlari va ruxsatlar.</p>
+<h2 id="mat_uz-5">5. AIP va aerodrom sxemalarini o‘qish</h2>
+<p>O‘zbekiston AIP (aeronavigatsiya axboroti to‘plami) <a href="https://uzaeronavigation.com/ais/" target="_blank" rel="noopener">O‘zaeronavigatsiya</a> saytida e’lon qilingan va uch qismdan iborat.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Qism</th>
+<th>Mazmuni</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GEN</td>
+<td>Umumiy ma’lumotlar: o‘lchov birliklari, qisqartmalar, joy ko‘rsatkichlari</td>
+</tr>
+<tr>
+<td>ENR</td>
+<td>Marshrutlar, havo hududi, parvoz qoidalari, o‘tish balandligi (ENR 1.7)</td>
+</tr>
+<tr>
+<td>AD</td>
+<td>Aerodromlar. Toshkent uchun — AD 2 UZTT bo‘limi</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>AD 2 da nimani izlash kerak:</strong> aerodrom ma’lumotlari va balandligi, UQYning fizik ma’lumotlari (AD 2.12), aloqa vositalari (AD 2.18), mahalliy qoidalar va rulejka sxemalari (AD 2.20), xaritalar (AD 2.24).</p>
+<p><strong>DEL va GND uchun kerakli xaritalar:</strong></p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Xarita</th>
+<th>Unda nimani o‘qish kerak</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Aerodrom xaritasi</td>
+<td>UQYlar va ularning magnit kurslari, RYlar va ularning belgilari, UQY oldidagi kutish joylari, xavfli joylar (hot spots)</td>
+</tr>
+<tr>
+<td>Turar joylar va rulejka xaritasi</td>
+<td>Turar joylar raqamlari, shatakka olish yo‘nalishi, qanot uzunligi bo‘yicha cheklovlar</td>
+</tr>
+<tr>
+<td>Standart rulejka marshrutlari</td>
+<td>Turar joylardan UQYgacha va orqaga belgilangan marshrutlar</td>
+</tr>
+<tr>
+<td>SID (standart uchib ketish)</td>
+<td>Sxema nomi, UQY, chiqish nuqtasi, dastlabki balandlik olish, balandlik va tezlik cheklovlari</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>SID nomini qanday o‘qish kerak.</strong> «ABCDE 1A» misoli: ABCDE — sxema tugab, marshrut boshlanadigan nuqta; 1 — sxema versiyasi raqami; A — variant harfi, odatda UQY bilan bog‘liq. Parvoz rejasidagi marshrutning birinchi nuqtasi SID chiqish nuqtasiga mos kelishi kerak.</p>
+<p>Xaritalarda balandliklar futda, masofalar dengiz millarida yoki metrda, kurslar — magnit kurslarda beriladi. Doimo xarita sanasini va joriy AIRAC siklini tekshiring.</p>
+<h2 id="mat_uz-6">6. Havo hududi va eshelonlash asoslari</h2>
+<p><strong>Parvoz qoidalari.</strong> Parvoz vizual parvoz qoidalari (VFR) yoki asboblar bo‘yicha parvoz qoidalari (IFR) bo‘yicha bajariladi. VFR da ekipaj yerni va boshqa samolyotlarni o‘zi ko‘radi va intervallar uchun javob beradi, IFR da asboblar bo‘yicha uchadi, intervallarni esa dispetcher ta’minlaydi.</p>
+<p><strong>ICAO havo hududi sinflari:</strong></p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Sinf</th>
+<th>Ruxsat etiladi</th>
+<th>Eshelonlash</th>
+<th>Dispetcher ruxsati</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>Faqat IFR</td>
+<td>Barcha havo kemalari</td>
+<td>Kerak</td>
+</tr>
+<tr>
+<td>B</td>
+<td>IFR va VFR</td>
+<td>Barcha havo kemalari</td>
+<td>Kerak</td>
+</tr>
+<tr>
+<td>C</td>
+<td>IFR va VFR</td>
+<td>IFR ni IFR dan va VFR dan</td>
+<td>Kerak</td>
+</tr>
+<tr>
+<td>D</td>
+<td>IFR va VFR</td>
+<td>IFR ni IFR dan, boshqalarga — harakat haqida ma’lumot</td>
+<td>Kerak</td>
+</tr>
+<tr>
+<td>E</td>
+<td>IFR va VFR</td>
+<td>IFR ni IFR dan</td>
+<td>Faqat IFR uchun</td>
+</tr>
+<tr>
+<td>F</td>
+<td>IFR va VFR</td>
+<td>IFR imkon qadar (maslahat xizmati)</td>
+<td>Kerak emas</td>
+</tr>
+<tr>
+<td>G</td>
+<td>IFR va VFR</td>
+<td>Ta’minlanmaydi, faqat parvoz ma’lumoti</td>
+<td>Kerak emas</td>
+</tr>
+</tbody>
+</table></div>
+<p>O‘zbekistonda qaysi sinflar qo‘llanilishi AIP, ENR 1.4 va ENR 2 da ko‘rsatilgan.</p>
+<p><strong>Tuzilish.</strong> Parvoz axboroti rayoni (RPI, FIR) dispetcherlik rayonlariga bo‘linadi. Yirik aerodromlar atrofida dispetcherlik zonalari (CTR) va aerodrom zonalari belgilanadi.</p>
+<p><strong>Eshelonlash asoslari.</strong> Eshelonlash — havo kemalari orasidagi minimal intervallar.</p>
+<ul>
+<li>Vertikal: turli eshelonlar yoki balandliklar. FL410 gacha odatiy interval 1000 fut; FL290–FL410 qatlamida bunga faqat RVSM ruxsatiga ega samolyotlar uchun yo‘l qo‘yiladi.</li>
+<li>Gorizontal: bo‘ylama (vaqt yoki masofa bo‘yicha) va yon.</li>
+<li>Eshelon parvoz yo‘nalishiga qarab tanlanadi (AIP, ENR 1.7 dagi kreyser eshelonlari jadvali bo‘yicha). DEL rejadagi eshelon unga mosligini tekshiradi.</li>
+</ul>
+<p><strong>O‘tish balandligi va eshelon.</strong> O‘tish balandligidan pastda balandlik olish va pasayish QNH bosimi bo‘yicha (balandliklar), yuqorida — standart 1013 gPa bosimi bo‘yicha (eshelonlar) bajariladi. O‘zbekistonda 02.10.2025 dan yagona o‘tish balandligi 13 000 fut va o‘tish esheloni FL150 amal qiladi (avval 6000 fut va FL080 edi).</p>
+<p>Yerda DEL va GND havodagi intervallarni ta’minlamaydi, lekin GND RY va perronda nizolarga yo‘l qo‘ymaydi.</p>
+<h2 id="mat_uz-7">7. Parvoz rejasi va uchib ketishga ruxsat</h2>
+<p>Uchuvchi parvoz rejasini ICAO shakli bo‘yicha topshiradi. DEL uni klientda ko‘radi va ruxsat berishdan oldin tekshiradi.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Reja maydoni</th>
+<th>Mazmuni</th>
+<th>Misol</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>7</td>
+<td>Chaqiruv belgisi</td>
+<td>UZB123</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Parvoz qoidalari (I — IFR, V — VFR) va parvoz turi (S — muntazam)</td>
+<td>IS</td>
+</tr>
+<tr>
+<td>9</td>
+<td>HK turi va iz turbulentligi toifasi (L, M, H, J)</td>
+<td>A320/M</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Jihozlar va imkoniyatlar</td>
+<td>SDE2FGIJ1RWY/LB1</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Uchib ketish aerodromi va vaqti</td>
+<td>UZTT1200</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Tezlik, eshelon, marshrut</td>
+<td>N0450F350 …</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Manzil aerodromi, yo‘ldagi vaqt, zaxira aerodromlar</td>
+<td>UUEE0400</td>
+</tr>
+<tr>
+<td>18</td>
+<td>Boshqa ma’lumotlar, jumladan PBN/</td>
+<td>PBN/A1B1C1D1</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Asosiy jihoz kodlari (10-maydon).</strong> Qiya chiziqdan oldin — navigatsiya va aloqa, keyin — javob qaytargich.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Kod</th>
+<th>Ma’nosi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S</td>
+<td>Standart to‘plam: VHF, VOR, ILS</td>
+</tr>
+<tr>
+<td>D</td>
+<td>DME</td>
+</tr>
+<tr>
+<td>G</td>
+<td>GNSS</td>
+</tr>
+<tr>
+<td>R</td>
+<td>PBN ruxsati, darajalari 18-maydonda</td>
+</tr>
+<tr>
+<td>W</td>
+<td>RVSM ruxsati</td>
+</tr>
+<tr>
+<td>Y</td>
+<td>8,33 kGs to‘rli VHF</td>
+</tr>
+<tr>
+<td>C</td>
+<td>C rejimidagi javob qaytargich (balandlikni uzatish bilan)</td>
+</tr>
+<tr>
+<td>S, L, E, H</td>
+<td>Turli funksiyali S rejimidagi javob qaytargich</td>
+</tr>
+<tr>
+<td>B1, B2</td>
+<td>ADS-B</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>DEL nimani tekshiradi:</strong></p>
+<ul>
+<li>uchib ketish va manzil aerodromlari to‘g‘ri ko‘rsatilgan;</li>
+<li>marshrut SID chiqish nuqtasidan boshlanadi va mahalliy qoidalarga mos;</li>
+<li>eshelon parvoz yo‘nalishiga mos;</li>
+<li>FL290–FL410 eshelonlari uchun 10-maydonda W (RVSM) bor;</li>
+<li>RNAV sxemasi uchun R va kerakli PBN darajalari bor;</li>
+<li>HK turi aerodrom va turar joydan foydalana oladi.</li>
+</ul>
+<p><strong>Uchib ketishga ruxsat tarkibi:</strong></p>
+<ol>
+<li>Chaqiruv belgisi.</li>
+<li>Parvozga ruxsat berilgan manzil punkti.</li>
+<li>Uchib ketish sxemasi (SID) yoki chiqish marshruti va UQY.</li>
+<li>Dastlabki balandlik olish (balandlik yoki eshelon).</li>
+<li>Javob qaytargich kodi: 0 dan 7 gacha to‘rtta raqam, kodlarda 8 va 9 raqamlari bo‘lmaydi.</li>
+<li>Zarur bo‘lsa, uchishdan keyingi chastota va boshqa ko‘rsatmalar.</li>
+</ol>
+<p>Uchuvchi ruxsatni takrorlashi shart. DEL takrorlashni diqqat bilan tinglaydi va xatolarni, ayniqsa SID, balandlik olish va javob qaytargich kodidagi xatolarni tuzatadi.</p>
+<h2 id="mat_uz-8">8. METAR, TAF va ishchi UQY</h2>
+<p><strong>METAR</strong> — aerodromdagi haqiqiy ob-havo bo‘yicha muntazam xabar. Misolni tahlil qilamiz:</p>
+<pre><code>METAR UZTT 101830Z 29010KT 4000 -SHRA BR OVC012CB 09/08 Q1026 NOSIG
+</code></pre>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Guruh</th>
+<th>Ma’nosi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>UZTT</td>
+<td>Toshkent aerodromi</td>
+</tr>
+<tr>
+<td>101830Z</td>
+<td>Oyning 10-kuni, 18:30 UTC</td>
+</tr>
+<tr>
+<td>29010KT</td>
+<td>Shamol 290° (haqiqiy), 10 uzel</td>
+</tr>
+<tr>
+<td>4000</td>
+<td>Ko‘rinish 4000 m</td>
+</tr>
+<tr>
+<td>-SHRA BR</td>
+<td>Kuchsiz jala, g‘ubor</td>
+</tr>
+<tr>
+<td>OVC012CB</td>
+<td>1200 futda yaxlit bulut, to‘p-yomg‘irli</td>
+</tr>
+<tr>
+<td>09/08</td>
+<td>Harorat 9 °C, shudring nuqtasi 8 °C</td>
+</tr>
+<tr>
+<td>Q1026</td>
+<td>QNH 1026 gPa</td>
+</tr>
+<tr>
+<td>NOSIG</td>
+<td>Yaqin 2 soatda muhim o‘zgarishlar kutilmaydi</td>
+</tr>
+</tbody>
+</table></div>
+<p>Bulutlilik: FEW (1–2 oktant), SCT (3–4), BKN (5–7), OVC (8). CAVOK — ko‘rinish 10 km dan, muhim bulutlilik va xavfli hodisalar yo‘q.</p>
+<p><strong>TAF</strong> — aerodromdagi ob-havo prognozi. Amal qilish muddatidan (masalan, 1018/1118) keyin asosiy shartlar va o‘zgarish guruhlari keladi: FM (shu paytdan), BECMG (asta-sekin), TEMPO (vaqti-vaqti bilan), PROB30/40 (ehtimollik).</p>
+<p><strong>Ob-havoning DEL va GND ishiga ta’siri:</strong></p>
+<ul>
+<li>shamol ishchi UQYni, demak SID va rulejka marshrutlarini belgilaydi;</li>
+<li>past ko‘rinishda cheklangan ko‘rinish tartiblari kiritiladi: rulejka belgilangan marshrutlar bo‘yicha, ishga tushirish va rulejka uchun ko‘proq vaqt kerak;</li>
+<li>manfiy yoki past haroratdagi yog‘ingarchilik uchib ketishdan oldin muzlashga qarshi ishlov berishni talab qiladi;</li>
+<li>momaqaldiroq (TS, CB) chiqish marshrutini o‘zgartirish so‘rovlariga olib kelishi mumkin.</li>
+</ul>
+<p><strong>Ishchi UQY qanday aniqlanadi.</strong> Samolyotlar shamolga qarshi uchadi va qo‘nadi. Qarshi tashkil etuvchiga ega yo‘nalish tanlanadi; kuchsiz shamolda mahalliy qoidalar bo‘yicha afzal UQY qolishi mumkin. ILS mavjudligi, UQY holati va NOTAM ham hisobga olinadi. Ishchi UQYni minora (yaqinlashish bilan birga) belgilaydi, ular bo‘lmasa — tarmoqdagi katta pozitsiya. DEL va GND yolg‘iz ishlaganda uni o‘zlari tanlaydi.</p>
+<p><strong>Misol.</strong> Toshkentda UQY 08/26 (magnit kurslari 076° va 256°). 290° 10 uzel shamolda qarshi tashkil etuvchi 26 yo‘nalishida bor, shuning uchun ishchi UQYlar — 26L va 26R. Esda tuting: METAR dagi shamol haqiqiy, UQY kurslari esa magnit.</p>
+<h2 id="mat_uz-9">9. Frazeologiya, metkalar va varaqlar</h2>
+<p>Radioalmashuv rus va ingliz tillarida olib boriladi, dispetcher uchuvchining tilida javob beradi. Misollarda SID, balandlik olish va RY shartli; amaldagi qiymatlar mahalliy tartiblar va AIP da berilgan.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Vaziyat</th>
+<th>Ruscha</th>
+<th>In English</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Uchib ketishga ruxsat</td>
+<td>UZB123, Ташкент-Деливери, разрешено до Шереметьево, выход BAMUT 2C, ВПП 26R, набор по схеме, ответчик 2041</td>
+<td>UZB123, Tashkent Delivery, cleared to Sheremetyevo via BAMUT 2C departure, runway 26R, climb via SID, squawk 2041</td>
+</tr>
+<tr>
+<td>Takrorlash to‘g‘ri</td>
+<td>UZB123, правильно, работайте с Ташкент-Руление 121,7</td>
+<td>UZB123, readback correct, contact Tashkent Ground 121.7</td>
+</tr>
+<tr>
+<td>Shatakka olish va ishga tushirish</td>
+<td>UZB123, буксировку и запуск разрешаю, хвостом на восток</td>
+<td>UZB123, push and start-up approved, facing east</td>
+</tr>
+<tr>
+<td>Uchib ketishga rulejka</td>
+<td>UZB123, рулите к месту ожидания ВПП 26L по РД …</td>
+<td>UZB123, taxi to holding point runway 26L via …</td>
+</tr>
+<tr>
+<td>UQY oldida kutish</td>
+<td>UZB123, ждите перед ВПП 26R</td>
+<td>UZB123, hold short of runway 26R</td>
+</tr>
+<tr>
+<td>Minoraga topshirish</td>
+<td>UZB123, работайте с Ташкент-Тауэр 120,4</td>
+<td>UZB123, contact Tashkent Tower 120.4</td>
+</tr>
+<tr>
+<td>Turar joyga rulejka</td>
+<td>UZB123, рулите на стоянку 5 по РД …</td>
+<td>UZB123, taxi to stand 5 via …</td>
+</tr>
+</tbody>
+</table></div>
+<p>Dastlabki balandlik olishni SID sxemasi belgilaydi. Boshqasi kerak bo‘lsa, uni dispetcher tayinlaydi, masalan «набор 8000 футов» / «climb altitude 8000 feet».</p>
+<p><strong>Albatta takrorlanadi:</strong> UQY bo‘yicha ruxsat va ko‘rsatmalar («UQY oldida kuting» ham), marshrut, balandlik va eshelon, kurs va tezlik, javob qaytargich kodi, bosim, chastotalar. Dispetcher noto‘g‘ri takrorlashni darhol tuzatadi.</p>
+<p><strong>Metkalar (kuzatuv formulyarlari)</strong> — ekrandagi samolyot yozuvlari: chaqiruv belgisi, turi, manzil, UQY va SID, javob qaytargich kodi, ruxsat belgisi va yerdagi holat (ishga tushirish, shatakka olish, rulejka). Dispetcher har bir ko‘rsatmadan keyin ularni yangilaydi, shunda qo‘shni dispetcherlar dolzarb holatni ko‘radi.</p>
+<p><strong>Varaqlar</strong> — klientdagi ro‘yxatlar: uchib ketayotganlar (Departure list), kelayotganlar (Arrival list), parvoz rejasi oynasi. DEL asosan uchib ketish varag‘i bilan ishlaydi: kod tayinlaydi, SID va balandlik olishni tekshiradi, berilgan ruxsat belgisini qo‘yadi.</p>
+<h2 id="mat_uz-10">Manbalar</h2>
+<ul>
+<li>O‘quv markazida Namunaviy o‘quv dasturi, 1-ilova, 2.3 va 2.5-bandlar</li>
+<li><a href="https://vatsim.net/docs/policy/code-of-conduct" target="_blank" rel="noopener">VATSIM Code of Conduct</a></li>
+<li><a href="https://cdn.vatsim.net/policy-documents/GCAP%20v2.0%20Release%2008152026r1.pdf" target="_blank" rel="noopener">GCAP v2.0</a></li>
+<li><a href="https://vatrus.info/airport/UZTT" target="_blank" rel="noopener">UZTT aerodromi, VATRUS</a></li>
+<li><a href="https://uzaeronavigation.com/ais/" target="_blank" rel="noopener">O‘zbekiston AIP</a></li>
+<li><a href="https://ops.group/blog/uzbekistan-new-icao-codes-new-transition-levels/" target="_blank" rel="noopener">O‘zbekistonda yangi ICAO kodlari va o‘tish balandligi, OPSGROUP</a></li>
+</ul>
+<p>Tarjima ruscha matn asosida tayyorlangan. Ziddiyat bo‘lsa, ruscha matn ustun turadi.</p></article></section>
+<section class="pane" data-doc="loc" data-lang="ru" hidden>
+<nav class="toc" aria-label="contents"><p class="toc-h">Содержание</p><ol><li><a href="#loc_ru-1">1. Аэродром UZTT</a></li><li><a href="#loc_ru-2">2. Позиции и частоты</a></li><li><a href="#loc_ru-3">3. Работа DEL</a></li><li><a href="#loc_ru-4">4. Работа GND</a></li><li><a href="#loc_ru-5">Источники</a></li></ol></nav>
+<article class="prose"><p>Документ описывает работу DEL и GND на аэродроме обучения. Данные взяты со страницы аэродрома на сайте VATRUS, из пакета местных процедур 2020 года и из действующего AIP (AD 2.18–2.22), а также из карт Jeppesen (цикл 23-2026).</p>
+<h2 id="loc_ru-1">1. Аэродром UZTT</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Параметр</th>
+<th>Значение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Название</td>
+<td>Международный аэропорт Ташкент имени Ислама Каримова</td>
+</tr>
+<tr>
+<td>Код ИКАО</td>
+<td>UZTT (до 02.10.2025 — UTTT), РПИ UZTR</td>
+</tr>
+<tr>
+<td>Контрольная точка</td>
+<td>N041° 15.4′ E069° 16.9′</td>
+</tr>
+<tr>
+<td>Превышение</td>
+<td>1417 футов (432 м)</td>
+</tr>
+<tr>
+<td>Высота перехода</td>
+<td>13 000 футов</td>
+</tr>
+<tr>
+<td>Эшелон перехода</td>
+<td>FL150</td>
+</tr>
+</tbody>
+</table></div>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>ВПП</th>
+<th>Магнитный курс</th>
+<th>Размеры, м</th>
+<th>Система посадки</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>08L</td>
+<td>076°</td>
+<td>4000 × 60</td>
+<td>ILS CAT II, 110,500</td>
+</tr>
+<tr>
+<td>26R</td>
+<td>256°</td>
+<td>4000 × 60</td>
+<td>ILS CAT I, 108,500</td>
+</tr>
+<tr>
+<td>08R</td>
+<td>076°</td>
+<td>3905 × 45</td>
+<td>ILS CAT I, 111,700</td>
+</tr>
+<tr>
+<td>26L</td>
+<td>256°</td>
+<td>3905 × 45</td>
+<td>ILS нет</td>
+</tr>
+</tbody>
+</table></div>
+<p>ВПП 08L/26R — основная, с осевыми огнями. По пакету 2020 года на всех торцах есть смещённые пороги (от 200 до 250 м).</p>
+<p><strong>Выбор рабочей ВПП.</strong> По ветру: ветер с запада — ВПП 26, с востока — ВПП 08. При слабом ветре приоритет — ВПП 08L или 08R.</p>
+<h2 id="loc_ru-2">2. Позиции и частоты</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Позывной в сети</th>
+<th>Позывной в эфире</th>
+<th>Частота, МГц</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>UZTT_DEL</td>
+<td>Ташкент-Деливери / Tashkent Delivery</td>
+<td>129,400</td>
+</tr>
+<tr>
+<td>UZTT_GND</td>
+<td>Ташкент-Руление / Tashkent Ground</td>
+<td>121,700</td>
+</tr>
+<tr>
+<td>UZTT_TWR</td>
+<td>Ташкент-Тауэр / Tashkent Tower</td>
+<td>120,400</td>
+</tr>
+<tr>
+<td>UZTT_APP</td>
+<td>Ташкент-Подход / Tashkent Approach</td>
+<td>119,400 (запасная 122,900)</td>
+</tr>
+<tr>
+<td>UZTR_CTR</td>
+<td>Ташкент-Контроль / Tashkent Control</td>
+<td>134,600</td>
+</tr>
+<tr>
+<td>RU-CEN_FSS</td>
+<td>Азия-Центр / Asia Center</td>
+<td>132,850</td>
+</tr>
+<tr>
+<td>ATIS</td>
+<td>Tashkent Information</td>
+<td>126,800 (только на английском)</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>В эфире вышка называется «Тауэр», а не «Вышка».</li>
+<li>Радиус видимости DEL и GND — не более 20 морских миль.</li>
+</ul>
+<p><strong>Top-down в Ташкенте.</strong> Если DEL нет в сети, разрешения выдаёт первая вышестоящая позиция по цепочке DEL → GND → TWR → APP → UZTR_CTR → RU-CEN_FSS. RU-CEN_FSS обслуживает аэродром сверху, когда нижестоящих диспетчеров нет.</p>
+<h2 id="loc_ru-3">3. Работа DEL</h2>
+<ol>
+<li>Пилот выходит на связь с Ташкент-Деливери не ранее чем за 15 минут до запуска, сообщает стоянку и букву ATIS.</li>
+<li>DEL проверяет план полёта (Учебные материалы, раздел 7) и выбирает SID: по рабочей ВПП и первой точке маршрута. Серии схем приведены в таблице ниже.</li>
+<li>DEL назначает код ответчика из диапазона <strong>2040–2077</strong>, по порядку и без повторений с другими бортами. В кодах нет цифр 8 и 9, поэтому после 2047 следует 2050, после 2057 — 2060, после 2067 — 2070; всего в диапазоне 32 кода.</li>
+<li>DEL выдаёт разрешение: пункт назначения, SID, ВПП, начальный набор, код. Начальный набор задаёт схема SID: 8000 футов, для TISIB 2E и TISIB 2F — FL150. Иной набор назначает диспетчер.</li>
+<li>После верного повторения DEL ставит отметку о разрешении в метке и передаёт борт на Ташкент-Руление 121,7.</li>
+</ol>
+<p><strong>Схемы вылета (SID).</strong> RNAV-схемы требуют допуска RNAV 1 (буква R в поле 10 плана полёта). Если допуска нет или отказал GNSS, назначается схема серии 2H по DVOR/DME.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Серия</th>
+<th>ВПП</th>
+<th>Навигация</th>
+<th>Точки выхода</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2A</td>
+<td>08L/08R</td>
+<td>RNAV (GNSS)</td>
+<td>BAMGU, BAMUT, DIBAD, DILRO, KUFIM, MIKNO, ODORI</td>
+</tr>
+<tr>
+<td>2C</td>
+<td>26L/26R</td>
+<td>RNAV (GNSS)</td>
+<td>BAMGU, BAMUT, DIBAD, DILRO, ELMAL, KUFIM, MIKNO, ODORI, TISIB</td>
+</tr>
+<tr>
+<td>2E, 2F</td>
+<td>08L/08R</td>
+<td>RNAV (GNSS)</td>
+<td>TISIB (начальный набор FL150)</td>
+</tr>
+<tr>
+<td>2H</td>
+<td>все ВПП</td>
+<td>DVOR/DME</td>
+<td>BAMGU, BAMUT, DIBAD, DILRO, DOSOR, ELMAL, KUFIM, LEPVO, MIKNO, NIMAG, ODORI, OGRIP, TISIB</td>
+</tr>
+</tbody>
+</table></div>
+<p>Название схемы: точка выхода, номер версии и буква серии, например BAMUT 2C. Источник — карты Jeppesen 10-3A…10-3L.</p>
+<p><strong>Ограничение скорости</strong> на схемах вылета: не более 250 узлов ниже 10 000 футов (MSL), если диспетчер не указал иное.</p>
+<p><strong>Отклонения от стандарта</strong> (маршрут без SID, другой начальный набор, вылет по ПВП) DEL согласует с подходом или районом до выдачи разрешения.</p>
+<h2 id="loc_ru-4">4. Работа GND</h2>
+<p><strong>Стоянки.</strong> Группы стоянок по картам 10-9A и 10-9B: A1–A1A, B1–B20, C15–C41, E1–E84, F85–F97, H43–H57, перрон ТО (стоянки G); у ВПП 08R/26L — перрон Ташкент-3, стоянки D1–D25. Стоянки B1, B2, B5 и B6 оборудованы системой визуальной установки (AGNIS). Распределения стоянок по типам ВС на картах нет: стоянку назначает GND с учётом ограничений ниже.</p>
+<p><strong>Буксировка и запуск.</strong> GND разрешает буксировку и запуск, указывая, куда развернут хвост. Направление буксировки определяет диспетчер.</p>
+<p><strong>Руление.</strong> Стандартные маршруты руления (Jeppesen 10-1P2 и 10-1P3) заданы для ВПП 08L/26R. Маршруты прилёта начинаются с РД 4 или 5. Маршруты вылета EAST ведут к ВПП 26R (РД 5 или 4), WEST — к ВПП 08L (РД 1 или 2). Номер точки запуска — место запуска двигателей на карте 10-9A.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Прилёт</th>
+<th>Стоянки</th>
+<th>Маршрут</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A01</td>
+<td>B1, B3–B5</td>
+<td>РД 4, главная, H, B</td>
+</tr>
+<tr>
+<td>A02</td>
+<td>B1, B3–B5</td>
+<td>РД 5, 6, главная, H, B</td>
+</tr>
+<tr>
+<td>A03</td>
+<td>B8–B17, B19</td>
+<td>РД 4, главная</td>
+</tr>
+<tr>
+<td>A04</td>
+<td>C15–C41, H48–H52, B6</td>
+<td>РД 5, 6, главная, H</td>
+</tr>
+<tr>
+<td>A05</td>
+<td>C15–C41, H48–H52, B6</td>
+<td>РД 4, главная, H</td>
+</tr>
+<tr>
+<td>A06</td>
+<td>B8–B17, B19</td>
+<td>РД 5, 6, главная</td>
+</tr>
+<tr>
+<td>A07</td>
+<td>H43–H47</td>
+<td>РД 4, главная, H, H1</td>
+</tr>
+<tr>
+<td>A08</td>
+<td>H43–H47</td>
+<td>РД 5, 6, главная, H, H1</td>
+</tr>
+</tbody>
+</table></div>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Вылет</th>
+<th>Стоянки</th>
+<th>Точка запуска</th>
+<th>Маршрут</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EAST 01</td>
+<td>C15–C41, B6, H43–H52</td>
+<td>11</td>
+<td>H, главная, РД 6, 5</td>
+</tr>
+<tr>
+<td>EAST 02</td>
+<td>B1, B3–B5, B8–B17</td>
+<td>2, 3</td>
+<td>B, H, главная, РД 6, 5</td>
+</tr>
+<tr>
+<td>EAST 03</td>
+<td>C15–C41, B6, H43–H52</td>
+<td>11</td>
+<td>H, главная, РД 4</td>
+</tr>
+<tr>
+<td>EAST 04</td>
+<td>B18–B20</td>
+<td>4, 5</td>
+<td>главная, РД 6, 5</td>
+</tr>
+<tr>
+<td>EAST 05</td>
+<td>B1, B3–B5, B8–B17</td>
+<td>2, 3</td>
+<td>B, H, главная, РД 4</td>
+</tr>
+<tr>
+<td>WEST 01</td>
+<td>C15–C41, B6, H43–H52</td>
+<td>11</td>
+<td>H, B, РД 1</td>
+</tr>
+<tr>
+<td>WEST 02</td>
+<td>C15–C41, B6, H43–H52</td>
+<td>11</td>
+<td>H, главная, РД 2</td>
+</tr>
+<tr>
+<td>WEST 03</td>
+<td>C15–C41, B6, H43–H52</td>
+<td>11</td>
+<td>H, B, РД 2</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Рулёжные дорожки</strong> (карта 10-9): главная РД, B, H, H1; выходы на ВПП 08L/26R — 1, 2, 2A, 3, 4, 5, 6; между ВПП — 11, 12, 13, 14, 15; к перрону Ташкент-3 — 7, 8, 9, 9A.</p>
+<p><strong>Ограничения:</strong></p>
+<ul>
+<li>воздушные суда с размахом крыла более 48,06 м не рулят по РД B между B11 и B17, по главной РД за B11 и B12 и по РД H между B17 и H43;</li>
+<li>четырёхдвигательные ВС рулят только по РД 13 на внутренних двигателях;</li>
+<li>на стоянку B11A заруливают с РД 2 по главной РД строго по пунктирной линии: размах крыла не более 60,3 м, длина не более 63,6 м;</li>
+<li>при выруливании со стоянки двигатели на малом газе.</li>
+</ul>
+<p><strong>Горячие точки HS1–HS3</strong> (западный край перрона, РД 1, 2, 2A и главная РД): ВС, рулящие к ВПП по РД 1, 2 и главной РД, не пересекают линию ожидания без разрешения диспетчера. Особое внимание — при рулении по маршрутам WEST.</p>
+<p><strong>Передача на вышку.</strong> На подходе к месту ожидания GND передаёт борт на Ташкент-Тауэр 120,4. Пересечение ВПП — только по согласованию с вышкой или с передачей борта на вышку.</p>
+<h2 id="loc_ru-5">Источники</h2>
+<ul>
+<li><a href="https://vatrus.info/airport/UZTT" target="_blank" rel="noopener">Аэродром UZTT, VATRUS</a></li>
+<li><a href="https://old.vatrus.info/userupload/files/vatsim862634/uttt%201-02-2020.pdf" target="_blank" rel="noopener">Местные процедуры UTTT, VATRUS, 2020</a></li>
+<li><a href="https://uzaeronavigation.com/ais/" target="_blank" rel="noopener">AIP Узбекистана</a></li>
+<li><a href="https://ops.group/blog/uzbekistan-new-icao-codes-new-transition-levels/" target="_blank" rel="noopener">Новые коды ИКАО и высота перехода, OPSGROUP</a></li>
+<li>Карты Jeppesen UZTT, цикл 23-2026: 10-1P, 10-3A…10-3L, 10-9, 10-9A, 10-9B</li>
+</ul></article></section>
+<section class="pane" data-doc="loc" data-lang="uz" hidden>
+<nav class="toc" aria-label="contents"><p class="toc-h">Mundarija</p><ol><li><a href="#loc_uz-1">1. UZTT aerodromi</a></li><li><a href="#loc_uz-2">2. Pozitsiyalar va chastotalar</a></li><li><a href="#loc_uz-3">3. DEL ishi</a></li><li><a href="#loc_uz-4">4. GND ishi</a></li><li><a href="#loc_uz-5">Manbalar</a></li></ol></nav>
+<article class="prose"><p>Hujjat o‘qitish aerodromida DEL va GND ishini tavsiflaydi. Ma’lumotlar VATRUS saytidagi aerodrom sahifasidan, 2020 yilgi mahalliy tartiblar to‘plamidan va amaldagi AIP dan (AD 2.18–2.22), shuningdek Jeppesen xaritalaridan (23-2026 sikli) olingan.</p>
+<h2 id="loc_uz-1">1. UZTT aerodromi</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Parametr</th>
+<th>Qiymat</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nomi</td>
+<td>Islom Karimov nomidagi Toshkent xalqaro aeroporti</td>
+</tr>
+<tr>
+<td>ICAO kodi</td>
+<td>UZTT (02.10.2025 gacha — UTTT), RPI UZTR</td>
+</tr>
+<tr>
+<td>Nazorat nuqtasi</td>
+<td>N041° 15.4′ E069° 16.9′</td>
+</tr>
+<tr>
+<td>Balandligi</td>
+<td>1417 fut (432 m)</td>
+</tr>
+<tr>
+<td>O‘tish balandligi</td>
+<td>13 000 fut</td>
+</tr>
+<tr>
+<td>O‘tish esheloni</td>
+<td>FL150</td>
+</tr>
+</tbody>
+</table></div>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>UQY</th>
+<th>Magnit kursi</th>
+<th>O‘lchamlari, m</th>
+<th>Qo‘nish tizimi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>08L</td>
+<td>076°</td>
+<td>4000 × 60</td>
+<td>ILS CAT II, 110,500</td>
+</tr>
+<tr>
+<td>26R</td>
+<td>256°</td>
+<td>4000 × 60</td>
+<td>ILS CAT I, 108,500</td>
+</tr>
+<tr>
+<td>08R</td>
+<td>076°</td>
+<td>3905 × 45</td>
+<td>ILS CAT I, 111,700</td>
+</tr>
+<tr>
+<td>26L</td>
+<td>256°</td>
+<td>3905 × 45</td>
+<td>ILS yo‘q</td>
+</tr>
+</tbody>
+</table></div>
+<p>08L/26R UQY — asosiy, o‘q chiroqlari bilan. 2020 yilgi to‘plamga ko‘ra barcha uchlarida siljitilgan bo‘sag‘alar bor (200 dan 250 m gacha).</p>
+<p><strong>Ishchi UQYni tanlash.</strong> Shamol bo‘yicha: g‘arbdan shamol — 26 UQY, sharqdan — 08 UQY. Kuchsiz shamolda 08L yoki 08R UQY afzal.</p>
+<h2 id="loc_uz-2">2. Pozitsiyalar va chastotalar</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Tarmoqdagi chaqiruv belgisi</th>
+<th>Efirdagi chaqiruv belgisi</th>
+<th>Chastota, MGs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>UZTT_DEL</td>
+<td>Toshkent-Delivery / Tashkent Delivery</td>
+<td>129,400</td>
+</tr>
+<tr>
+<td>UZTT_GND</td>
+<td>Toshkent-Ruleniye / Tashkent Ground</td>
+<td>121,700</td>
+</tr>
+<tr>
+<td>UZTT_TWR</td>
+<td>Toshkent-Tauer / Tashkent Tower</td>
+<td>120,400</td>
+</tr>
+<tr>
+<td>UZTT_APP</td>
+<td>Toshkent-Podxod / Tashkent Approach</td>
+<td>119,400 (zaxira 122,900)</td>
+</tr>
+<tr>
+<td>UZTR_CTR</td>
+<td>Toshkent-Kontrol / Tashkent Control</td>
+<td>134,600</td>
+</tr>
+<tr>
+<td>RU-CEN_FSS</td>
+<td>Aziya-Markaz / Asia Center</td>
+<td>132,850</td>
+</tr>
+<tr>
+<td>ATIS</td>
+<td>Tashkent Information</td>
+<td>126,800 (faqat ingliz tilida)</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>Efirda minora «Вышка» emas, «Тауэр» deb ataladi.</li>
+<li>DEL va GND ko‘rinish radiusi — 20 dengiz milidan oshmaydi.</li>
+</ul>
+<p><strong>Toshkentda Top-down.</strong> DEL tarmoqda bo‘lmasa, ruxsatlarni DEL → GND → TWR → APP → UZTR_CTR → RU-CEN_FSS zanjiri bo‘yicha birinchi yuqori pozitsiya beradi. Quyi dispetcherlar bo‘lmaganda RU-CEN_FSS aerodromga yuqoridan xizmat ko‘rsatadi.</p>
+<h2 id="loc_uz-3">3. DEL ishi</h2>
+<ol>
+<li>Uchuvchi Toshkent-Delivery bilan ishga tushirishdan 15 daqiqadan oldin bo‘lmagan vaqtda bog‘lanadi, turar joyini va ATIS harfini aytadi.</li>
+<li>DEL parvoz rejasini tekshiradi (O‘quv materiallari, 7-bo‘lim) va SID ni tanlaydi: ishchi UQY va marshrutning birinchi nuqtasi bo‘yicha. Sxemalar seriyalari quyidagi jadvalda berilgan.</li>
+<li>DEL javob qaytargich kodini <strong>2040–2077</strong> oralig‘idan, tartib bilan va boshqa bortlar bilan takrorlanmagan holda tayinlaydi. Kodlarda 8 va 9 raqamlari yo‘q, shuning uchun 2047 dan keyin 2050, 2057 dan keyin 2060, 2067 dan keyin 2070 keladi; oraliqda jami 32 ta kod.</li>
+<li>DEL ruxsat beradi: manzil punkti, SID, UQY, dastlabki balandlik olish, kod. Dastlabki balandlik olishni SID sxemasi belgilaydi: 8000 fut, TISIB 2E va TISIB 2F uchun — FL150. Boshqa balandlikni dispetcher tayinlaydi.</li>
+<li>To‘g‘ri takrorlangandan keyin DEL metkada ruxsat belgisini qo‘yadi va bortni Toshkent-Ruleniye 121,7 ga topshiradi.</li>
+</ol>
+<p><strong>Uchib ketish sxemalari (SID).</strong> RNAV sxemalari RNAV 1 ruxsatini talab qiladi (parvoz rejasining 10-maydonida R harfi). Ruxsat bo‘lmasa yoki GNSS ishdan chiqsa, DVOR/DME bo‘yicha 2H seriyali sxema tayinlanadi.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Seriya</th>
+<th>UQY</th>
+<th>Navigatsiya</th>
+<th>Chiqish nuqtalari</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2A</td>
+<td>08L/08R</td>
+<td>RNAV (GNSS)</td>
+<td>BAMGU, BAMUT, DIBAD, DILRO, KUFIM, MIKNO, ODORI</td>
+</tr>
+<tr>
+<td>2C</td>
+<td>26L/26R</td>
+<td>RNAV (GNSS)</td>
+<td>BAMGU, BAMUT, DIBAD, DILRO, ELMAL, KUFIM, MIKNO, ODORI, TISIB</td>
+</tr>
+<tr>
+<td>2E, 2F</td>
+<td>08L/08R</td>
+<td>RNAV (GNSS)</td>
+<td>TISIB (dastlabki balandlik olish FL150)</td>
+</tr>
+<tr>
+<td>2H</td>
+<td>barcha UQY</td>
+<td>DVOR/DME</td>
+<td>BAMGU, BAMUT, DIBAD, DILRO, DOSOR, ELMAL, KUFIM, LEPVO, MIKNO, NIMAG, ODORI, OGRIP, TISIB</td>
+</tr>
+</tbody>
+</table></div>
+<p>Sxema nomi: chiqish nuqtasi, versiya raqami va seriya harfi, masalan BAMUT 2C. Manba — Jeppesen 10-3A…10-3L xaritalari.</p>
+<p><strong>Tezlik cheklovi</strong> uchib ketish sxemalarida: dispetcher boshqacha ko‘rsatmagan bo‘lsa, 10 000 fut (MSL) dan pastda 250 uzeldan oshmaydi.</p>
+<p><strong>Standartdan chetga chiqishlarni</strong> (SID siz marshrut, boshqa dastlabki balandlik, VFR bo‘yicha uchib ketish) DEL ruxsat berishdan oldin yaqinlashish yoki hudud dispetcheri bilan kelishadi.</p>
+<h2 id="loc_uz-4">4. GND ishi</h2>
+<p><strong>Turar joylar.</strong> 10-9A va 10-9B xaritalari bo‘yicha turar joylar guruhlari: A1–A1A, B1–B20, C15–C41, E1–E84, F85–F97, H43–H57, texnik xizmat perroni (G turar joylari); 08R/26L UQY yonida — Toshkent-3 perroni, D1–D25 turar joylari. B1, B2, B5 va B6 turar joylari vizual o‘rnatish tizimi (AGNIS) bilan jihozlangan. Xaritalarda turar joylarning HK turlari bo‘yicha taqsimoti yo‘q: turar joyni quyidagi cheklovlarni hisobga olib GND tayinlaydi.</p>
+<p><strong>Shatakka olish va ishga tushirish.</strong> GND dum qaysi tomonga burilishini ko‘rsatib, shatakka olish va ishga tushirishga ruxsat beradi. Shatakka olish yo‘nalishini dispetcher belgilaydi.</p>
+<p><strong>Rulejka.</strong> Standart rulejka marshrutlari (Jeppesen 10-1P2 va 10-1P3) 08L/26R UQY uchun belgilangan. Kelish marshrutlari 4 yoki 5 RY dan boshlanadi. EAST uchib ketish marshrutlari 26R UQY ga (5 yoki 4 RY), WEST — 08L UQY ga (1 yoki 2 RY) olib boradi. Ishga tushirish nuqtasi raqami — 10-9A xaritasidagi dvigatellarni ishga tushirish joyi.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Kelish</th>
+<th>Turar joylar</th>
+<th>Marshrut</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A01</td>
+<td>B1, B3–B5</td>
+<td>4 RY, asosiy, H, B</td>
+</tr>
+<tr>
+<td>A02</td>
+<td>B1, B3–B5</td>
+<td>5, 6 RY, asosiy, H, B</td>
+</tr>
+<tr>
+<td>A03</td>
+<td>B8–B17, B19</td>
+<td>4 RY, asosiy</td>
+</tr>
+<tr>
+<td>A04</td>
+<td>C15–C41, H48–H52, B6</td>
+<td>5, 6 RY, asosiy, H</td>
+</tr>
+<tr>
+<td>A05</td>
+<td>C15–C41, H48–H52, B6</td>
+<td>4 RY, asosiy, H</td>
+</tr>
+<tr>
+<td>A06</td>
+<td>B8–B17, B19</td>
+<td>5, 6 RY, asosiy</td>
+</tr>
+<tr>
+<td>A07</td>
+<td>H43–H47</td>
+<td>4 RY, asosiy, H, H1</td>
+</tr>
+<tr>
+<td>A08</td>
+<td>H43–H47</td>
+<td>5, 6 RY, asosiy, H, H1</td>
+</tr>
+</tbody>
+</table></div>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Uchib ketish</th>
+<th>Turar joylar</th>
+<th>Ishga tushirish nuqtasi</th>
+<th>Marshrut</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EAST 01</td>
+<td>C15–C41, B6, H43–H52</td>
+<td>11</td>
+<td>H, asosiy, 6, 5 RY</td>
+</tr>
+<tr>
+<td>EAST 02</td>
+<td>B1, B3–B5, B8–B17</td>
+<td>2, 3</td>
+<td>B, H, asosiy, 6, 5 RY</td>
+</tr>
+<tr>
+<td>EAST 03</td>
+<td>C15–C41, B6, H43–H52</td>
+<td>11</td>
+<td>H, asosiy, 4 RY</td>
+</tr>
+<tr>
+<td>EAST 04</td>
+<td>B18–B20</td>
+<td>4, 5</td>
+<td>asosiy, 6, 5 RY</td>
+</tr>
+<tr>
+<td>EAST 05</td>
+<td>B1, B3–B5, B8–B17</td>
+<td>2, 3</td>
+<td>B, H, asosiy, 4 RY</td>
+</tr>
+<tr>
+<td>WEST 01</td>
+<td>C15–C41, B6, H43–H52</td>
+<td>11</td>
+<td>H, B, 1 RY</td>
+</tr>
+<tr>
+<td>WEST 02</td>
+<td>C15–C41, B6, H43–H52</td>
+<td>11</td>
+<td>H, asosiy, 2 RY</td>
+</tr>
+<tr>
+<td>WEST 03</td>
+<td>C15–C41, B6, H43–H52</td>
+<td>11</td>
+<td>H, B, 2 RY</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Rulejka yo‘laklari</strong> (10-9 xaritasi): asosiy RY, B, H, H1; 08L/26R UQY ga chiqishlar — 1, 2, 2A, 3, 4, 5, 6; UQYlar orasida — 11, 12, 13, 14, 15; Toshkent-3 perroniga — 7, 8, 9, 9A.</p>
+<p><strong>Cheklovlar:</strong></p>
+<ul>
+<li>qanotlari oralig‘i 48,06 m dan ortiq havo kemalari B RY da B11 va B17 orasida, asosiy RY da B11 va B12 orqasida va H RY da B17 va H43 orasida rulejka qilmaydi;</li>
+<li>to‘rt dvigatelli HK faqat 13 RY bo‘yicha ichki dvigatellarda rulejka qiladi;</li>
+<li>B11A turar joyiga 2 RY dan asosiy RY bo‘ylab qat’iy punktir chiziq bo‘yicha kiriladi: qanotlari oralig‘i 60,3 m dan, uzunligi 63,6 m dan oshmasligi kerak;</li>
+<li>turar joydan chiqishda dvigatellar kichik gazda.</li>
+</ul>
+<p><strong>HS1–HS3 xavfli joylari</strong> (perronning g‘arbiy cheti, 1, 2, 2A RY va asosiy RY): 1, 2 RY va asosiy RY bo‘ylab UQY ga rulejka qilayotgan HK dispetcher ruxsatisiz kutish chizig‘ini kesib o‘tmaydi. WEST marshrutlari bo‘yicha rulejkada alohida e’tibor bering.</p>
+<p><strong>Minoraga topshirish.</strong> Kutish joyiga yaqinlashganda GND bortni Toshkent-Tauer 120,4 ga topshiradi. UQYni kesib o‘tish — faqat minora bilan kelishilgan holda yoki bortni minoraga topshirib.</p>
+<h2 id="loc_uz-5">Manbalar</h2>
+<ul>
+<li><a href="https://vatrus.info/airport/UZTT" target="_blank" rel="noopener">UZTT aerodromi, VATRUS</a></li>
+<li><a href="https://old.vatrus.info/userupload/files/vatsim862634/uttt%201-02-2020.pdf" target="_blank" rel="noopener">UTTT mahalliy tartiblari, VATRUS, 2020</a></li>
+<li><a href="https://uzaeronavigation.com/ais/" target="_blank" rel="noopener">O‘zbekiston AIP</a></li>
+<li><a href="https://ops.group/blog/uzbekistan-new-icao-codes-new-transition-levels/" target="_blank" rel="noopener">Yangi ICAO kodlari va o‘tish balandligi, OPSGROUP</a></li>
+<li>Jeppesen UZTT xaritalari, 23-2026 sikli: 10-1P, 10-3A…10-3L, 10-9, 10-9A, 10-9B</li>
+</ul>
+<p>Tarjima ruscha matn asosida tayyorlangan. Ziddiyat bo‘lsa, ruscha matn ustun turadi.</p></article></section>
+
+  <footer data-ru="Только для виртуальной сети VATSIM. Не использовать в реальной авиации. Вопросы по материалам задавайте ментору или инструктору Субдивизиона." data-uz="Faqat VATSIM virtual tarmog‘i uchun. Real aviatsiyada foydalanilmasin. Materiallar bo‘yicha savollarni Subdivizion mentori yoki instruktoriga bering.">Только для виртуальной сети VATSIM. Не использовать в реальной авиации. Вопросы по материалам задавайте ментору или инструктору Субдивизиона.</footer>
+</div>
+<script>
+(function(){
+  var lang='ru', doc='mat';
+  try{ var s=localStorage.getItem('s1-lang'); if(s==='ru'||s==='uz') lang=s; }catch(e){}
+  if(location.hash==='#local') doc='loc';
+  function render(){
+    document.documentElement.lang = lang==='uz' ? 'uz' : 'ru';
+    document.querySelectorAll('[data-ru]').forEach(function(el){ el.textContent = el.getAttribute('data-'+lang); });
+    document.querySelectorAll('.lang button').forEach(function(b){ b.setAttribute('aria-pressed', String(b.dataset.set===lang)); });
+    document.querySelectorAll('.tabs button').forEach(function(b){ b.setAttribute('aria-selected', String(b.dataset.doc===doc)); });
+    document.querySelectorAll('.pane').forEach(function(p){ p.hidden = !(p.dataset.doc===doc && p.dataset.lang===lang); });
+  }
+  document.querySelectorAll('.lang button').forEach(function(b){ b.addEventListener('click', function(){
+    lang=b.dataset.set; try{ localStorage.setItem('s1-lang', lang); }catch(e){} render(); }); });
+  document.querySelectorAll('.tabs button').forEach(function(b){ b.addEventListener('click', function(){
+    doc=b.dataset.doc; try{ history.replaceState(null,'', doc==='loc' ? '#local' : '#materials'); }catch(e){} render(); window.scrollTo(0,0); }); });
+  window.addEventListener('hashchange', function(){ if(location.hash==='#local'){doc='loc';render();} else if(location.hash==='#materials'){doc='mat';render();} });
+  render();
+})();
+</script>
+
+</body>
+</html>
