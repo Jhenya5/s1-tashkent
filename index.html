@@ -92,6 +92,8 @@ footer{margin-top:48px;color:var(--muted);font-size:13px;max-width:72ch}
 .theme .i-sun{display:none}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .theme .i-sun{display:block}:root:not([data-theme="light"]) .theme .i-moon{display:none}}
 :root[data-theme="dark"] .theme .i-sun{display:block}:root[data-theme="dark"] .theme .i-moon{display:none}
+.shot{margin:16px 0}
+.shot img{display:block;max-width:100%;height:auto;border:1px solid var(--rule);border-radius:6px}
 </style>
 </head>
 <body>
@@ -2235,6 +2237,20 @@ footer{margin-top:48px;color:var(--muted);font-size:13px;max-width:72ch}
 <p>Нажмите Connect. В строке сообщений внизу появится подтверждение подключения, а на карте — самолёты сети или тренажёра.</p>
 <p>Наблюдатель не выходит в эфир и не обслуживает движение. До S1 так можно слушать работу диспетчеров Ташкента и смотреть, как они ведут метки и списки.</p>
 <h2 id="set_ru-4">4. Настройка позиции в EuroScope</h2>
+<p>Так выглядит EuroScope после загрузки профиля Uzbekistan.prf и экрана Tashkent_GMC, до подключения к сети. Нажмите на картинку, чтобы открыть её в полном размере.</p>
+<p class="shot"><a href="https://jhenya5.github.io/s1-tashkent/docs/img/euroscope-uztt.jpg" target="_blank" rel="noopener" target="_blank" rel="noopener"><img src="docs/img/euroscope-uztt.jpg" alt="Экран EuroScope с картой аэродрома Ташкент" width="1920" height="1032"></a></p>
+
+<ol>
+<li><strong>CONNECT</strong> — подключение к сети (раздел 3).</li>
+<li><strong>Основная частота.</strong> Пока она не выбрана, показано 199.998. После отметки Prim здесь будет 129.400 или 121.700.</li>
+<li><strong>OTHER SET</strong> — меню настроек: активная ВПП и Voice Communication Setup.</li>
+<li><strong>Departure List</strong> — список вылета, основной рабочий список DEL.</li>
+<li><strong>Sector Inbound List и Sector Exit List</strong> — борта, которые входят в ваш сектор и выходят из него.</li>
+<li><strong>Metars</strong> — окно с погодой METAR.</li>
+<li><strong>Карта аэродрома</strong> (экран Tashkent_GMC): ВПП, РД, стоянки и точки запуска.</li>
+<li><strong>Окно APP</strong> — линия захода на посадку с точками.</li>
+<li><strong>Сообщения</strong> — журнал сообщений и строка ввода команд (например, .wallop) и текста пилотам.</li>
+</ol>
 <p>Профиль пакета уже содержит карту, списки и метки. Перед работой на позиции проверьте четыре настройки.</p>
 <ol>
 <li><strong>Активная ВПП.</strong> Меню OTHER SET → Active airport/runway. Отметьте UZTT и рабочие ВПП для вылета и посадки по ATIS или по указанию инструктора. От этого зависит, какие SID EuroScope предложит в списке вылета.</li>
@@ -2419,6 +2435,20 @@ footer{margin-top:48px;color:var(--muted);font-size:13px;max-width:72ch}
 <p>Connect ni bosing. Pastdagi xabarlar qatorida ulanish tasdig‘i, xaritada esa tarmoq yoki trenajyor samolyotlari paydo bo‘ladi.</p>
 <p>Kuzatuvchi efirga chiqmaydi va harakatga xizmat ko‘rsatmaydi. S1 gacha shu tarzda Toshkent dispetcherlari ishini tinglash va ular metka hamda varaqlarni qanday yuritishini kuzatish mumkin.</p>
 <h2 id="set_uz-4">4. EuroScope da pozitsiyani sozlash</h2>
+<p>Uzbekistan.prf profili va Tashkent_GMC ekrani yuklangandan keyin, tarmoqqa ulanishdan oldin EuroScope shunday ko‘rinadi. Rasmni to‘liq o‘lchamda ochish uchun ustiga bosing.</p>
+<p class="shot"><a href="https://jhenya5.github.io/s1-tashkent/docs/img/euroscope-uztt.jpg" target="_blank" rel="noopener" target="_blank" rel="noopener"><img src="docs/img/euroscope-uztt.jpg" alt="Toshkent aerodromi xaritasi bilan EuroScope ekrani" width="1920" height="1032"></a></p>
+
+<ol>
+<li><strong>CONNECT</strong> — tarmoqqa ulanish (3-bo‘lim).</li>
+<li><strong>Asosiy chastota.</strong> U tanlanmaguncha 199.998 ko‘rsatiladi. Prim belgisidan keyin bu yerda 129.400 yoki 121.700 bo‘ladi.</li>
+<li><strong>OTHER SET</strong> — sozlamalar menyusi: faol UQY va Voice Communication Setup.</li>
+<li><strong>Departure List</strong> — uchib ketish varag‘i, DEL ning asosiy ish varag‘i.</li>
+<li><strong>Sector Inbound List va Sector Exit List</strong> — sektoringizga kirayotgan va undan chiqayotgan bortlar.</li>
+<li><strong>Metars</strong> — METAR ob-havo oynasi.</li>
+<li><strong>Aerodrom xaritasi</strong> (Tashkent_GMC ekrani): UQY, RY, turar joylar va ishga tushirish nuqtalari.</li>
+<li><strong>APP oynasi</strong> — nuqtalari bilan qo‘nishga yaqinlashish chizig‘i.</li>
+<li><strong>Xabarlar</strong> — xabarlar jurnali va buyruqlar (masalan, .wallop) hamda uchuvchilarga matn kiritish qatori.</li>
+</ol>
 <p>Paket profilida xarita, varaqlar va metkalar allaqachon bor. Pozitsiyada ishlashdan oldin to‘rtta sozlamani tekshiring.</p>
 <ol>
 <li><strong>Faol UQY.</strong> OTHER SET → Active airport/runway menyusi. UZTT ni va ATIS yoki instruktor ko‘rsatmasi bo‘yicha uchish va qo‘nish uchun ishchi UQYlarni belgilang. EuroScope uchib ketish varag‘ida qaysi SID larni taklif qilishi shunga bog‘liq.</li>
