@@ -2152,8 +2152,8 @@ footer{margin-top:48px;color:var(--muted);font-size:13px;max-width:72ch}
 </ul>
 <p>Tarjima ruscha matn asosida tayyorlangan. Ziddiyat bo‘lsa, ruscha matn ustun turadi.</p></article></section>
 <section class="pane" data-doc="set" data-lang="ru" hidden>
-<nav class="toc" aria-label="contents"><p class="toc-h">Содержание</p><ol><li><a href="#set_ru-1">1. Установка EuroScope</a></li><li><a href="#set_ru-2">2. Пакет секторов UZB</a></li><li><a href="#set_ru-3">3. Подключение к сети</a></li><li><a href="#set_ru-4">4. Настройка позиции в EuroScope</a></li><li><a href="#set_ru-5">5. Голосовой клиент TrackAudio</a></li><li><a href="#set_ru-6">6. Голосовой клиент Audio for VATSIM</a></li><li><a href="#set_ru-7">7. Проверка перед тренажёром</a></li><li><a href="#set_ru-8">8. Частые проблемы</a></li><li><a href="#set_ru-9">Источники</a></li></ol></nav>
-<article class="prose"><p>Инструкция для кандидата перед вводным тренажёром. В ходе тренажёра кандидат должен сам настроить диспетчерский и голосовой клиенты (Типовая программа, п. 2.6(i)). После всех шагов у вас будут работать EuroScope с картой Ташкента и TrackAudio, и вы сможете подключиться к сети наблюдателем или к тренажёрному серверу Sweatbox.</p>
+<nav class="toc" aria-label="contents"><p class="toc-h">Содержание</p><ol><li><a href="#set_ru-1">1. Установка EuroScope</a></li><li><a href="#set_ru-2">2. Пакет секторов UZB</a></li><li><a href="#set_ru-3">3. Подключение к сети</a></li><li><a href="#set_ru-4">4. Настройка позиции в EuroScope</a></li><li><a href="#set_ru-5">5. Голосовой клиент Audio for VATSIM</a></li><li><a href="#set_ru-6">6. Голосовой клиент TrackAudio</a></li><li><a href="#set_ru-7">7. Проверка перед тренажёром</a></li><li><a href="#set_ru-8">8. Частые проблемы</a></li><li><a href="#set_ru-9">Источники</a></li></ol></nav>
+<article class="prose"><p>Инструкция для кандидата перед вводным тренажёром. В ходе тренажёра кандидат должен сам настроить диспетчерский и голосовой клиенты (Типовая программа, п. 2.6(i)). После всех шагов у вас будут работать EuroScope с картой Ташкента и голосовой клиент, и вы сможете подключиться к сети наблюдателем или к тренажёрному серверу Sweatbox.</p>
 <p><strong>Что понадобится:</strong></p>
 <ul>
 <li>компьютер с Windows 10 или 11 (EuroScope работает только под Windows) и экран не меньше 1920 × 1080;</li>
@@ -2238,24 +2238,14 @@ footer{margin-top:48px;color:var(--muted);font-size:13px;max-width:72ch}
 <p>Профиль пакета уже содержит карту, списки и метки. Перед работой на позиции проверьте четыре настройки.</p>
 <ol>
 <li><strong>Активная ВПП.</strong> Меню OTHER SET → Active airport/runway. Отметьте UZTT и рабочие ВПП для вылета и посадки по ATIS или по указанию инструктора. От этого зависит, какие SID EuroScope предложит в списке вылета.</li>
-<li><strong>Основная частота.</strong> Меню OTHER SET → Voice Communication Setup. Каналы позиций Ташкента в пакете уже заведены. Поставьте отметку Prim у своего: UZTT_DEL (129.400) или UZTT_GND (121.700). TrackAudio заберёт её автоматически.</li>
+<li><strong>Основная частота.</strong> Меню OTHER SET → Voice Communication Setup. Каналы позиций Ташкента в пакете уже заведены. Поставьте отметку Prim у своего: UZTT_DEL (129.400) или UZTT_GND (121.700). Голосовой клиент заберёт её автоматически.</li>
 <li><strong>Списки.</strong> На экране должны быть список вылета (Departure list) и список прилёта (Arrival list). DEL работает в основном со списком вылета: из него открывается план полёта, в нём назначаются SID и код ответчика и ставится отметка о выданном разрешении.</li>
 <li><strong>Погода.</strong> Убедитесь, что в окне METAR показана погода UZTT. Если нет, добавьте станцию UZTT.</li>
 </ol>
 <p>Текстовые сообщения на свою частоту отправляйте клавишей PRIM FREQ — звёздочка <code>*</code> на цифровом блоке клавиатуры. Enter отправляет сообщение в текущее окно чата, и пилоты его не увидят.</p>
-<h2 id="set_ru-5">5. Голосовой клиент TrackAudio</h2>
-<p>EuroScope не передаёт голос: для радиообмена нужен отдельный клиент системы Audio for VATSIM. Подойдёт любой из двух клиентов: TrackAudio (этот раздел) или Audio for VATSIM (раздел 6). Выберите один и не запускайте их одновременно.</p>
-<ol>
-<li>Скачайте установщик для Windows со страницы <a href="https://github.com/pierr3/TrackAudio/releases" target="_blank" rel="noopener">выпусков TrackAudio</a>. Берите последнюю стабильную версию, не beta. Установите его: Visual C++ Redistributable у вас уже есть после шага 1.</li>
-<li>Запустите TrackAudio и откройте настройки (Settings). Введите CID и пароль VATSIM.</li>
-<li>Выберите микрофон (Input) и наушники (Output). Скажите что-нибудь: индикатор уровня должен держаться в зелёной зоне. Если нет, добавьте или убавьте усиление микрофона (Gain).</li>
-<li>Назначьте клавишу передачи (PTT): нажмите Set new PTT и затем нужную клавишу. Удобна правая Ctrl: она не мешает печатать в EuroScope. Если к компьютеру подключён джойстик, назначайте PTT правым щелчком по Set new PTT, чтобы он не перехватил кнопку сам.</li>
-<li>Сначала подключитесь в EuroScope (раздел 3), потом нажмите Connect в TrackAudio. Без подключённого EuroScope голосовой клиент не войдёт.</li>
-<li>Основная частота из EuroScope появится автоматически. Включите на ней RX (приём) и TX (передача). Другие частоты добавляйте по позывному позиции, например UZTT_TWR: так подключаются все её антенны.</li>
-</ol>
-<p>Наблюдатель только слушает: добавьте нужные частоты Ташкента и включите на них только RX. На тренажёре порядок голосовой связи заранее сообщит инструктор.</p>
-<h2 id="set_ru-6">6. Голосовой клиент Audio for VATSIM</h2>
-<p>Audio for VATSIM (AFV Standalone) — официальный голосовой клиент VATSIM. Он больше не обновляется, но работает. Выбирайте его, если TrackAudio не запускается на вашем компьютере или вы уже пользуетесь AFV.</p>
+<h2 id="set_ru-5">5. Голосовой клиент Audio for VATSIM</h2>
+<p>EuroScope не передаёт голос: для радиообмена нужен отдельный клиент системы Audio for VATSIM. Подойдёт любой из двух клиентов: Audio for VATSIM (этот раздел) или TrackAudio (раздел 6). Выберите один и не запускайте их одновременно.</p>
+<p>Audio for VATSIM (AFV Standalone) — официальный голосовой клиент VATSIM. Он больше не обновляется, но работает.</p>
 <ol>
 <li>Скачайте установщик со <a href="https://audio.vatsim.net/downloads/standalone" target="_blank" rel="noopener">страницы загрузки AFV</a> и установите его.</li>
 <li>Запустите клиент и нажмите кнопку настроек (Settings). Введите VATSIM CID и VATSIM Password.</li>
@@ -2267,6 +2257,17 @@ footer{margin-top:48px;color:var(--muted);font-size:13px;max-width:72ch}
 </ol>
 <p>Чужую частоту слушайте только с RX. Не включайте на ней TX и XC: при XC всё, что звучит на вашей частоте, ретранслируется на чужую.</p>
 <p>Если борта на земле слышно с треском или не слышно вовсе, центр видимости в EuroScope, скорее всего, не на аэродроме. Перенесите центр видимости на UZTT и переподключите AFV.</p>
+<h2 id="set_ru-6">6. Голосовой клиент TrackAudio</h2>
+<p>TrackAudio — голосовой клиент от разработчика из сообщества VATSIM, он работает с той же системой Audio for VATSIM. Выбирайте его, если AFV не запускается на вашем компьютере или вы уже пользуетесь TrackAudio.</p>
+<ol>
+<li>Скачайте установщик для Windows со страницы <a href="https://github.com/pierr3/TrackAudio/releases" target="_blank" rel="noopener">выпусков TrackAudio</a>. Берите последнюю стабильную версию, не beta. Установите его: Visual C++ Redistributable у вас уже есть после шага 1.</li>
+<li>Запустите TrackAudio и откройте настройки (Settings). Введите CID и пароль VATSIM.</li>
+<li>Выберите микрофон (Input) и наушники (Output). Скажите что-нибудь: индикатор уровня должен держаться в зелёной зоне. Если нет, добавьте или убавьте усиление микрофона (Gain).</li>
+<li>Назначьте клавишу передачи (PTT): нажмите Set new PTT и затем нужную клавишу. Удобна правая Ctrl: она не мешает печатать в EuroScope. Если к компьютеру подключён джойстик, назначайте PTT правым щелчком по Set new PTT, чтобы он не перехватил кнопку сам.</li>
+<li>Сначала подключитесь в EuroScope (раздел 3), потом нажмите Connect в TrackAudio. Без подключённого EuroScope голосовой клиент не войдёт.</li>
+<li>Основная частота из EuroScope появится автоматически. Включите на ней RX (приём) и TX (передача). Другие частоты добавляйте по позывному позиции, например UZTT_TWR: так подключаются все её антенны.</li>
+</ol>
+<p>Наблюдатель только слушает: добавьте нужные частоты Ташкента и включите на них только RX. На тренажёре порядок голосовой связи заранее сообщит инструктор.</p>
 <h2 id="set_ru-7">7. Проверка перед тренажёром</h2>
 <p>За день до тренажёра подключитесь наблюдателем и пройдите список:</p>
 <ul>
@@ -2335,8 +2336,8 @@ footer{margin-top:48px;color:var(--muted);font-size:13px;max-width:72ch}
 <li><a href="https://audio.vatsim.net/downloads/manual.pdf" target="_blank" rel="noopener">Руководство Audio for VATSIM, PDF</a>; Типовая программа обучения в УТЦ ПД, Приложение № 1, п. 2.6</li>
 </ul></article></section>
 <section class="pane" data-doc="set" data-lang="uz" hidden>
-<nav class="toc" aria-label="contents"><p class="toc-h">Mundarija</p><ol><li><a href="#set_uz-1">1. EuroScope ni o‘rnatish</a></li><li><a href="#set_uz-2">2. UZB sektorlar paketi</a></li><li><a href="#set_uz-3">3. Tarmoqqa ulanish</a></li><li><a href="#set_uz-4">4. EuroScope da pozitsiyani sozlash</a></li><li><a href="#set_uz-5">5. TrackAudio ovozli klienti</a></li><li><a href="#set_uz-6">6. Audio for VATSIM ovozli klienti</a></li><li><a href="#set_uz-7">7. Trenajyor oldidan tekshirish</a></li><li><a href="#set_uz-8">8. Ko‘p uchraydigan muammolar</a></li><li><a href="#set_uz-9">Manbalar</a></li></ol></nav>
-<article class="prose"><p>Kirish trenajyoridan oldin nomzod uchun yo‘riqnoma. Trenajyor davomida nomzod dispetcherlik va ovozli klientlarni o‘zi sozlay olishi kerak (Namunaviy dastur, 2.6(i)-band). Barcha qadamlardan keyin sizda Toshkent xaritasi bilan EuroScope va TrackAudio ishlaydi, tarmoqqa kuzatuvchi sifatida yoki Sweatbox trenajyor serveriga ulana olasiz.</p>
+<nav class="toc" aria-label="contents"><p class="toc-h">Mundarija</p><ol><li><a href="#set_uz-1">1. EuroScope ni o‘rnatish</a></li><li><a href="#set_uz-2">2. UZB sektorlar paketi</a></li><li><a href="#set_uz-3">3. Tarmoqqa ulanish</a></li><li><a href="#set_uz-4">4. EuroScope da pozitsiyani sozlash</a></li><li><a href="#set_uz-5">5. Audio for VATSIM ovozli klienti</a></li><li><a href="#set_uz-6">6. TrackAudio ovozli klienti</a></li><li><a href="#set_uz-7">7. Trenajyor oldidan tekshirish</a></li><li><a href="#set_uz-8">8. Ko‘p uchraydigan muammolar</a></li><li><a href="#set_uz-9">Manbalar</a></li></ol></nav>
+<article class="prose"><p>Kirish trenajyoridan oldin nomzod uchun yo‘riqnoma. Trenajyor davomida nomzod dispetcherlik va ovozli klientlarni o‘zi sozlay olishi kerak (Namunaviy dastur, 2.6(i)-band). Barcha qadamlardan keyin sizda Toshkent xaritasi bilan EuroScope va ovozli klient ishlaydi, tarmoqqa kuzatuvchi sifatida yoki Sweatbox trenajyor serveriga ulana olasiz.</p>
 <p><strong>Nima kerak bo‘ladi:</strong></p>
 <ul>
 <li>Windows 10 yoki 11 o‘rnatilgan kompyuter (EuroScope faqat Windows da ishlaydi) va kamida 1920 × 1080 ekran;</li>
@@ -2421,24 +2422,14 @@ footer{margin-top:48px;color:var(--muted);font-size:13px;max-width:72ch}
 <p>Paket profilida xarita, varaqlar va metkalar allaqachon bor. Pozitsiyada ishlashdan oldin to‘rtta sozlamani tekshiring.</p>
 <ol>
 <li><strong>Faol UQY.</strong> OTHER SET → Active airport/runway menyusi. UZTT ni va ATIS yoki instruktor ko‘rsatmasi bo‘yicha uchish va qo‘nish uchun ishchi UQYlarni belgilang. EuroScope uchib ketish varag‘ida qaysi SID larni taklif qilishi shunga bog‘liq.</li>
-<li><strong>Asosiy chastota.</strong> OTHER SET → Voice Communication Setup menyusi. Toshkent pozitsiyalari kanallari paketda allaqachon bor. O‘zingiznikiga Prim belgisini qo‘ying: UZTT_DEL (129.400) yoki UZTT_GND (121.700). TrackAudio uni avtomatik oladi.</li>
+<li><strong>Asosiy chastota.</strong> OTHER SET → Voice Communication Setup menyusi. Toshkent pozitsiyalari kanallari paketda allaqachon bor. O‘zingiznikiga Prim belgisini qo‘ying: UZTT_DEL (129.400) yoki UZTT_GND (121.700). Ovozli klient uni avtomatik oladi.</li>
 <li><strong>Varaqlar.</strong> Ekranda uchib ketish varag‘i (Departure list) va kelish varag‘i (Arrival list) bo‘lishi kerak. DEL asosan uchib ketish varag‘i bilan ishlaydi: undan parvoz rejasi ochiladi, unda SID va javob qaytargich kodi tayinlanadi hamda berilgan ruxsat belgisi qo‘yiladi.</li>
 <li><strong>Ob-havo.</strong> METAR oynasida UZTT ob-havosi ko‘rsatilganiga ishonch hosil qiling. Bo‘lmasa, UZTT stansiyasini qo‘shing.</li>
 </ol>
 <p>O‘z chastotangizga matnli xabarlarni PRIM FREQ tugmasi bilan yuboring — klaviaturaning raqamli blokidagi yulduzcha <code>*</code>. Enter xabarni joriy chat oynasiga yuboradi va uchuvchilar uni ko‘rmaydi.</p>
-<h2 id="set_uz-5">5. TrackAudio ovozli klienti</h2>
-<p>EuroScope ovozni uzatmaydi: radioalmashuv uchun Audio for VATSIM tizimining alohida klienti kerak. Ikki klientdan istalgani mos keladi: TrackAudio (shu bo‘lim) yoki Audio for VATSIM (6-bo‘lim). Bittasini tanlang va ularni bir vaqtda ishga tushirmang.</p>
-<ol>
-<li>Windows uchun o‘rnatuvchini <a href="https://github.com/pierr3/TrackAudio/releases" target="_blank" rel="noopener">TrackAudio relizlari sahifasidan</a> yuklab oling. Beta emas, oxirgi barqaror versiyani oling. Uni o‘rnating: Visual C++ Redistributable 1-qadamdan keyin sizda allaqachon bor.</li>
-<li>TrackAudio ni ishga tushiring va sozlamalarni (Settings) oching. VATSIM CID va parolini kiriting.</li>
-<li>Mikrofon (Input) va quloqchinlarni (Output) tanlang. Biror narsa deng: daraja ko‘rsatkichi yashil zonada turishi kerak. Bo‘lmasa, mikrofon kuchaytirishini (Gain) oshiring yoki kamaytiring.</li>
-<li>Uzatish tugmasini (PTT) belgilang: Set new PTT ni, so‘ng kerakli tugmani bosing. O‘ng Ctrl qulay: u EuroScope da yozishga xalaqit bermaydi. Kompyuterga joystik ulangan bo‘lsa, u tugmani o‘zi egallab olmasligi uchun PTT ni Set new PTT ustida o‘ng tugmani bosib belgilang.</li>
-<li>Avval EuroScope da ulaning (3-bo‘lim), so‘ng TrackAudio da Connect ni bosing. EuroScope ulanmagan bo‘lsa, ovozli klient kirmaydi.</li>
-<li>EuroScope dagi asosiy chastota avtomatik paydo bo‘ladi. Unda RX (qabul) va TX (uzatish) ni yoqing. Boshqa chastotalarni pozitsiya chaqiruv belgisi bo‘yicha qo‘shing, masalan UZTT_TWR: shunda uning barcha antennalari ulanadi.</li>
-</ol>
-<p>Kuzatuvchi faqat tinglaydi: Toshkentning kerakli chastotalarini qo‘shing va ularda faqat RX ni yoqing. Trenajyorda ovozli aloqa tartibini instruktor oldindan xabar qiladi.</p>
-<h2 id="set_uz-6">6. Audio for VATSIM ovozli klienti</h2>
-<p>Audio for VATSIM (AFV Standalone) — VATSIM ning rasmiy ovozli klienti. U endi yangilanmaydi, lekin ishlaydi. Agar TrackAudio kompyuteringizda ishga tushmasa yoki siz AFV dan allaqachon foydalanayotgan bo‘lsangiz, uni tanlang.</p>
+<h2 id="set_uz-5">5. Audio for VATSIM ovozli klienti</h2>
+<p>EuroScope ovozni uzatmaydi: radioalmashuv uchun Audio for VATSIM tizimining alohida klienti kerak. Ikki klientdan istalgani mos keladi: Audio for VATSIM (shu bo‘lim) yoki TrackAudio (6-bo‘lim). Bittasini tanlang va ularni bir vaqtda ishga tushirmang.</p>
+<p>Audio for VATSIM (AFV Standalone) — VATSIM ning rasmiy ovozli klienti. U endi yangilanmaydi, lekin ishlaydi.</p>
 <ol>
 <li>O‘rnatuvchini <a href="https://audio.vatsim.net/downloads/standalone" target="_blank" rel="noopener">AFV yuklab olish sahifasidan</a> yuklab oling va o‘rnating.</li>
 <li>Klientni ishga tushiring va sozlamalar tugmasini (Settings) bosing. VATSIM CID va VATSIM Password ni kiriting.</li>
@@ -2450,6 +2441,17 @@ footer{margin-top:48px;color:var(--muted);font-size:13px;max-width:72ch}
 </ol>
 <p>Boshqa dispetcher chastotasini faqat RX bilan tinglang. Unda TX va XC ni yoqmang: XC da chastotangizda yangragan hamma narsa boshqa chastotaga retranslyatsiya qilinadi.</p>
 <p>Agar yerdagi bortlar shitirlab eshitilsa yoki umuman eshitilmasa, EuroScope dagi ko‘rinish markazi aerodromda emas. Ko‘rinish markazini UZTT ga o‘tkazing va AFV ni qayta ulang.</p>
+<h2 id="set_uz-6">6. TrackAudio ovozli klienti</h2>
+<p>TrackAudio — VATSIM hamjamiyatidagi dasturchi yaratgan ovozli klient, u o‘sha Audio for VATSIM tizimi bilan ishlaydi. Agar AFV kompyuteringizda ishga tushmasa yoki siz TrackAudio dan allaqachon foydalanayotgan bo‘lsangiz, uni tanlang.</p>
+<ol>
+<li>Windows uchun o‘rnatuvchini <a href="https://github.com/pierr3/TrackAudio/releases" target="_blank" rel="noopener">TrackAudio relizlari sahifasidan</a> yuklab oling. Beta emas, oxirgi barqaror versiyani oling. Uni o‘rnating: Visual C++ Redistributable 1-qadamdan keyin sizda allaqachon bor.</li>
+<li>TrackAudio ni ishga tushiring va sozlamalarni (Settings) oching. VATSIM CID va parolini kiriting.</li>
+<li>Mikrofon (Input) va quloqchinlarni (Output) tanlang. Biror narsa deng: daraja ko‘rsatkichi yashil zonada turishi kerak. Bo‘lmasa, mikrofon kuchaytirishini (Gain) oshiring yoki kamaytiring.</li>
+<li>Uzatish tugmasini (PTT) belgilang: Set new PTT ni, so‘ng kerakli tugmani bosing. O‘ng Ctrl qulay: u EuroScope da yozishga xalaqit bermaydi. Kompyuterga joystik ulangan bo‘lsa, u tugmani o‘zi egallab olmasligi uchun PTT ni Set new PTT ustida o‘ng tugmani bosib belgilang.</li>
+<li>Avval EuroScope da ulaning (3-bo‘lim), so‘ng TrackAudio da Connect ni bosing. EuroScope ulanmagan bo‘lsa, ovozli klient kirmaydi.</li>
+<li>EuroScope dagi asosiy chastota avtomatik paydo bo‘ladi. Unda RX (qabul) va TX (uzatish) ni yoqing. Boshqa chastotalarni pozitsiya chaqiruv belgisi bo‘yicha qo‘shing, masalan UZTT_TWR: shunda uning barcha antennalari ulanadi.</li>
+</ol>
+<p>Kuzatuvchi faqat tinglaydi: Toshkentning kerakli chastotalarini qo‘shing va ularda faqat RX ni yoqing. Trenajyorda ovozli aloqa tartibini instruktor oldindan xabar qiladi.</p>
 <h2 id="set_uz-7">7. Trenajyor oldidan tekshirish</h2>
 <p>Trenajyordan bir kun oldin kuzatuvchi sifatida ulaning va ro‘yxatni bajaring:</p>
 <ul>
