@@ -95,6 +95,7 @@ footer{margin-top:48px;color:var(--muted);font-size:13px;max-width:72ch}
     <button id="tab-mat" type="button" role="tab" data-doc="mat" aria-selected="true" data-ru="Учебные материалы" data-uz="O‘quv materiallari">Учебные материалы</button>
     <button id="tab-loc" type="button" role="tab" data-doc="loc" aria-selected="false" data-ru="Местные процедуры" data-uz="Mahalliy tartiblar">Местные процедуры</button>
     <button id="tab-set" type="button" role="tab" data-doc="set" aria-selected="false" data-ru="Настройка EuroScope" data-uz="EuroScope sozlash">Настройка EuroScope</button>
+    <button id="tab-exam" type="button" role="tab" data-doc="exam" aria-selected="false" data-ru="К экзамену" data-uz="Imtihonga tayyorgarlik">К экзамену</button>
   </div>
 <section class="pane" data-doc="mat" data-lang="ru" hidden>
 <nav class="toc" aria-label="contents"><p class="toc-h">Содержание</p><ol><li><a href="#mat_ru-1">1. Подключение к VATSIM</a></li><li><a href="#mat_ru-2">2. Документы VATSIM и реальной авиации</a></li><li><a href="#mat_ru-3">3. Диспетчерские позиции и границы ответственности</a></li><li><a href="#mat_ru-4">4. Технология работы DEL и GND</a></li><li><a href="#mat_ru-5">5. Чтение AIP и аэродромных схем</a></li><li><a href="#mat_ru-6">6. Воздушное пространство и основы эшелонирования</a></li><li><a href="#mat_ru-7">7. План полёта и разрешение на вылет</a></li><li><a href="#mat_ru-8">8. METAR, TAF и рабочая ВПП</a></li><li><a href="#mat_ru-9">9. Фразеология, метки и листы</a></li><li><a href="#mat_ru-10">Источники</a></li></ol></nav>
@@ -2175,6 +2176,253 @@ footer{margin-top:48px;color:var(--muted);font-size:13px;max-width:72ch}
 <li>Audio for VATSIM qo‘llanmasi (audio.vatsim.net/downloads/manual.pdf); O‘quv markazida Namunaviy o‘quv dasturi, 1-ilova, 2.6-band</li>
 </ul>
 <p>Tarjima ruscha matn asosida tayyorlangan. Ziddiyat bo‘lsa, ruscha matn ustun turadi.</p></article></section>
+<section class="pane" data-doc="exam" data-lang="ru" hidden>
+<nav class="toc" aria-label="contents"><p class="toc-h">Содержание</p><ol><li><a href="#exam_ru-1">1. Правила подключения к сети VATSIM</a></li><li><a href="#exam_ru-2">2. Назначение диспетчерского пункта</a></li><li><a href="#exam_ru-3">3. Обслуживание воздушного движения по технологии работы</a></li><li><a href="#exam_ru-4">4. Правила и фразеология радиообмена на русском языке</a></li><li><a href="#exam_ru-5">5. Правила и фразеология радиообмена на английском языке</a></li><li><a href="#exam_ru-6">6. Правила чтения карт AIP</a></li><li><a href="#exam_ru-7">7. Особенности ОВД в аэропорту Ташкент</a></li><li><a href="#exam_ru-8">8. Авиационное законодательство и документы VATSIM и ВАТРУС</a></li><li><a href="#exam_ru-9">9. Подготовка к дежурству, приём и сдача дежурства</a></li><li><a href="#exam_ru-10">10. Указание, рекомендация, информация и разрешение</a></li><li><a href="#exam_ru-11">11. Правила полётов ППП и ПВП</a></li><li><a href="#exam_ru-12">12. Эшелоны и правило направления полёта</a></li><li><a href="#exam_ru-13">13. Диспетчерское разрешение на вылет</a></li><li><a href="#exam_ru-14">14. Расшифровка METAR</a></li><li><a href="#exam_ru-15">15. Разрешение конфликтных ситуаций</a></li></ol></nav>
+<article class="prose"><p>Пятнадцать вопросов экзамена и то, к чему нужно быть готовым по каждому из них на позициях UZTT_DEL и UZTT_GND. Отмечайте пункты, которые уже можете объяснить своими словами и показать на примере. В конце каждого вопроса указано, где читать.</p>
+<h2 id="exam_ru-1">1. Правила подключения к сети VATSIM</h2>
+<ul>
+<li>☐  Назвать правильный позывной: UZTT_DEL, UZTT_GND, до S1 — наблюдатель с суффиксом _OBS.</li>
+<li>☐  Объяснить требования к имени: полное имя или имя и первая буква фамилии, без ников.</li>
+<li>☐  Назвать радиус видимости (Range) для позиций: DEL и GND — 20 NM, TWR — 50, APP — 150, CTR — 600, FSS — 1500, наблюдатель — 300.</li>
+<li>☐  Выбрать Facility, соответствующий позывному (Delivery, Ground, Observer).</li>
+</ul>
+<p>Где читать: Учебные материалы, раздел 1; Настройка EuroScope, раздел 3.</p>
+<h2 id="exam_ru-2">2. Назначение диспетчерского пункта</h2>
+<ul>
+<li>☐  Объяснить роль DEL: проверка планов полёта, разрешения на вылет, коды ответчика; движением DEL не управляет.</li>
+<li>☐  Объяснить роль GND: буксировка, запуск, руление по перрону и РД до места ожидания перед ВПП и от ВПП до стоянки.</li>
+<li>☐  Показать, где DEL и GND находятся в системе органов ОВД: DEL → GND → TWR → APP → UZTR_CTR → RU-CEN_FSS.</li>
+<li>☐  Объяснить принцип Top-down: кто выполняет функции DEL и GND, если их нет в сети.</li>
+</ul>
+<p>Где читать: Учебные материалы, раздел 3; Местные процедуры, раздел 2.</p>
+<h2 id="exam_ru-3">3. Обслуживание воздушного движения по технологии работы</h2>
+<ul>
+<li>☐  Описать зону ответственности: DEL — до выдачи разрешения; GND — перрон и РД, за исключением ВПП.</li>
+<li>☐  Назвать рубежи передачи: DEL → GND после верного повторения разрешения (121,7); GND → TWR на подходе к месту ожидания (120,4); TWR → GND после освобождения ВПП.</li>
+<li>☐  Объяснить, что согласуется с вышкой (пересечение ВПП, вылет не от торца) и что — с подходом или районом (маршрут без SID, иной начальный набор, вылет по ПВП).</li>
+<li>☐  Пройти по шагам технологию работы DEL (5 шагов) и GND (стоянки, буксировка, стандартные маршруты руления).</li>
+</ul>
+<p>Где читать: Учебные материалы, раздел 4; Местные процедуры, разделы 3 и 4.</p>
+<h2 id="exam_ru-4">4. Правила и фразеология радиообмена на русском языке</h2>
+<ul>
+<li>☐  Выдать разрешение на вылет полностью: позывной, пункт назначения, SID, ВПП, набор, код ответчика.</li>
+<li>☐  Принять повторение, найти в нём ошибку и исправить её.</li>
+<li>☐  Дать разрешение на буксировку и запуск с указанием, куда развернуть хвост.</li>
+<li>☐  Дать разрешение на руление по маршруту до места ожидания, указание «ждите перед ВПП» и передачу на вышку.</li>
+<li>☐  Знать, что пилот обязан повторить: разрешения и указания на ВПП, маршрут, высоту, курс и скорость, код, давление, частоты.</li>
+</ul>
+<p>Где читать: Учебные материалы, раздел 9.</p>
+<h2 id="exam_ru-5">5. Правила и фразеология радиообмена на английском языке</h2>
+<ul>
+<li>☐  Те же фразы, что в вопросе 4, на английском: clearance, readback correct, push and start-up approved, taxi to holding point via…, hold short of runway…, contact Tashkent Tower.</li>
+<li>☐  Отвечать на языке, на котором обратился пилот.</li>
+<li>☐  Произносить цифры и буквы по фонетическому алфавиту ИКАО.</li>
+</ul>
+<p>Где читать: Учебные материалы, раздел 9.</p>
+<h2 id="exam_ru-6">6. Правила чтения карт AIP</h2>
+<ul>
+<li>☐  Найти в AIP раздел AD 2 UZTT и знать, что в AD 2.12, 2.18, 2.20 и 2.24.</li>
+<li>☐  По карте аэродрома назвать ВПП, РД, места ожидания и горячие точки HS1–HS3.</li>
+<li>☐  По карте стоянок и маршрутов руления назначить стоянку и маршрут.</li>
+<li>☐  Прочитать название SID (например, BAMUT 2C: точка выхода, номер версии, серия) и найти на карте начальный набор и ограничения.</li>
+<li>☐  Проверить дату карты и действующий цикл AIRAC.</li>
+</ul>
+<p>Где читать: Учебные материалы, раздел 5; Местные процедуры, разделы 3 и 4.</p>
+<h2 id="exam_ru-7">7. Особенности ОВД в аэропорту Ташкент</h2>
+<ul>
+<li>☐  ВПП 08L/26R (основная) и 08R/26L, приоритет при слабом ветре — 08L или 08R; ILS: 08L — CAT II, 08R и 26R — CAT I, на 26L ILS нет.</li>
+<li>☐  Частоты: DEL 129,4; GND 121,7; TWR 120,4; APP 119,4 (запасная 122,9); ATIS 126,8 — только на английском.</li>
+<li>☐  Высота перехода 13 000 футов, эшелон перехода FL150.</li>
+<li>☐  Коды ответчика 2040–2077 без цифр 8 и 9, всего 32 кода.</li>
+<li>☐  SID: серии 2A и 2C (RNAV), 2E и 2F (TISIB), 2H (DVOR/DME); начальный набор 8000 футов, для TISIB 2E и 2F — FL150.</li>
+<li>☐  Не более 250 узлов ниже 10 000 футов, если диспетчер не указал иное.</li>
+<li>☐  Ограничения руления: размах крыла более 48,06 м, четырёхдвигательные ВС только по РД 13, стоянка B11A, горячие точки HS1–HS3.</li>
+</ul>
+<p>Где читать: Местные процедуры.</p>
+<h2 id="exam_ru-8">8. Авиационное законодательство и документы VATSIM и ВАТРУС</h2>
+<ul>
+<li>☐  Назвать уровни документов и порядок их применения: VATSIM, ВАТРУС, Субдивизион; реальные документы — если не противоречат правилам VATSIM.</li>
+<li>☐  Объяснить, что регулируют User Agreement, Code of Conduct и GCAP.</li>
+<li>☐  Знать Устав ВАТРУС и Положение об использовании позывных при подключении к сети VATSIM в части работы диспетчера.</li>
+<li>☐  Знать, какие положения Воздушного кодекса РФ, федеральных правил и ФАП относятся к работе диспетчера ОВД. Эти документы изучаются по первоисточникам: в учебных материалах их нет.</li>
+</ul>
+<p>Где читать: Учебные материалы, раздел 2.</p>
+<h2 id="exam_ru-9">9. Подготовка к дежурству, приём и сдача дежурства</h2>
+<ul>
+<li>☐  Перед выходом: METAR и ATIS, рабочая ВПП, NOTAM, кто из диспетчеров в сети, настройка клиентов.</li>
+<li>☐  При приёме позиции: узнать рабочую ВПП, борта на частоте и их статус, ограничения и особые случаи; затем подключиться и сообщить о вступлении.</li>
+<li>☐  При сдаче позиции: передать сменщику обстановку по тем же пунктам; если смены нет — предупредить соседние позиции и пилотов на частоте и только после этого отключиться.</li>
+</ul>
+<p>Где читать: Учебные материалы, раздел 4; Настройка EuroScope, раздел 7.</p>
+<h2 id="exam_ru-10">10. Указание, рекомендация, информация и разрешение</h2>
+<ul>
+<li>☐  Различать понятия: разрешение — право действовать на указанных условиях; указание — требование выполнить действие; рекомендация — совет, решение за экипажем; информация — сведения без требования действовать.</li>
+<li>☐  Объяснить границы разрешений: разрешение на вылет действует до пункта, указанного в нём; разрешение на руление — до указанного места ожидания и не даёт права занимать или пересекать ВПП.</li>
+<li>☐  Привести примеры каждого из четырёх видов на позициях DEL и GND.</li>
+</ul>
+<p>Где читать: отдельного раздела в учебных материалах нет; примеры фраз — Учебные материалы, раздел 9.</p>
+<h2 id="exam_ru-11">11. Правила полётов ППП и ПВП</h2>
+<ul>
+<li>☐  Объяснить ППП и ПВП: кто отвечает за интервалы и за обход препятствий.</li>
+<li>☐  Назвать отличия в разрешении на вылет: для ППП — SID или маршрут выхода, для ПВП — без SID, с согласованием.</li>
+<li>☐  Знать классы воздушного пространства и что в каждом разрешено и обеспечивается.</li>
+</ul>
+<p>Где читать: Учебные материалы, раздел 6.</p>
+<h2 id="exam_ru-12">12. Эшелоны и правило направления полёта</h2>
+<ul>
+<li>☐  Найти в AIP (ENR 1.7) таблицу крейсерских эшелонов и выбрать эшелон по направлению полёта.</li>
+<li>☐  Проверить эшелон в плане полёта и попросить пилота исправить его, если он не соответствует направлению.</li>
+<li>☐  Знать, что эшелоны FL290–FL410 с интервалом 1000 футов допустимы только для ВС с RVSM (буква W в поле 10).</li>
+</ul>
+<p>Где читать: Учебные материалы, раздел 6.</p>
+<h2 id="exam_ru-13">13. Диспетчерское разрешение на вылет</h2>
+<ul>
+<li>☐  Назвать элементы разрешения по порядку: позывной, пункт назначения, SID или маршрут выхода и ВПП, начальный набор, код ответчика, при необходимости частота.</li>
+<li>☐  Выбрать SID с учётом навигационных возможностей: с RNAV 1 (R в поле 10) — серии 2A, 2C, 2E, 2F; без него — 2H по DVOR/DME.</li>
+<li>☐  Учесть правила полёта: для ПВП разрешение даётся без SID и согласуется с подходом или районом.</li>
+<li>☐  Проверить план полёта: аэродромы, первую точку маршрута, эшелон, оборудование (поле 10), PBN в поле 18.</li>
+</ul>
+<p>Где читать: Учебные материалы, раздел 7; Местные процедуры, раздел 3.</p>
+<h2 id="exam_ru-14">14. Расшифровка METAR</h2>
+<ul>
+<li>☐  Прочитать дату и время, ветер, видимость, явления, облачность, температуру и QNH.</li>
+<li>☐  Определить рабочую ВПП по ветру: в METAR ветер истинный, курсы ВПП магнитные (склонение в Ташкенте около 6° E).</li>
+<li>☐  Объяснить, когда при слабом ветре используется приоритетное направление (08L/08R).</li>
+<li>☐  Знать основные обозначения TAF (FM, BECMG, TEMPO, PROB).</li>
+</ul>
+<p>Где читать: Учебные материалы, раздел 8.</p>
+<h2 id="exam_ru-15">15. Разрешение конфликтных ситуаций</h2>
+<ul>
+<li>☐  Знать, когда вызывать супервайзера VATSIM: нарушение Code of Conduct, намеренные помехи, оскорбления, неадекватное поведение, которое не удаётся остановить самому.</li>
+<li>☐  Вызвать супервайзера в EuroScope командой <code>.wallop</code> с кратким сообщением.</li>
+<li>☐  Объяснить причину вызова кратко и по делу: позывной нарушителя, частота или позиция, что произошло и когда.</li>
+<li>☐  Знать, чего не делать: не спорить в эфире, не вызывать супервайзера по техническим вопросам и вопросам обучения.</li>
+</ul>
+<p>Где читать: VATSIM Code of Conduct; вопросы обучения — к ментору.</p></article></section>
+<section class="pane" data-doc="exam" data-lang="uz" hidden>
+<nav class="toc" aria-label="contents"><p class="toc-h">Mundarija</p><ol><li><a href="#exam_uz-1">1. VATSIM tarmog‘iga ulanish qoidalari</a></li><li><a href="#exam_uz-2">2. Dispetcherlik punktining vazifasi</a></li><li><a href="#exam_uz-3">3. Ish texnologiyasi bo‘yicha havo harakatiga xizmat ko‘rsatish</a></li><li><a href="#exam_uz-4">4. Rus tilida radioalmashuv qoidalari va frazeologiyasi</a></li><li><a href="#exam_uz-5">5. Ingliz tilida radioalmashuv qoidalari va frazeologiyasi</a></li><li><a href="#exam_uz-6">6. AIP xaritalarini o‘qish qoidalari</a></li><li><a href="#exam_uz-7">7. Toshkent aeroportida HHXK xususiyatlari</a></li><li><a href="#exam_uz-8">8. Aviatsiya qonunchiligi, VATSIM va VATRUS hujjatlari</a></li><li><a href="#exam_uz-9">9. Navbatchilikka tayyorgarlik, navbatchilikni qabul qilish va topshirish</a></li><li><a href="#exam_uz-10">10. Ko‘rsatma, tavsiya, axborot va ruxsat</a></li><li><a href="#exam_uz-11">11. IFR va VFR parvoz qoidalari</a></li><li><a href="#exam_uz-12">12. Eshelonlar va parvoz yo‘nalishi qoidasi</a></li><li><a href="#exam_uz-13">13. Uchib ketishga dispetcherlik ruxsati</a></li><li><a href="#exam_uz-14">14. METAR ni o‘qish</a></li><li><a href="#exam_uz-15">15. Nizoli vaziyatlarni hal qilish</a></li></ol></nav>
+<article class="prose"><p>Imtihonning o‘n besh savoli va UZTT_DEL hamda UZTT_GND pozitsiyalarida har biri bo‘yicha nimaga tayyor bo‘lish kerakligi. O‘z so‘zlaringiz bilan tushuntira oladigan va misolda ko‘rsata oladigan bandlarni belgilab boring. Har bir savol oxirida qayerda o‘qish kerakligi ko‘rsatilgan.</p>
+<h2 id="exam_uz-1">1. VATSIM tarmog‘iga ulanish qoidalari</h2>
+<ul>
+<li>☐  To‘g‘ri chaqiruv belgisini ayting: UZTT_DEL, UZTT_GND, S1 gacha — _OBS qo‘shimchali kuzatuvchi.</li>
+<li>☐  Ismga talablarni tushuntiring: to‘liq ism yoki ism va familiyaning bosh harfi, taxalluslarsiz.</li>
+<li>☐  Pozitsiyalar uchun ko‘rinish radiusini (Range) ayting: DEL va GND — 20 NM, TWR — 50, APP — 150, CTR — 600, FSS — 1500, kuzatuvchi — 300.</li>
+<li>☐  Chaqiruv belgisiga mos Facility ni tanlang (Delivery, Ground, Observer).</li>
+</ul>
+<p>Qayerda o‘qish: O‘quv materiallari, 1-bo‘lim; EuroScope sozlash, 3-bo‘lim.</p>
+<h2 id="exam_uz-2">2. Dispetcherlik punktining vazifasi</h2>
+<ul>
+<li>☐  DEL rolini tushuntiring: parvoz rejalarini tekshirish, uchib ketishga ruxsatlar, javob qaytargich kodlari; DEL harakatni boshqarmaydi.</li>
+<li>☐  GND rolini tushuntiring: shatakka olish, ishga tushirish, perron va RY bo‘ylab UQY oldidagi kutish joyigacha va UQY dan turar joygacha rulejka.</li>
+<li>☐  DEL va GND ning havo harakatiga xizmat ko‘rsatish (HHXK) organlari tizimidagi o‘rnini ko‘rsating: DEL → GND → TWR → APP → UZTR_CTR → RU-CEN_FSS.</li>
+<li>☐  Top-down tamoyilini tushuntiring: DEL va GND tarmoqda bo‘lmasa, ularning vazifalarini kim bajaradi.</li>
+</ul>
+<p>Qayerda o‘qish: O‘quv materiallari, 3-bo‘lim; Mahalliy tartiblar, 2-bo‘lim.</p>
+<h2 id="exam_uz-3">3. Ish texnologiyasi bo‘yicha havo harakatiga xizmat ko‘rsatish</h2>
+<ul>
+<li>☐  Mas’uliyat zonasini tavsiflang: DEL — ruxsat berilgunga qadar; GND — perron va RY lar, UQY dan tashqari.</li>
+<li>☐  Topshirish chegaralarini ayting: ruxsat to‘g‘ri takrorlangandan keyin DEL → GND (121,7); kutish joyiga yaqinlashganda GND → TWR (120,4); UQY bo‘shatilgandan keyin TWR → GND.</li>
+<li>☐  Minora bilan nima (UQY ni kesib o‘tish, bo‘sag‘adan emas uchib ketish), yaqinlashish yoki hudud bilan nima kelishilishini (SID siz marshrut, boshqa dastlabki balandlik, VFR bo‘yicha uchib ketish) tushuntiring.</li>
+<li>☐  DEL (5 qadam) va GND (turar joylar, shatakka olish, standart rulejka marshrutlari) ish texnologiyasini qadamma-qadam o‘ting.</li>
+</ul>
+<p>Qayerda o‘qish: O‘quv materiallari, 4-bo‘lim; Mahalliy tartiblar, 3 va 4-bo‘limlar.</p>
+<h2 id="exam_uz-4">4. Rus tilida radioalmashuv qoidalari va frazeologiyasi</h2>
+<ul>
+<li>☐  Uchib ketishga ruxsatni to‘liq bering: chaqiruv belgisi, manzil punkti, SID, UQY, balandlik olish, javob qaytargich kodi.</li>
+<li>☐  Takrorlashni qabul qiling, undagi xatoni toping va tuzating.</li>
+<li>☐  Dum qayerga burilishini ko‘rsatib, shatakka olish va ishga tushirishga ruxsat bering.</li>
+<li>☐  Marshrut bo‘yicha kutish joyigacha rulejkaga ruxsat, «UQY oldida kuting» ko‘rsatmasi va minoraga topshirishni bering.</li>
+<li>☐  Uchuvchi nimani takrorlashi shartligini biling: UQY bo‘yicha ruxsat va ko‘rsatmalar, marshrut, balandlik, kurs va tezlik, kod, bosim, chastotalar.</li>
+</ul>
+<p>Qayerda o‘qish: O‘quv materiallari, 9-bo‘lim.</p>
+<h2 id="exam_uz-5">5. Ingliz tilida radioalmashuv qoidalari va frazeologiyasi</h2>
+<ul>
+<li>☐  4-savoldagi iboralarni ingliz tilida ayting: clearance, readback correct, push and start-up approved, taxi to holding point via…, hold short of runway…, contact Tashkent Tower.</li>
+<li>☐  Uchuvchi qaysi tilda murojaat qilgan bo‘lsa, shu tilda javob bering.</li>
+<li>☐  Raqam va harflarni ICAO fonetik alifbosi bo‘yicha talaffuz qiling.</li>
+</ul>
+<p>Qayerda o‘qish: O‘quv materiallari, 9-bo‘lim.</p>
+<h2 id="exam_uz-6">6. AIP xaritalarini o‘qish qoidalari</h2>
+<ul>
+<li>☐  AIP da AD 2 UZTT bo‘limini toping va AD 2.12, 2.18, 2.20 va 2.24 da nima borligini biling.</li>
+<li>☐  Aerodrom xaritasi bo‘yicha UQY, RY, kutish joylari va HS1–HS3 xavfli joylarini ayting.</li>
+<li>☐  Turar joylar va rulejka marshrutlari xaritasi bo‘yicha turar joy va marshrut tayinlang.</li>
+<li>☐  SID nomini o‘qing (masalan, BAMUT 2C: chiqish nuqtasi, versiya raqami, seriya) va xaritadan dastlabki balandlik olish hamda cheklovlarni toping.</li>
+<li>☐  Xarita sanasi va amaldagi AIRAC siklini tekshiring.</li>
+</ul>
+<p>Qayerda o‘qish: O‘quv materiallari, 5-bo‘lim; Mahalliy tartiblar, 3 va 4-bo‘limlar.</p>
+<h2 id="exam_uz-7">7. Toshkent aeroportida HHXK xususiyatlari</h2>
+<ul>
+<li>☐  UQY 08L/26R (asosiy) va 08R/26L, kuchsiz shamolda 08L yoki 08R afzal; ILS: 08L — CAT II, 08R va 26R — CAT I, 26L da ILS yo‘q.</li>
+<li>☐  Chastotalar: DEL 129,4; GND 121,7; TWR 120,4; APP 119,4 (zaxira 122,9); ATIS 126,8 — faqat ingliz tilida.</li>
+<li>☐  O‘tish balandligi 13 000 fut, o‘tish esheloni FL150.</li>
+<li>☐  Javob qaytargich kodlari 2040–2077, 8 va 9 raqamlarisiz, jami 32 ta kod.</li>
+<li>☐  SID: 2A va 2C (RNAV), 2E va 2F (TISIB), 2H (DVOR/DME) seriyalari; dastlabki balandlik olish 8000 fut, TISIB 2E va 2F uchun — FL150.</li>
+<li>☐  Dispetcher boshqacha ko‘rsatmagan bo‘lsa, 10 000 futdan pastda 250 uzeldan oshmaydi.</li>
+<li>☐  Rulejka cheklovlari: qanotlari oralig‘i 48,06 m dan ortiq HK, to‘rt dvigatelli HK faqat 13 RY bo‘yicha, B11A turar joyi, HS1–HS3 xavfli joylari.</li>
+</ul>
+<p>Qayerda o‘qish: Mahalliy tartiblar.</p>
+<h2 id="exam_uz-8">8. Aviatsiya qonunchiligi, VATSIM va VATRUS hujjatlari</h2>
+<ul>
+<li>☐  Hujjatlar darajalari va ularni qo‘llash tartibini ayting: VATSIM, VATRUS, Subdivizion; real hujjatlar — VATSIM qoidalariga zid bo‘lmasa.</li>
+<li>☐  User Agreement, Code of Conduct va GCAP nimani tartibga solishini tushuntiring.</li>
+<li>☐  VATRUS Ustavini va VATSIM tarmog‘iga ulanishda chaqiruv belgilaridan foydalanish to‘g‘risidagi Nizomni dispetcher ishiga tegishli qismida biling.</li>
+<li>☐  RF Havo kodeksi, federal qoidalar va FAP ning qaysi qoidalari HHXK dispetcheri ishiga tegishli ekanini biling. Bu hujjatlar asl manbalardan o‘rganiladi: o‘quv materiallarida ular yo‘q.</li>
+</ul>
+<p>Qayerda o‘qish: O‘quv materiallari, 2-bo‘lim.</p>
+<h2 id="exam_uz-9">9. Navbatchilikka tayyorgarlik, navbatchilikni qabul qilish va topshirish</h2>
+<ul>
+<li>☐  Chiqishdan oldin: METAR va ATIS, ishchi UQY, NOTAM, tarmoqda qaysi dispetcherlar borligi, klientlarni sozlash.</li>
+<li>☐  Pozitsiyani qabul qilishda: ishchi UQY, chastotadagi bortlar va ularning holati, cheklovlar va alohida holatlarni bilib oling; so‘ng ulaning va ishga kirishganingizni xabar qiling.</li>
+<li>☐  Pozitsiyani topshirishda: o‘rningizga keluvchiga vaziyatni shu bandlar bo‘yicha topshiring; almashinuvchi bo‘lmasa — qo‘shni pozitsiyalar va chastotadagi uchuvchilarni ogohlantiring va shundan keyingina uzing.</li>
+</ul>
+<p>Qayerda o‘qish: O‘quv materiallari, 4-bo‘lim; EuroScope sozlash, 7-bo‘lim.</p>
+<h2 id="exam_uz-10">10. Ko‘rsatma, tavsiya, axborot va ruxsat</h2>
+<ul>
+<li>☐  Tushunchalarni farqlang: ruxsat — ko‘rsatilgan shartlarda harakat qilish huquqi; ko‘rsatma — harakatni bajarish talabi; tavsiya — maslahat, qaror ekipajniki; axborot — harakat talab qilmaydigan ma’lumot.</li>
+<li>☐  Ruxsatlar chegarasini tushuntiring: uchib ketishga ruxsat unda ko‘rsatilgan punktgacha amal qiladi; rulejkaga ruxsat ko‘rsatilgan kutish joyigacha amal qiladi va UQY ni egallash yoki kesib o‘tish huquqini bermaydi.</li>
+<li>☐  DEL va GND pozitsiyalarida to‘rt turning har biriga misol keltiring.</li>
+</ul>
+<p>Qayerda o‘qish: o‘quv materiallarida alohida bo‘lim yo‘q; iboralar misollari — O‘quv materiallari, 9-bo‘lim.</p>
+<h2 id="exam_uz-11">11. IFR va VFR parvoz qoidalari</h2>
+<ul>
+<li>☐  IFR va VFR ni tushuntiring: intervallar va to‘siqlarni chetlab o‘tish uchun kim javob beradi.</li>
+<li>☐  Uchib ketishga ruxsatdagi farqlarni ayting: IFR uchun — SID yoki chiqish marshruti, VFR uchun — SID siz, kelishilgan holda.</li>
+<li>☐  Havo hududi sinflarini va har birida nimaga ruxsat berilishi hamda nima ta’minlanishini biling.</li>
+</ul>
+<p>Qayerda o‘qish: O‘quv materiallari, 6-bo‘lim.</p>
+<h2 id="exam_uz-12">12. Eshelonlar va parvoz yo‘nalishi qoidasi</h2>
+<ul>
+<li>☐  AIP da (ENR 1.7) kreyser eshelonlari jadvalini toping va parvoz yo‘nalishi bo‘yicha eshelon tanlang.</li>
+<li>☐  Parvoz rejasidagi eshelonni tekshiring va u yo‘nalishga mos kelmasa, uchuvchidan tuzatishni so‘rang.</li>
+<li>☐  FL290–FL410 eshelonlari 1000 fut interval bilan faqat RVSM ruxsati bor HK uchun mumkinligini biling (10-maydonda W harfi).</li>
+</ul>
+<p>Qayerda o‘qish: O‘quv materiallari, 6-bo‘lim.</p>
+<h2 id="exam_uz-13">13. Uchib ketishga dispetcherlik ruxsati</h2>
+<ul>
+<li>☐  Ruxsat elementlarini tartib bilan ayting: chaqiruv belgisi, manzil punkti, SID yoki chiqish marshruti va UQY, dastlabki balandlik olish, javob qaytargich kodi, zarur bo‘lsa chastota.</li>
+<li>☐  Navigatsiya imkoniyatlarini hisobga olib SID tanlang: RNAV 1 bilan (10-maydonda R) — 2A, 2C, 2E, 2F seriyalari; usiz — DVOR/DME bo‘yicha 2H.</li>
+<li>☐  Parvoz qoidalarini hisobga oling: VFR uchun ruxsat SID siz beriladi va yaqinlashish yoki hudud bilan kelishiladi.</li>
+<li>☐  Parvoz rejasini tekshiring: aerodromlar, marshrutning birinchi nuqtasi, eshelon, jihozlar (10-maydon), 18-maydondagi PBN.</li>
+</ul>
+<p>Qayerda o‘qish: O‘quv materiallari, 7-bo‘lim; Mahalliy tartiblar, 3-bo‘lim.</p>
+<h2 id="exam_uz-14">14. METAR ni o‘qish</h2>
+<ul>
+<li>☐  Sana va vaqt, shamol, ko‘rinish, hodisalar, bulutlilik, harorat va QNH ni o‘qing.</li>
+<li>☐  Ishchi UQY ni shamol bo‘yicha aniqlang: METAR da shamol haqiqiy, UQY kurslari esa magnit (Toshkentda og‘ish taxminan 6° E).</li>
+<li>☐  Kuchsiz shamolda afzal yo‘nalish (08L/08R) qachon qo‘llanilishini tushuntiring.</li>
+<li>☐  TAF ning asosiy belgilarini biling (FM, BECMG, TEMPO, PROB).</li>
+</ul>
+<p>Qayerda o‘qish: O‘quv materiallari, 8-bo‘lim.</p>
+<h2 id="exam_uz-15">15. Nizoli vaziyatlarni hal qilish</h2>
+<ul>
+<li>☐  VATSIM supervayzerini qachon chaqirish kerakligini biling: Code of Conduct buzilishi, ataylab xalaqit berish, haqoratlar, o‘zingiz to‘xtata olmaydigan nomaqbul xatti-harakat.</li>
+<li>☐  EuroScope da supervayzerni <code>.wallop</code> buyrug‘i bilan qisqa xabar yozib chaqiring.</li>
+<li>☐  Chaqiruv sababini qisqa va aniq tushuntiring: qoidabuzarning chaqiruv belgisi, chastota yoki pozitsiya, nima va qachon sodir bo‘lgani.</li>
+<li>☐  Nima qilmaslik kerakligini biling: efirda bahslashmang, supervayzerni texnik masalalar va o‘qish masalalari bo‘yicha chaqirmang.</li>
+</ul>
+<p>Qayerda o‘qish: VATSIM Code of Conduct; o‘qish masalalari — mentorga.</p>
+<p>Tarjima ruscha matn asosida tayyorlangan. Ziddiyat bo‘lsa, ruscha matn ustun turadi.</p></article></section>
 
   <footer data-ru="Только для виртуальной сети VATSIM. Не использовать в реальной авиации. Вопросы по материалам задавайте ментору или инструктору Субдивизиона." data-uz="Faqat VATSIM virtual tarmog‘i uchun. Real aviatsiyada foydalanilmasin. Materiallar bo‘yicha savollarni Subdivizion mentori yoki instruktoriga bering.">Только для виртуальной сети VATSIM. Не использовать в реальной авиации. Вопросы по материалам задавайте ментору или инструктору Субдивизиона.</footer>
 </div>
@@ -2182,7 +2430,7 @@ footer{margin-top:48px;color:var(--muted);font-size:13px;max-width:72ch}
 (function(){
   var lang='ru', doc='mat';
   try{ var s=localStorage.getItem('s1-lang'); if(s==='ru'||s==='uz') lang=s; }catch(e){}
-  if(location.hash==='#local') doc='loc'; else if(location.hash==='#setup') doc='set';
+  if(location.hash==='#local') doc='loc'; else if(location.hash==='#setup') doc='set'; else if(location.hash==='#exam') doc='exam';
   function render(){
     document.documentElement.lang = lang==='uz' ? 'uz' : 'ru';
     document.querySelectorAll('[data-ru]').forEach(function(el){ el.textContent = el.getAttribute('data-'+lang); });
@@ -2193,8 +2441,8 @@ footer{margin-top:48px;color:var(--muted);font-size:13px;max-width:72ch}
   document.querySelectorAll('.lang button').forEach(function(b){ b.addEventListener('click', function(){
     lang=b.dataset.set; try{ localStorage.setItem('s1-lang', lang); }catch(e){} render(); }); });
   document.querySelectorAll('.tabs button').forEach(function(b){ b.addEventListener('click', function(){
-    doc=b.dataset.doc; try{ history.replaceState(null,'', doc==='loc' ? '#local' : doc==='set' ? '#setup' : '#materials'); }catch(e){} render(); window.scrollTo(0,0); }); });
-  window.addEventListener('hashchange', function(){ if(location.hash==='#local'){doc='loc';render();} else if(location.hash==='#materials'){doc='mat';render();} else if(location.hash==='#setup'){doc='set';render();} });
+    doc=b.dataset.doc; try{ history.replaceState(null,'', doc==='loc' ? '#local' : doc==='set' ? '#setup' : doc==='exam' ? '#exam' : '#materials'); }catch(e){} render(); window.scrollTo(0,0); }); });
+  window.addEventListener('hashchange', function(){ if(location.hash==='#local'){doc='loc';render();} else if(location.hash==='#materials'){doc='mat';render();} else if(location.hash==='#setup'){doc='set';render();} else if(location.hash==='#exam'){doc='exam';render();} });
   render();
 })();
 </script>
