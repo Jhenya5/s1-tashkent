@@ -86,6 +86,12 @@ footer{margin-top:48px;color:var(--muted);font-size:13px;max-width:72ch}
 .start a{color:var(--accent)}
 .start .note{margin:16px 0 0;padding-top:12px;border-top:1px solid var(--rule);color:var(--muted);font-size:15px}
 @media (max-width:520px){.start{padding:16px}.start ol{grid-template-columns:1fr}}
+.ctrls{display:flex;gap:8px;align-items:center}
+.theme{display:grid;place-items:center;width:40px;height:38px;border:1px solid var(--rule);border-radius:8px;background:var(--surface);color:var(--ink);cursor:pointer;padding:0}
+.theme:hover{color:var(--accent)}
+.theme .i-sun{display:none}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .theme .i-sun{display:block}:root:not([data-theme="light"]) .theme .i-moon{display:none}}
+:root[data-theme="dark"] .theme .i-sun{display:block}:root[data-theme="dark"] .theme .i-moon{display:none}
 </style>
 </head>
 <body>
@@ -97,9 +103,12 @@ footer{margin-top:48px;color:var(--muted);font-size:13px;max-width:72ch}
       <h1 data-ru="Подготовка к S1 в Ташкенте" data-uz="Toshkentda S1 ga tayyorgarlik">Подготовка к S1 в Ташкенте</h1>
       <p class="lede" data-ru="Здравствуйте и добро пожаловать в Central Asian FSS! Вы начинаете подготовку на позицию диспетчера в аэропорту Ташкент. Ниже по шагам описано, что делать, а во вкладках собраны все материалы." data-uz="Assalomu alaykum va Central Asian FSS ga xush kelibsiz! Siz Toshkent aeroportida dispetcher pozitsiyasiga tayyorgarlikni boshlayapsiz. Quyida nima qilish kerakligi bosqichma-bosqich yozilgan, barcha materiallar esa bo‘limlarda jamlangan.">Здравствуйте и добро пожаловать в Central Asian FSS! Вы начинаете подготовку на позицию диспетчера в аэропорту Ташкент. Ниже по шагам описано, что делать, а во вкладках собраны все материалы.</p>
     </div>
-    <div class="lang" role="group" aria-label="Язык / Til">
-      <button id="lang-ru" type="button" data-set="ru" aria-pressed="true">Русский</button>
-      <button id="lang-uz" type="button" data-set="uz" aria-pressed="false">O‘zbekcha</button>
+    <div class="ctrls">
+      <button id="theme" class="theme" type="button" aria-label="Тема" title="Светлая / тёмная тема"><span class="i-sun"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg></span><span class="i-moon"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11z"/></svg></span></button>
+      <div class="lang" role="group" aria-label="Язык / Til">
+        <button id="lang-ru" type="button" data-set="ru" aria-pressed="true">Русский</button>
+        <button id="lang-uz" type="button" data-set="uz" aria-pressed="false">O‘zbekcha</button>
+      </div>
     </div>
   </header>
   <div class="strip" aria-label="UZTT">
@@ -2761,6 +2770,17 @@ footer{margin-top:48px;color:var(--muted);font-size:13px;max-width:72ch}
 
   <footer data-ru="Только для виртуальной сети VATSIM. Не использовать в реальной авиации. Вопросы по материалам задавайте инструктору Субдивизиона." data-uz="Faqat VATSIM virtual tarmog‘i uchun. Real aviatsiyada foydalanilmasin. Materiallar bo‘yicha savollarni Subdivizion instruktoriga bering.">Только для виртуальной сети VATSIM. Не использовать в реальной авиации. Вопросы по материалам задавайте инструктору Субдивизиона.</footer>
 </div>
+<script>
+(function(){
+  var r=document.documentElement;
+  try{ var th=localStorage.getItem('s1-theme'); if(th==='light'||th==='dark') r.setAttribute('data-theme',th); }catch(e){}
+  function cur(){ var a=r.getAttribute('data-theme'); return a ? a : (matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'); }
+  var b=document.getElementById('theme');
+  function lab(){ var d=cur()==='dark'; b.setAttribute('aria-label', d?'Включить светлую тему':'Включить тёмную тему'); b.title=b.getAttribute('aria-label'); }
+  b.addEventListener('click',function(){ var n=cur()==='dark'?'light':'dark'; r.setAttribute('data-theme',n); try{ localStorage.setItem('s1-theme',n); }catch(e){} lab(); });
+  lab();
+})();
+</script>
 <script>
 (function(){
   var lang='ru', doc='mat';
