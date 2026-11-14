@@ -98,7 +98,7 @@ footer{margin-top:48px;color:var(--muted);font-size:13px;max-width:72ch}
     <button id="tab-exam" type="button" role="tab" data-doc="exam" aria-selected="false" data-ru="К экзамену" data-uz="Imtihonga tayyorgarlik">К экзамену</button>
   </div>
 <section class="pane" data-doc="mat" data-lang="ru" hidden>
-<nav class="toc" aria-label="contents"><p class="toc-h">Содержание</p><ol><li><a href="#mat_ru-1">1. Подключение к VATSIM</a></li><li><a href="#mat_ru-2">2. Документы VATSIM и реальной авиации</a></li><li><a href="#mat_ru-3">3. Диспетчерские позиции и границы ответственности</a></li><li><a href="#mat_ru-4">4. Технология работы DEL и GND</a></li><li><a href="#mat_ru-5">5. Чтение AIP и аэродромных схем</a></li><li><a href="#mat_ru-6">6. Воздушное пространство и основы эшелонирования</a></li><li><a href="#mat_ru-7">7. План полёта и разрешение на вылет</a></li><li><a href="#mat_ru-8">8. METAR, TAF и рабочая ВПП</a></li><li><a href="#mat_ru-9">9. Фразеология, метки и листы</a></li><li><a href="#mat_ru-10">Источники</a></li></ol></nav>
+<nav class="toc" aria-label="contents"><p class="toc-h">Содержание</p><ol><li><a href="#mat_ru-1">1. Подключение к VATSIM</a></li><li><a href="#mat_ru-2">2. Документы VATSIM и реальной авиации</a></li><li><a href="#mat_ru-3">3. Диспетчерские позиции и границы ответственности</a></li><li><a href="#mat_ru-4">4. Технология работы DEL и GND</a></li><li><a href="#mat_ru-5">5. Чтение AIP и аэродромных схем</a></li><li><a href="#mat_ru-6">6. Воздушное пространство и основы эшелонирования</a></li><li><a href="#mat_ru-7">7. План полёта и разрешение на вылет</a></li><li><a href="#mat_ru-8">8. METAR, TAF и рабочая ВПП</a></li><li><a href="#mat_ru-9">9. Фразеология, метки и листы</a></li><li><a href="#mat_ru-10">10. Конфликтные ситуации</a></li><li><a href="#mat_ru-11">Источники</a></li></ol></nav>
 <article class="prose"><p>Материалы охватывают все темы входного теста и знания, которые нужны до вводного тренажёра (Типовая программа, пп. 2.3 и 2.5). Местные процедуры Ташкента даны во второй вкладке.</p>
 <h2 id="mat_ru-1">1. Подключение к VATSIM</h2>
 <p>Диспетчер подключается к сети через диспетчерский клиент (в РПИ Ташкент — EuroScope) и голосовой клиент и указывает четыре параметра. До получения S1 кандидат подключается только наблюдателем.</p>
@@ -222,6 +222,21 @@ footer{margin-top:48px;color:var(--muted);font-size:13px;max-width:72ch}
 <li>Все данные и карты используются только для симуляции и не предназначены для реальной навигации.</li>
 <li>Важна актуальность: AIP меняется по циклам AIRAC каждые 28 дней, поэтому схемы и сектора должны соответствовать текущему циклу.</li>
 </ul>
+<p><strong>Документы VATSIM и ВАТРУС, которые нужно знать диспетчеру:</strong></p>
+<ul>
+<li><strong>User Agreement</strong> — соглашение, которое принимает каждый участник VATSIM при регистрации: условия членства, один аккаунт на человека, обязанность соблюдать правила сети.</li>
+<li><strong>Code of Conduct</strong> — правила поведения в сети: позывные, имена, Range, частоты, уважительное общение.</li>
+<li><strong>GCAP</strong> — рейтинги диспетчеров, порядок обучения, соло-допуски и экзамены.</li>
+<li><strong>Устав ВАТРУС</strong> — устройство дивизиона: руководство, субдивизионы, права и обязанности участников.</li>
+<li><strong>Положение об использовании позывных при подключении к сети VATSIM</strong> — какие позывные позиций допустимы в дивизионе и как их составлять.</li>
+</ul>
+<p><strong>Авиационное законодательство.</strong> На экзамене спрашивают основные положения документов РФ, которые дивизион ВАТРУС использует как основу:</p>
+<ul>
+<li>Воздушный кодекс РФ — общие правила использования воздушного пространства и обслуживания воздушного движения;</li>
+<li>Федеральные правила использования воздушного пространства — классы пространства, разрешительный порядок, эшелоны;</li>
+<li>федеральные авиационные правила (ФАП) по организации воздушного движения — технология работы диспетчера, диспетчерские разрешения, фразеология.</li>
+</ul>
+<p>Изучайте их по действующим редакциям и в той части, которая касается диспетчера ОВД. В воздушном пространстве Узбекистана действуют свои воздушный кодекс и правила; для работы на UZTT напрямую применяется AIP Узбекистана.</p>
 <h2 id="mat_ru-3">3. Диспетчерские позиции и границы ответственности</h2>
 <p>DEL и GND работают до того, как самолёт занял ВПП: взлётно-посадочная полоса всегда принадлежит вышке.</p>
 <div class="tw"><table>
@@ -280,6 +295,88 @@ footer{margin-top:48px;color:var(--muted);font-size:13px;max-width:72ch}
 </ul>
 <p><strong>С диспетчером подхода или района</strong> DEL согласует маршрут или начальный набор, если они отличаются от стандартных.</p>
 <p>Главное на земле — видеть обстановку целиком и действовать по приоритету. Сначала решаются конфликты на РД и у ВПП, затем передача на вышку, затем запросы на буксировку и разрешения.</p>
+<p><strong>Зоны ответственности и рубежи передачи в Ташкенте:</strong></p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Позиция</th>
+<th>Отвечает за</th>
+<th>Кому передаёт борт</th>
+<th>Когда</th>
+<th>Частота</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DEL</td>
+<td>проверку плана, разрешение на вылет, код</td>
+<td>GND</td>
+<td>после верного повторения разрешения</td>
+<td>121,7</td>
+</tr>
+<tr>
+<td>GND (вылет)</td>
+<td>буксировку, запуск, руление по перрону и РД</td>
+<td>TWR</td>
+<td>на подходе к месту ожидания</td>
+<td>120,4</td>
+</tr>
+<tr>
+<td>TWR</td>
+<td>ВПП, взлёт, посадку, пересечение ВПП</td>
+<td>GND</td>
+<td>после освобождения ВПП прилетающим бортом</td>
+<td>121,7</td>
+</tr>
+<tr>
+<td>GND (прилёт)</td>
+<td>руление до стоянки</td>
+<td>—</td>
+<td>до остановки на стоянке</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<p>ВПП в зону GND не входит: любое занятие или пересечение ВПП — только с разрешения вышки.</p>
+<p><strong>Виды диспетчерских сообщений.</strong> Диспетчер должен понимать, что именно он передаёт экипажу:</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Вид</th>
+<th>Что это</th>
+<th>Пример на DEL или GND</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Разрешение</td>
+<td>право действовать на указанных условиях</td>
+<td>«разрешено до Шереметьево…», «рулите к месту ожидания ВПП 26R по РД…»</td>
+</tr>
+<tr>
+<td>Указание</td>
+<td>требование выполнить действие</td>
+<td>«ждите перед ВПП 26R», «работайте с Ташкент-Тауэр 120,4»</td>
+</tr>
+<tr>
+<td>Рекомендация</td>
+<td>совет, решение принимает экипаж</td>
+<td>«рекомендую запросить запуск через 10 минут, очередь на вылет»</td>
+</tr>
+<tr>
+<td>Информация</td>
+<td>сведения без требования действовать</td>
+<td>«информация Bravo, QNH 1026», «слева буксируется A320»</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Границы действия разрешений.</strong> Разрешение на вылет действует до пункта, названного в нём (предел разрешения), обычно до аэродрома назначения, и не даёт права на взлёт: его даёт вышка. Разрешение на буксировку и запуск не даёт права рулить. Разрешение на руление действует до названного места ожидания и не даёт права занимать или пересекать ВПП.</p>
+<p><strong>Приём и сдача дежурства.</strong></p>
+<ul>
+<li>Принимая позицию, узнайте у сменяемого диспетчера рабочую ВПП и букву ATIS, борта на частоте и их статус (кому выдано разрешение, кто ждёт), ограничения и особые случаи. Подключайтесь сразу после отключения сменяемого, чтобы частота не оставалась без диспетчера.</li>
+<li>Заполните текст ATIS своей позиции в EuroScope: название позиции и частоту ATIS (в пакете UZB он заполнен в профилях входа).</li>
+<li>Сдавая позицию, передайте сменщику обстановку по тем же пунктам. Если смены нет, заранее предупредите вышестоящую позицию, сообщите пилотам на частоте, с кем работать дальше («Ташкент-Деливери закрывается, работайте с Ташкент-Руление 121,7»), и только потом отключайтесь.</li>
+</ul>
 <h2 id="mat_ru-5">5. Чтение AIP и аэродромных схем</h2>
 <p>AIP (сборник аэронавигационной информации) Узбекистана опубликован на сайте <a href="https://uzaeronavigation.com/ais/" target="_blank" rel="noopener">Узаэронавигации</a> и состоит из трёх частей.</p>
 <div class="tw"><table>
@@ -399,6 +496,7 @@ footer{margin-top:48px;color:var(--muted);font-size:13px;max-width:72ch}
 <li>Горизонтальное: продольное (по времени или расстоянию) и боковое.</li>
 <li>Эшелон выбирается по направлению полёта (по таблице крейсерских эшелонов в AIP, ENR 1.7). DEL проверяет, что эшелон в плане ей соответствует.</li>
 </ul>
+<p><strong>Пример проверки эшелона.</strong> В таблице ИКАО для магнитных путевых углов 000–179° используются нечётные эшелоны (FL290, FL310, FL330…), для 180–359° — чётные (FL300, FL320, FL340…). Рейс UZTT → UUEE уходит на северо-запад, значит ему нужен чётный эшелон; FL330 в плане — ошибка, DEL предлагает FL320 или FL340. Рейс на восток, например в Алматы, — наоборот, нечётный. Направление определяйте по первому участку маршрута после выхода, а действующую таблицу Узбекистана сверяйте в ENR 1.7.</p>
 <p><strong>Высота и эшелон перехода.</strong> Ниже высоты перехода набор и снижение выполняются по давлению QNH (высоты), выше — по стандартному давлению 1013 гПа (эшелоны). В Узбекистане с 02.10.2025 действуют единая высота перехода 13 000 футов и эшелон перехода FL150 (раньше были 6000 футов и FL080).</p>
 <p>На земле DEL и GND интервалы в воздухе не обеспечивают, но GND не допускает конфликтов на РД и перроне.</p>
 <h2 id="mat_ru-7">7. План полёта и разрешение на вылет</h2>
@@ -520,6 +618,12 @@ footer{margin-top:48px;color:var(--muted);font-size:13px;max-width:72ch}
 <li>При необходимости частота после взлёта и другие указания.</li>
 </ol>
 <p>Пилот обязан повторить разрешение. DEL внимательно слушает повторение и исправляет ошибки, особенно в SID, наборе и коде ответчика.</p>
+<p><strong>Разрешение с учётом правил полёта и навигации:</strong></p>
+<ul>
+<li>Борт с RNAV 1 (R в поле 10): «UZB123, … выход BAMUT 2C, ВПП 26R, набор по схеме, ответчик 2041».</li>
+<li>Борт без RNAV 1: тот же выход по DVOR/DME — «UZB456, … выход BAMUT 2H, ВПП 26R, набор по схеме, ответчик 2042».</li>
+<li>Полёт по ПВП: SID не назначается. Маршрут выхода, высоту и код DEL сначала согласует с подходом или районом и только потом передаёт пилоту.</li>
+</ul>
 <h2 id="mat_ru-8">8. METAR, TAF и рабочая ВПП</h2>
 <p><strong>METAR</strong> — регулярная сводка фактической погоды на аэродроме. Разбор примера:</p>
 <pre><code>METAR UZTT 101830Z 29010KT 4000 -SHRA BR OVC012CB 09/08 Q1026 NOSIG
@@ -630,10 +734,53 @@ footer{margin-top:48px;color:var(--muted);font-size:13px;max-width:72ch}
 </tbody>
 </table></div>
 <p>Начальный набор задаёт схема SID. Если нужен другой, его назначает диспетчер, например «набор 8000 футов» / «climb altitude 8000 feet».</p>
+<p><strong>Ещё несколько нужных фраз:</strong></p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Ситуация</th>
+<th>По-русски</th>
+<th>In English</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ошибка в повторении</td>
+<td>UZB123, неправильно, ответчик 2041</td>
+<td>UZB123, negative, squawk 2041</td>
+</tr>
+<tr>
+<td>Попросить подождать</td>
+<td>UZB123, ожидайте</td>
+<td>UZB123, stand by</td>
+</tr>
+<tr>
+<td>Пилот не назвал ATIS или назвал старую букву</td>
+<td>UZB123, информация Bravo, QNH 1026</td>
+<td>UZB123, information Bravo is current, QNH 1026</td>
+</tr>
+<tr>
+<td>Попросить повторить</td>
+<td>UZB123, повторите</td>
+<td>UZB123, say again</td>
+</tr>
+</tbody>
+</table></div>
+<p>На вызов отвечайте на том языке, на котором обратился пилот, и не переходите на другой язык по своей инициативе.</p>
 <p><strong>Обязательно повторяются:</strong> разрешения и указания на ВПП (включая «ждите перед ВПП»), маршрут, высота и эшелон, курс и скорость, код ответчика, давление, частоты. Диспетчер исправляет неверное повторение сразу.</p>
 <p><strong>Метки (формуляры сопровождения)</strong> — подписи самолётов на экране: позывной, тип, назначение, ВПП и SID, код ответчика, отметка о разрешении и статус на земле (запуск, буксировка, руление). Диспетчер обновляет их после каждого указания, чтобы смежные диспетчеры видели актуальное состояние.</p>
 <p><strong>Листы</strong> — списки в клиенте: вылетающие (Departure list), прилетающие (Arrival list), окно плана полёта. DEL работает в основном с листом вылета: назначает код, проверяет SID и набор, ставит отметку о выданном разрешении.</p>
-<h2 id="mat_ru-10">Источники</h2>
+<h2 id="mat_ru-10">10. Конфликтные ситуации</h2>
+<p>Большинство недоразумений в эфире решается спокойной фразой или личным сообщением. Диспетчер не спорит в эфире: если пилот не выполняет указания, его можно вежливо попросить перейти в личный чат.</p>
+<p><strong>Когда вызывать супервайзера VATSIM:</strong></p>
+<ul>
+<li>нарушение Code of Conduct, которое не удалось остановить самому;</li>
+<li>намеренные помехи другим участникам: самолёт стоит на ВПП и не отвечает, кто-то занимает частоту посторонними разговорами;</li>
+<li>оскорбления и неадекватное поведение в эфире или в чате.</li>
+</ul>
+<p><strong>Как вызвать.</strong> В EuroScope наберите команду <code>.wallop</code> и короткое сообщение на английском: позывной нарушителя, где он находится и что происходит. Пример: <code>.wallop UZB777 blocking runway 26R at UZTT, not responding on 120.4 or text</code>. Супервайзер свяжется с вами в личном чате: отвечайте кратко и по фактам.</p>
+<p><strong>Когда не нужно.</strong> Супервайзера не вызывают по техническим проблемам своего клиента, вопросам обучения и расписания, а также когда пилот просто ошибается по неопытности. По вопросам обучения обращайтесь к ментору.</p>
+<h2 id="mat_ru-11">Источники</h2>
 <ul>
 <li>Типовая программа обучения в УТЦ ПД, Приложение № 1, пп. 2.3 и 2.5</li>
 <li><a href="https://vatsim.net/docs/policy/code-of-conduct" target="_blank" rel="noopener">VATSIM Code of Conduct</a></li>
@@ -643,7 +790,7 @@ footer{margin-top:48px;color:var(--muted);font-size:13px;max-width:72ch}
 <li><a href="https://ops.group/blog/uzbekistan-new-icao-codes-new-transition-levels/" target="_blank" rel="noopener">Новые коды ИКАО и высота перехода в Узбекистане, OPSGROUP</a></li>
 </ul></article></section>
 <section class="pane" data-doc="mat" data-lang="uz" hidden>
-<nav class="toc" aria-label="contents"><p class="toc-h">Mundarija</p><ol><li><a href="#mat_uz-1">1. VATSIM ga ulanish</a></li><li><a href="#mat_uz-2">2. VATSIM va real aviatsiya hujjatlari</a></li><li><a href="#mat_uz-3">3. Dispetcherlik pozitsiyalari va mas’uliyat chegaralari</a></li><li><a href="#mat_uz-4">4. DEL va GND ish texnologiyasi</a></li><li><a href="#mat_uz-5">5. AIP va aerodrom sxemalarini o‘qish</a></li><li><a href="#mat_uz-6">6. Havo hududi va eshelonlash asoslari</a></li><li><a href="#mat_uz-7">7. Parvoz rejasi va uchib ketishga ruxsat</a></li><li><a href="#mat_uz-8">8. METAR, TAF va ishchi UQY</a></li><li><a href="#mat_uz-9">9. Frazeologiya, metkalar va varaqlar</a></li><li><a href="#mat_uz-10">Manbalar</a></li></ol></nav>
+<nav class="toc" aria-label="contents"><p class="toc-h">Mundarija</p><ol><li><a href="#mat_uz-1">1. VATSIM ga ulanish</a></li><li><a href="#mat_uz-2">2. VATSIM va real aviatsiya hujjatlari</a></li><li><a href="#mat_uz-3">3. Dispetcherlik pozitsiyalari va mas’uliyat chegaralari</a></li><li><a href="#mat_uz-4">4. DEL va GND ish texnologiyasi</a></li><li><a href="#mat_uz-5">5. AIP va aerodrom sxemalarini o‘qish</a></li><li><a href="#mat_uz-6">6. Havo hududi va eshelonlash asoslari</a></li><li><a href="#mat_uz-7">7. Parvoz rejasi va uchib ketishga ruxsat</a></li><li><a href="#mat_uz-8">8. METAR, TAF va ishchi UQY</a></li><li><a href="#mat_uz-9">9. Frazeologiya, metkalar va varaqlar</a></li><li><a href="#mat_uz-10">10. Nizoli vaziyatlar</a></li><li><a href="#mat_uz-11">Manbalar</a></li></ol></nav>
 <article class="prose"><p>Materiallar kirish testining barcha mavzularini va kirish trenajyorigacha zarur bilimlarni qamrab oladi (Namunaviy dastur, 2.3 va 2.5-bandlar). Toshkentning mahalliy tartiblari ikkinchi bo‘limda berilgan.</p>
 <h2 id="mat_uz-1">1. VATSIM ga ulanish</h2>
 <p>Dispetcher tarmoqqa dispetcherlik klienti (Toshkent RPI da — EuroScope) va ovozli klient orqali ulanadi va to‘rtta parametrni ko‘rsatadi. S1 olinguncha nomzod faqat kuzatuvchi sifatida ulanadi.</p>
@@ -767,6 +914,21 @@ footer{margin-top:48px;color:var(--muted);font-size:13px;max-width:72ch}
 <li>Barcha ma’lumotlar va xaritalar faqat simulyatsiya uchun ishlatiladi va real navigatsiya uchun mo‘ljallanmagan.</li>
 <li>Dolzarblik muhim: AIP har 28 kunda AIRAC sikllari bo‘yicha o‘zgaradi, shuning uchun sxemalar va sektor joriy siklga mos bo‘lishi kerak.</li>
 </ul>
+<p><strong>Dispetcher bilishi kerak bo‘lgan VATSIM va VATRUS hujjatlari:</strong></p>
+<ul>
+<li><strong>User Agreement</strong> — har bir VATSIM ishtirokchisi ro‘yxatdan o‘tishda qabul qiladigan kelishuv: a’zolik shartlari, bir kishiga bitta akkaunt, tarmoq qoidalariga rioya qilish majburiyati.</li>
+<li><strong>Code of Conduct</strong> — tarmoqdagi xulq-atvor qoidalari: chaqiruv belgilari, ismlar, Range, chastotalar, hurmatli muloqot.</li>
+<li><strong>GCAP</strong> — dispetcherlar reytinglari, o‘qitish tartibi, solo-ruxsatnomalar va imtihonlar.</li>
+<li><strong>VATRUS Ustavi</strong> — divizion tuzilishi: rahbariyat, subdivizionlar, ishtirokchilarning huquq va majburiyatlari.</li>
+<li><strong>VATSIM tarmog‘iga ulanishda chaqiruv belgilaridan foydalanish to‘g‘risidagi Nizom</strong> — divizionda pozitsiyalarning qaysi chaqiruv belgilari ruxsat etilgani va ular qanday tuziladi.</li>
+</ul>
+<p><strong>Aviatsiya qonunchiligi.</strong> Imtihonda VATRUS divizioni asos sifatida foydalanadigan RF hujjatlarining asosiy qoidalari so‘raladi:</p>
+<ul>
+<li>RF Havo kodeksi — havo hududidan foydalanish va havo harakatiga xizmat ko‘rsatishning umumiy qoidalari;</li>
+<li>Havo hududidan foydalanishning federal qoidalari — havo hududi sinflari, ruxsat berish tartibi, eshelonlar;</li>
+<li>havo harakatini tashkil etish bo‘yicha federal aviatsiya qoidalari (FAP) — dispetcher ish texnologiyasi, dispetcherlik ruxsatlari, frazeologiya.</li>
+</ul>
+<p>Ularni amaldagi tahrirlari bo‘yicha va HHXK dispetcheriga tegishli qismida o‘rganing. O‘zbekiston havo hududida o‘z havo kodeksi va qoidalari amal qiladi; UZTT da ishlash uchun bevosita O‘zbekiston AIP qo‘llaniladi.</p>
 <h2 id="mat_uz-3">3. Dispetcherlik pozitsiyalari va mas’uliyat chegaralari</h2>
 <p>DEL va GND samolyot UQYni egallaguncha ishlaydi: uchish-qo‘nish yo‘lagi doimo minoraga tegishli.</p>
 <div class="tw"><table>
@@ -825,6 +987,88 @@ footer{margin-top:48px;color:var(--muted);font-size:13px;max-width:72ch}
 </ul>
 <p><strong>Yaqinlashish yoki hudud dispetcheri bilan</strong> DEL marshrut yoki dastlabki balandlik olishni kelishadi, agar ular standartdan farq qilsa.</p>
 <p>Yerdagi asosiy narsa — vaziyatni to‘liq ko‘rish va ustuvorlik bo‘yicha harakat qilish. Avval RY va UQY yonidagi nizolar hal qilinadi, so‘ng minoraga topshirish, so‘ng shatakka olish so‘rovlari va ruxsatlar.</p>
+<p><strong>Toshkentda mas’uliyat zonalari va topshirish chegaralari:</strong></p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Pozitsiya</th>
+<th>Nima uchun javob beradi</th>
+<th>Bortni kimga topshiradi</th>
+<th>Qachon</th>
+<th>Chastota</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DEL</td>
+<td>rejani tekshirish, uchib ketishga ruxsat, kod</td>
+<td>GND</td>
+<td>ruxsat to‘g‘ri takrorlangandan keyin</td>
+<td>121,7</td>
+</tr>
+<tr>
+<td>GND (uchib ketish)</td>
+<td>shatakka olish, ishga tushirish, perron va RY bo‘ylab rulejka</td>
+<td>TWR</td>
+<td>kutish joyiga yaqinlashganda</td>
+<td>120,4</td>
+</tr>
+<tr>
+<td>TWR</td>
+<td>UQY, uchish, qo‘nish, UQY ni kesib o‘tish</td>
+<td>GND</td>
+<td>qo‘nayotgan bort UQY ni bo‘shatgandan keyin</td>
+<td>121,7</td>
+</tr>
+<tr>
+<td>GND (kelish)</td>
+<td>turar joygacha rulejka</td>
+<td>—</td>
+<td>turar joyda to‘xtaguncha</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<p>UQY GND zonasiga kirmaydi: UQY ni har qanday egallash yoki kesib o‘tish — faqat minora ruxsati bilan.</p>
+<p><strong>Dispetcherlik xabarlari turlari.</strong> Dispetcher ekipajga aynan nimani uzatayotganini tushunishi kerak:</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Tur</th>
+<th>Bu nima</th>
+<th>DEL yoki GND da misol</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ruxsat</td>
+<td>ko‘rsatilgan shartlarda harakat qilish huquqi</td>
+<td>«разрешено до Шереметьево…», «рулите к месту ожидания ВПП 26R по РД…»</td>
+</tr>
+<tr>
+<td>Ko‘rsatma</td>
+<td>harakatni bajarish talabi</td>
+<td>«ждите перед ВПП 26R», «работайте с Ташкент-Тауэр 120,4»</td>
+</tr>
+<tr>
+<td>Tavsiya</td>
+<td>maslahat, qarorni ekipaj qabul qiladi</td>
+<td>«рекомендую запросить запуск через 10 минут, очередь на вылет»</td>
+</tr>
+<tr>
+<td>Axborot</td>
+<td>harakat talab qilmaydigan ma’lumot</td>
+<td>«информация Bravo, QNH 1026», «слева буксируется A320»</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Ruxsatlar amal qilish chegaralari.</strong> Uchib ketishga ruxsat unda nomlangan punktgacha (ruxsat chegarasi), odatda manzil aerodromigacha amal qiladi va uchishga huquq bermaydi: uni minora beradi. Shatakka olish va ishga tushirishga ruxsat rulejka qilish huquqini bermaydi. Rulejkaga ruxsat nomlangan kutish joyigacha amal qiladi va UQY ni egallash yoki kesib o‘tish huquqini bermaydi.</p>
+<p><strong>Navbatchilikni qabul qilish va topshirish.</strong></p>
+<ul>
+<li>Pozitsiyani qabul qilayotganda almashinayotgan dispetcherdan ishchi UQY va ATIS harfini, chastotadagi bortlar va ularning holatini (kimga ruxsat berilgan, kim kutmoqda), cheklovlar va alohida holatlarni bilib oling. Chastota dispetchersiz qolmasligi uchun almashinayotgan dispetcher uzilgandan keyin darhol ulaning.</li>
+<li>EuroScope da pozitsiyangiz ATIS matnini to‘ldiring: pozitsiya nomi va ATIS chastotasi (UZB paketida u kirish profillarida to‘ldirilgan).</li>
+<li>Pozitsiyani topshirayotganda o‘rningizga keluvchiga vaziyatni shu bandlar bo‘yicha topshiring. Almashinuvchi bo‘lmasa, yuqori pozitsiyani oldindan ogohlantiring, chastotadagi uchuvchilarga keyin kim bilan ishlashni ayting («Ташкент-Деливери закрывается, работайте с Ташкент-Руление 121,7») va shundan keyingina uzing.</li>
+</ul>
 <h2 id="mat_uz-5">5. AIP va aerodrom sxemalarini o‘qish</h2>
 <p>O‘zbekiston AIP (aeronavigatsiya axboroti to‘plami) <a href="https://uzaeronavigation.com/ais/" target="_blank" rel="noopener">O‘zaeronavigatsiya</a> saytida e’lon qilingan va uch qismdan iborat.</p>
 <div class="tw"><table>
@@ -944,6 +1188,7 @@ footer{margin-top:48px;color:var(--muted);font-size:13px;max-width:72ch}
 <li>Gorizontal: bo‘ylama (vaqt yoki masofa bo‘yicha) va yon.</li>
 <li>Eshelon parvoz yo‘nalishiga qarab tanlanadi (AIP, ENR 1.7 dagi kreyser eshelonlari jadvali bo‘yicha). DEL rejadagi eshelon unga mosligini tekshiradi.</li>
 </ul>
+<p><strong>Eshelonni tekshirish misoli.</strong> ICAO jadvalida 000–179° magnit yo‘l burchaklari uchun toq eshelonlar (FL290, FL310, FL330…), 180–359° uchun — juft eshelonlar (FL300, FL320, FL340…) ishlatiladi. UZTT → UUEE reysi shimoli-g‘arbga ketadi, demak unga juft eshelon kerak; rejadagi FL330 — xato, DEL FL320 yoki FL340 ni taklif qiladi. Sharqqa, masalan Olmaotaga reys — aksincha, toq eshelon. Yo‘nalishni chiqishdan keyingi marshrutning birinchi qismi bo‘yicha aniqlang, O‘zbekistonning amaldagi jadvalini esa ENR 1.7 da tekshiring.</p>
 <p><strong>O‘tish balandligi va eshelon.</strong> O‘tish balandligidan pastda balandlik olish va pasayish QNH bosimi bo‘yicha (balandliklar), yuqorida — standart 1013 gPa bosimi bo‘yicha (eshelonlar) bajariladi. O‘zbekistonda 02.10.2025 dan yagona o‘tish balandligi 13 000 fut va o‘tish esheloni FL150 amal qiladi (avval 6000 fut va FL080 edi).</p>
 <p>Yerda DEL va GND havodagi intervallarni ta’minlamaydi, lekin GND RY va perronda nizolarga yo‘l qo‘ymaydi.</p>
 <h2 id="mat_uz-7">7. Parvoz rejasi va uchib ketishga ruxsat</h2>
@@ -1065,6 +1310,12 @@ footer{margin-top:48px;color:var(--muted);font-size:13px;max-width:72ch}
 <li>Zarur bo‘lsa, uchishdan keyingi chastota va boshqa ko‘rsatmalar.</li>
 </ol>
 <p>Uchuvchi ruxsatni takrorlashi shart. DEL takrorlashni diqqat bilan tinglaydi va xatolarni, ayniqsa SID, balandlik olish va javob qaytargich kodidagi xatolarni tuzatadi.</p>
+<p><strong>Parvoz qoidalari va navigatsiyani hisobga olgan ruxsat:</strong></p>
+<ul>
+<li>RNAV 1 li bort (10-maydonda R): «UZB123, … выход BAMUT 2C, ВПП 26R, набор по схеме, ответчик 2041».</li>
+<li>RNAV 1 siz bort: xuddi shu chiqish DVOR/DME bo‘yicha — «UZB456, … выход BAMUT 2H, ВПП 26R, набор по схеме, ответчик 2042».</li>
+<li>VFR bo‘yicha parvoz: SID tayinlanmaydi. DEL chiqish marshruti, balandlik va kodni avval yaqinlashish yoki hudud dispetcheri bilan kelishadi va shundan keyingina uchuvchiga uzatadi.</li>
+</ul>
 <h2 id="mat_uz-8">8. METAR, TAF va ishchi UQY</h2>
 <p><strong>METAR</strong> — aerodromdagi haqiqiy ob-havo bo‘yicha muntazam xabar. Misolni tahlil qilamiz:</p>
 <pre><code>METAR UZTT 101830Z 29010KT 4000 -SHRA BR OVC012CB 09/08 Q1026 NOSIG
@@ -1175,10 +1426,53 @@ footer{margin-top:48px;color:var(--muted);font-size:13px;max-width:72ch}
 </tbody>
 </table></div>
 <p>Dastlabki balandlik olishni SID sxemasi belgilaydi. Boshqasi kerak bo‘lsa, uni dispetcher tayinlaydi, masalan «набор 8000 футов» / «climb altitude 8000 feet».</p>
+<p><strong>Yana bir nechta kerakli iboralar:</strong></p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Vaziyat</th>
+<th>Ruscha</th>
+<th>In English</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Takrorlashda xato</td>
+<td>UZB123, неправильно, ответчик 2041</td>
+<td>UZB123, negative, squawk 2041</td>
+</tr>
+<tr>
+<td>Kutib turishni so‘rash</td>
+<td>UZB123, ожидайте</td>
+<td>UZB123, stand by</td>
+</tr>
+<tr>
+<td>Uchuvchi ATIS ni aytmagan yoki eski harfni aytgan</td>
+<td>UZB123, информация Bravo, QNH 1026</td>
+<td>UZB123, information Bravo is current, QNH 1026</td>
+</tr>
+<tr>
+<td>Takrorlashni so‘rash</td>
+<td>UZB123, повторите</td>
+<td>UZB123, say again</td>
+</tr>
+</tbody>
+</table></div>
+<p>Chaqiruvga uchuvchi murojaat qilgan tilda javob bering va o‘z tashabbusingiz bilan boshqa tilga o‘tmang.</p>
 <p><strong>Albatta takrorlanadi:</strong> UQY bo‘yicha ruxsat va ko‘rsatmalar («UQY oldida kuting» ham), marshrut, balandlik va eshelon, kurs va tezlik, javob qaytargich kodi, bosim, chastotalar. Dispetcher noto‘g‘ri takrorlashni darhol tuzatadi.</p>
 <p><strong>Metkalar (kuzatuv formulyarlari)</strong> — ekrandagi samolyot yozuvlari: chaqiruv belgisi, turi, manzil, UQY va SID, javob qaytargich kodi, ruxsat belgisi va yerdagi holat (ishga tushirish, shatakka olish, rulejka). Dispetcher har bir ko‘rsatmadan keyin ularni yangilaydi, shunda qo‘shni dispetcherlar dolzarb holatni ko‘radi.</p>
 <p><strong>Varaqlar</strong> — klientdagi ro‘yxatlar: uchib ketayotganlar (Departure list), kelayotganlar (Arrival list), parvoz rejasi oynasi. DEL asosan uchib ketish varag‘i bilan ishlaydi: kod tayinlaydi, SID va balandlik olishni tekshiradi, berilgan ruxsat belgisini qo‘yadi.</p>
-<h2 id="mat_uz-10">Manbalar</h2>
+<h2 id="mat_uz-10">10. Nizoli vaziyatlar</h2>
+<p>Efirdagi ko‘pchilik tushunmovchiliklar xotirjam ibora yoki shaxsiy xabar bilan hal qilinadi. Dispetcher efirda bahslashmaydi: agar uchuvchi ko‘rsatmalarni bajarmasa, undan muloyimlik bilan shaxsiy chatga o‘tishni so‘rash mumkin.</p>
+<p><strong>VATSIM supervayzerini qachon chaqirish kerak:</strong></p>
+<ul>
+<li>o‘zingiz to‘xtata olmagan Code of Conduct buzilishi;</li>
+<li>boshqa ishtirokchilarga ataylab xalaqit berish: samolyot UQY da turibdi va javob bermaydi, kimdir chastotani begona suhbatlar bilan band qilmoqda;</li>
+<li>efirda yoki chatda haqoratlar va nomaqbul xatti-harakat.</li>
+</ul>
+<p><strong>Qanday chaqirish.</strong> EuroScope da <code>.wallop</code> buyrug‘ini va ingliz tilida qisqa xabarni yozing: qoidabuzarning chaqiruv belgisi, u qayerda va nima sodir bo‘lmoqda. Misol: <code>.wallop UZB777 blocking runway 26R at UZTT, not responding on 120.4 or text</code>. Supervayzer siz bilan shaxsiy chatda bog‘lanadi: qisqa va faktlar bo‘yicha javob bering.</p>
+<p><strong>Qachon kerak emas.</strong> Supervayzer o‘z klientingizdagi texnik muammolar, o‘qish va jadval masalalari bo‘yicha, shuningdek uchuvchi shunchaki tajribasizligi tufayli xato qilganda chaqirilmaydi. O‘qish masalalari bo‘yicha mentorga murojaat qiling.</p>
+<h2 id="mat_uz-11">Manbalar</h2>
 <ul>
 <li>O‘quv markazida Namunaviy o‘quv dasturi, 1-ilova, 2.3 va 2.5-bandlar</li>
 <li><a href="https://vatsim.net/docs/policy/code-of-conduct" target="_blank" rel="noopener">VATSIM Code of Conduct</a></li>
@@ -2244,7 +2538,7 @@ footer{margin-top:48px;color:var(--muted);font-size:13px;max-width:72ch}
 <li>☐  Назвать уровни документов и порядок их применения: VATSIM, ВАТРУС, Субдивизион; реальные документы — если не противоречат правилам VATSIM.</li>
 <li>☐  Объяснить, что регулируют User Agreement, Code of Conduct и GCAP.</li>
 <li>☐  Знать Устав ВАТРУС и Положение об использовании позывных при подключении к сети VATSIM в части работы диспетчера.</li>
-<li>☐  Знать, какие положения Воздушного кодекса РФ, федеральных правил и ФАП относятся к работе диспетчера ОВД. Эти документы изучаются по первоисточникам: в учебных материалах их нет.</li>
+<li>☐  Знать, какие положения Воздушного кодекса РФ, федеральных правил и ФАП относятся к работе диспетчера ОВД. Сами документы изучаются по первоисточникам.</li>
 </ul>
 <p>Где читать: Учебные материалы, раздел 2.</p>
 <h2 id="exam_ru-9">9. Подготовка к дежурству, приём и сдача дежурства</h2>
@@ -2260,7 +2554,7 @@ footer{margin-top:48px;color:var(--muted);font-size:13px;max-width:72ch}
 <li>☐  Объяснить границы разрешений: разрешение на вылет действует до пункта, указанного в нём; разрешение на руление — до указанного места ожидания и не даёт права занимать или пересекать ВПП.</li>
 <li>☐  Привести примеры каждого из четырёх видов на позициях DEL и GND.</li>
 </ul>
-<p>Где читать: отдельного раздела в учебных материалах нет; примеры фраз — Учебные материалы, раздел 9.</p>
+<p>Где читать: Учебные материалы, раздел 4 («Виды диспетчерских сообщений» и «Границы действия разрешений»).</p>
 <h2 id="exam_ru-11">11. Правила полётов ППП и ПВП</h2>
 <ul>
 <li>☐  Объяснить ППП и ПВП: кто отвечает за интервалы и за обход препятствий.</li>
@@ -2298,7 +2592,7 @@ footer{margin-top:48px;color:var(--muted);font-size:13px;max-width:72ch}
 <li>☐  Объяснить причину вызова кратко и по делу: позывной нарушителя, частота или позиция, что произошло и когда.</li>
 <li>☐  Знать, чего не делать: не спорить в эфире, не вызывать супервайзера по техническим вопросам и вопросам обучения.</li>
 </ul>
-<p>Где читать: VATSIM Code of Conduct; вопросы обучения — к ментору.</p></article></section>
+<p>Где читать: Учебные материалы, раздел 10; VATSIM Code of Conduct.</p></article></section>
 <section class="pane" data-doc="exam" data-lang="uz" hidden>
 <nav class="toc" aria-label="contents"><p class="toc-h">Mundarija</p><ol><li><a href="#exam_uz-1">1. VATSIM tarmog‘iga ulanish qoidalari</a></li><li><a href="#exam_uz-2">2. Dispetcherlik punktining vazifasi</a></li><li><a href="#exam_uz-3">3. Ish texnologiyasi bo‘yicha havo harakatiga xizmat ko‘rsatish</a></li><li><a href="#exam_uz-4">4. Rus tilida radioalmashuv qoidalari va frazeologiyasi</a></li><li><a href="#exam_uz-5">5. Ingliz tilida radioalmashuv qoidalari va frazeologiyasi</a></li><li><a href="#exam_uz-6">6. AIP xaritalarini o‘qish qoidalari</a></li><li><a href="#exam_uz-7">7. Toshkent aeroportida HHXK xususiyatlari</a></li><li><a href="#exam_uz-8">8. Aviatsiya qonunchiligi, VATSIM va VATRUS hujjatlari</a></li><li><a href="#exam_uz-9">9. Navbatchilikka tayyorgarlik, navbatchilikni qabul qilish va topshirish</a></li><li><a href="#exam_uz-10">10. Ko‘rsatma, tavsiya, axborot va ruxsat</a></li><li><a href="#exam_uz-11">11. IFR va VFR parvoz qoidalari</a></li><li><a href="#exam_uz-12">12. Eshelonlar va parvoz yo‘nalishi qoidasi</a></li><li><a href="#exam_uz-13">13. Uchib ketishga dispetcherlik ruxsati</a></li><li><a href="#exam_uz-14">14. METAR ni o‘qish</a></li><li><a href="#exam_uz-15">15. Nizoli vaziyatlarni hal qilish</a></li></ol></nav>
 <article class="prose"><p>Imtihonning o‘n besh savoli va UZTT_DEL hamda UZTT_GND pozitsiyalarida har biri bo‘yicha nimaga tayyor bo‘lish kerakligi. O‘z so‘zlaringiz bilan tushuntira oladigan va misolda ko‘rsata oladigan bandlarni belgilab boring. Har bir savol oxirida qayerda o‘qish kerakligi ko‘rsatilgan.</p>
@@ -2367,7 +2661,7 @@ footer{margin-top:48px;color:var(--muted);font-size:13px;max-width:72ch}
 <li>☐  Hujjatlar darajalari va ularni qo‘llash tartibini ayting: VATSIM, VATRUS, Subdivizion; real hujjatlar — VATSIM qoidalariga zid bo‘lmasa.</li>
 <li>☐  User Agreement, Code of Conduct va GCAP nimani tartibga solishini tushuntiring.</li>
 <li>☐  VATRUS Ustavini va VATSIM tarmog‘iga ulanishda chaqiruv belgilaridan foydalanish to‘g‘risidagi Nizomni dispetcher ishiga tegishli qismida biling.</li>
-<li>☐  RF Havo kodeksi, federal qoidalar va FAP ning qaysi qoidalari HHXK dispetcheri ishiga tegishli ekanini biling. Bu hujjatlar asl manbalardan o‘rganiladi: o‘quv materiallarida ular yo‘q.</li>
+<li>☐  RF Havo kodeksi, federal qoidalar va FAP ning qaysi qoidalari HHXK dispetcheri ishiga tegishli ekanini biling. Hujjatlarning o‘zi asl manbalardan o‘rganiladi.</li>
 </ul>
 <p>Qayerda o‘qish: O‘quv materiallari, 2-bo‘lim.</p>
 <h2 id="exam_uz-9">9. Navbatchilikka tayyorgarlik, navbatchilikni qabul qilish va topshirish</h2>
@@ -2383,7 +2677,7 @@ footer{margin-top:48px;color:var(--muted);font-size:13px;max-width:72ch}
 <li>☐  Ruxsatlar chegarasini tushuntiring: uchib ketishga ruxsat unda ko‘rsatilgan punktgacha amal qiladi; rulejkaga ruxsat ko‘rsatilgan kutish joyigacha amal qiladi va UQY ni egallash yoki kesib o‘tish huquqini bermaydi.</li>
 <li>☐  DEL va GND pozitsiyalarida to‘rt turning har biriga misol keltiring.</li>
 </ul>
-<p>Qayerda o‘qish: o‘quv materiallarida alohida bo‘lim yo‘q; iboralar misollari — O‘quv materiallari, 9-bo‘lim.</p>
+<p>Qayerda o‘qish: O‘quv materiallari, 4-bo‘lim («Dispetcherlik xabarlari turlari» va «Ruxsatlar amal qilish chegaralari»).</p>
 <h2 id="exam_uz-11">11. IFR va VFR parvoz qoidalari</h2>
 <ul>
 <li>☐  IFR va VFR ni tushuntiring: intervallar va to‘siqlarni chetlab o‘tish uchun kim javob beradi.</li>
@@ -2421,7 +2715,7 @@ footer{margin-top:48px;color:var(--muted);font-size:13px;max-width:72ch}
 <li>☐  Chaqiruv sababini qisqa va aniq tushuntiring: qoidabuzarning chaqiruv belgisi, chastota yoki pozitsiya, nima va qachon sodir bo‘lgani.</li>
 <li>☐  Nima qilmaslik kerakligini biling: efirda bahslashmang, supervayzerni texnik masalalar va o‘qish masalalari bo‘yicha chaqirmang.</li>
 </ul>
-<p>Qayerda o‘qish: VATSIM Code of Conduct; o‘qish masalalari — mentorga.</p>
+<p>Qayerda o‘qish: O‘quv materiallari, 10-bo‘lim; VATSIM Code of Conduct.</p>
 <p>Tarjima ruscha matn asosida tayyorlangan. Ziddiyat bo‘lsa, ruscha matn ustun turadi.</p></article></section>
 
   <footer data-ru="Только для виртуальной сети VATSIM. Не использовать в реальной авиации. Вопросы по материалам задавайте ментору или инструктору Субдивизиона." data-uz="Faqat VATSIM virtual tarmog‘i uchun. Real aviatsiyada foydalanilmasin. Materiallar bo‘yicha savollarni Subdivizion mentori yoki instruktoriga bering.">Только для виртуальной сети VATSIM. Не использовать в реальной авиации. Вопросы по материалам задавайте ментору или инструктору Субдивизиона.</footer>
