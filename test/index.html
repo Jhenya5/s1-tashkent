@@ -22,6 +22,7 @@ h1{font-size:30px;line-height:1.15;margin:0}
 .lang button{border:0;background:var(--surface);color:var(--ink);padding:8px 14px;font:500 14px var(--sans);cursor:pointer}
 .lang button[aria-pressed="true"]{background:var(--accent);color:var(--surface)}
 .card{background:var(--surface);border:1px solid var(--rule);border-radius:8px;padding:20px 24px;margin-top:24px}
+.honest{margin:0 0 16px;padding:12px 16px;border-left:4px solid var(--accent);background:var(--sel);border-radius:0 6px 6px 0;font-weight:500}
 .rules{margin:0;padding-left:20px}
 .rules li{margin:4px 0}
 label.f{display:block;font-weight:500;margin:14px 0 6px}
@@ -56,6 +57,7 @@ textarea{width:100%;min-height:96px;padding:10px 12px;border:1px solid var(--rul
 </header>
 
 <section class="card" id="intro">
+  <p class="honest" data-i="honest"></p>
   <ul class="rules" data-i="rules"></ul>
   <label class="f" for="nm" data-i="name"></label><input id="nm" type="text" autocomplete="name">
   <label class="f" for="cid" data-i="cid"></label><input id="cid" type="text" inputmode="numeric" autocomplete="off">
@@ -83,12 +85,12 @@ var D={"q": [{"topic": 0, "ru": {"q": "Какой позывной правил�
 var T={
 ru:{eyebrow:"Этап 1 · UZTT DEL и GND",title:"Входной тест, вариант 1",
 rules:["30 вопросов по 10 темам учебных материалов и местных процедур.","В каждом вопросе один верный ответ из четырёх.","Время — 20 минут. Таймер запускается кнопкой «Начать тест», по истечении времени тест завершится сам.","Проходной результат — 80 %, то есть 24 верных ответа.","Не обновляйте и не закрывайте страницу во время теста.","После завершения вы получите код ответов. Отправьте его инструктору в Discord — он сообщит результат."],
-name:"Имя и фамилия",cid:"VATSIM CID",start:"Начать тест",errName:"Введите имя и CID (только цифры).",
+honest:"Постарайтесь не подглядывать в материалы и проверьте себя честно. Тест нужен, чтобы понять, что вы уже знаете, а что стоит повторить перед тренажёром.",name:"Имя и фамилия",cid:"VATSIM CID",start:"Начать тест",errName:"Введите имя и CID (только цифры).",
 answered:"Отвечено",left:"Осталось",finish:"Завершить тест",confirmText:"Вы ответили не на все вопросы. Завершить тест?",yes:"Завершить",no:"Вернуться к тесту",
 doneTitle:"Тест завершён",doneText:"Скопируйте код ниже и отправьте его инструктору в Discord (Central Asian FSS).",copy:"Скопировать код",copied:"Скопировано",doneNote:"Результат сообщит инструктор. Правильные ответы на этой странице не показываются.",timeout:"Время вышло."},
 uz:{eyebrow:"1-bosqich · UZTT DEL va GND",title:"Kirish testi, 1-variant",
 rules:["O‘quv materiallari va mahalliy tartiblarning 10 ta mavzusi bo‘yicha 30 ta savol.","Har bir savolda to‘rttadan bitta to‘g‘ri javob bor.","Vaqt — 20 daqiqa. Taymer «Testni boshlash» tugmasi bilan ishga tushadi, vaqt tugaganda test o‘zi yakunlanadi.","O‘tish natijasi — 80 %, ya’ni 24 ta to‘g‘ri javob.","Test davomida sahifani yangilamang va yopmang.","Yakunlangandan keyin javoblar kodini olasiz. Uni Discord da instruktorga yuboring — u natijani aytadi."],
-name:"Ism va familiya",cid:"VATSIM CID",start:"Testni boshlash",errName:"Ism va CID ni kiriting (faqat raqamlar).",
+honest:"Materiallarga qaramaslikka harakat qiling va o‘zingizni halol tekshiring. Test nimani bilishingizni va trenajyordan oldin nimani takrorlash kerakligini tushunish uchun kerak.",name:"Ism va familiya",cid:"VATSIM CID",start:"Testni boshlash",errName:"Ism va CID ni kiriting (faqat raqamlar).",
 answered:"Javob berildi",left:"Qoldi",finish:"Testni yakunlash",confirmText:"Siz barcha savollarga javob bermadingiz. Testni yakunlaysizmi?",yes:"Yakunlash",no:"Testga qaytish",
 doneTitle:"Test yakunlandi",doneText:"Quyidagi kodni nusxalab, Discord da (Central Asian FSS) instruktorga yuboring.",copy:"Kodni nusxalash",copied:"Nusxalandi",doneNote:"Natijani instruktor aytadi. To‘g‘ri javoblar bu sahifada ko‘rsatilmaydi.",timeout:"Vaqt tugadi."}};
 var lang="ru",ans=new Array(D.q.length).fill(null),end=0,timer=null,finished=false,K="uztt-test-v1";
