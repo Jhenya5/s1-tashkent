@@ -76,6 +76,7 @@ textarea{width:100%;min-height:96px;padding:10px 12px;border:1px solid var(--rul
 
 <section class="card" id="done" hidden>
   <h2 style="margin-top:0" data-i="doneTitle"></h2>
+  <p id="sendst" class="muted"></p>
   <p data-i="doneText"></p>
   <textarea id="code" readonly></textarea>
   <button class="btn" id="copy" type="button" data-i="copy"></button>
@@ -89,18 +90,19 @@ ru:{crumbs:["VATRUS","Центральная Азия","Этап 1","Входн�
 rules:["30 вопросов по 10 темам учебных материалов и местных процедур.","В каждом вопросе один верный ответ из четырёх.","Время — 20 минут. Таймер запускается кнопкой «Начать тест», по истечении времени тест завершится сам.","Проходной результат — 80 %, то есть 24 верных ответа.","Не обновляйте и не закрывайте страницу во время теста.","После завершения вы получите код ответов. Отправьте его инструктору в Discord — он сообщит результат."],
 honest:"Постарайтесь не подглядывать в материалы и проверьте себя честно. Тест нужен, чтобы понять, что вы уже знаете, а что стоит повторить перед тренажёром.",name:"Имя и фамилия",cid:"VATSIM CID",start:"Начать тест",errName:"Введите имя и CID (только цифры).",
 answered:"Отвечено",left:"Осталось",finish:"Завершить тест",confirmText:"Вы ответили не на все вопросы. Завершить тест?",yes:"Завершить",no:"Вернуться к тесту",
-doneTitle:"Тест завершён",doneText:"Скопируйте код ниже и отправьте его инструктору в Discord (Central Asian FSS).",copy:"Скопировать код",copied:"Скопировано",doneNote:"Результат сообщит инструктор. Правильные ответы на этой странице не показываются.",timeout:"Время вышло."},
+doneTitle:"Тест завершён",sending:"Отправляем ответы инструктору…",sent:"Ответы отправлены инструктору.",sendFail:"Отправить ответы автоматически не получилось.",doneText:"На всякий случай скопируйте код ниже и отправьте его инструктору в Discord (Central Asian FSS).",copy:"Скопировать код",copied:"Скопировано",doneNote:"Результат сообщит инструктор. Правильные ответы на этой странице не показываются.",timeout:"Время вышло."},
 uz:{crumbs:["VATRUS","Markaziy Osiyo","1-bosqich","Kirish testi"],title:"Kirish testi, 1-variant",
 rules:["O‘quv materiallari va mahalliy tartiblarning 10 ta mavzusi bo‘yicha 30 ta savol.","Har bir savolda to‘rttadan bitta to‘g‘ri javob bor.","Vaqt — 20 daqiqa. Taymer «Testni boshlash» tugmasi bilan ishga tushadi, vaqt tugaganda test o‘zi yakunlanadi.","O‘tish natijasi — 80 %, ya’ni 24 ta to‘g‘ri javob.","Test davomida sahifani yangilamang va yopmang.","Yakunlangandan keyin javoblar kodini olasiz. Uni Discord da instruktorga yuboring — u natijani aytadi."],
 honest:"Materiallarga qaramaslikka harakat qiling va o‘zingizni halol tekshiring. Test nimani bilishingizni va trenajyordan oldin nimani takrorlash kerakligini tushunish uchun kerak.",name:"Ism va familiya",cid:"VATSIM CID",start:"Testni boshlash",errName:"Ism va CID ni kiriting (faqat raqamlar).",
 answered:"Javob berildi",left:"Qoldi",finish:"Testni yakunlash",confirmText:"Siz barcha savollarga javob bermadingiz. Testni yakunlaysizmi?",yes:"Yakunlash",no:"Testga qaytish",
-doneTitle:"Test yakunlandi",doneText:"Quyidagi kodni nusxalab, Discord da (Central Asian FSS) instruktorga yuboring.",copy:"Kodni nusxalash",copied:"Nusxalandi",doneNote:"Natijani instruktor aytadi. To‘g‘ri javoblar bu sahifada ko‘rsatilmaydi.",timeout:"Vaqt tugadi."}};
+doneTitle:"Test yakunlandi",sending:"Javoblar instruktorga yuborilmoqda…",sent:"Javoblar instruktorga yuborildi.",sendFail:"Javoblarni avtomatik yuborib bo‘lmadi.",doneText:"Har ehtimolga qarshi quyidagi kodni nusxalab, Discord da (Central Asian FSS) instruktorga yuboring.",copy:"Kodni nusxalash",copied:"Nusxalandi",doneNote:"Natijani instruktor aytadi. To‘g‘ri javoblar bu sahifada ko‘rsatilmaydi.",timeout:"Vaqt tugadi."}};
+var FORM="https://docs.google.com/forms/d/e/1FAIpQLSdSSbeqKn12XUd4BYERHYEUDmSr60ggNux2E9Sktdv8Mjy-sQ/formResponse",sendState="";
 var lang="ru",ans=new Array(D.q.length).fill(null),end=0,timer=null,finished=false,K="uztt-test-v1";
-function save(){try{localStorage.setItem(K,JSON.stringify({ans:ans,end:end,finished:finished,nm:nm.value,cid:cid.value,lang:lang}))}catch(e){}}
+function save(){try{localStorage.setItem(K,JSON.stringify({ans:ans,end:end,finished:finished,sendState:sendState,nm:nm.value,cid:cid.value,lang:lang}))}catch(e){}}
 var $=function(i){return document.getElementById(i)},nm=$("nm"),cid=$("cid");
 function txt(){var t=T[lang];document.documentElement.lang=lang;
 document.querySelectorAll("[data-i]").forEach(function(e){var k=e.dataset.i;if(k==="rules"){e.innerHTML="";t.rules.forEach(function(r){var li=document.createElement("li");li.textContent=r;e.appendChild(li)})}else e.textContent=t[k]});
-document.querySelectorAll("[data-c]").forEach(function(e){e.textContent=t.crumbs[+e.dataset.c]});document.querySelectorAll(".lang button").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.l===lang)});render();upd()}
+document.querySelectorAll("[data-c]").forEach(function(e){e.textContent=t.crumbs[+e.dataset.c]});document.querySelectorAll(".lang button").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.l===lang)});render();upd();if($("sendst"))st()}
 function render(){var box=$("qs");box.innerHTML="";var last=-1;
 D.q.forEach(function(q,i){if(q.topic!==last){last=q.topic;var h=document.createElement("h2");h.textContent=D.topics[lang][q.topic];box.appendChild(h);
  if(q.topic===8){var n=document.createElement("p");n.className="note";n.textContent=D.notes[lang];box.appendChild(n)}}
@@ -115,8 +117,12 @@ function tick(){upd();if(Date.now()>=end)finish(true)}
 function begin(){$("intro").hidden=true;$("test").hidden=false;timer=setInterval(tick,1000);tick()}
 function code(){var c=ans.map(function(a){return a===null?"-":"ABCD"[a]}).join("");var g=c.match(/.{1,5}/g).join(" ");
  return "UZTT-V1 | "+nm.value.trim()+" | CID "+cid.value.trim()+" | "+g}
+function st(){var e=$("sendst");e.textContent=sendState?T[lang][sendState]:""}
+function send(){if(sendState==="sent")return;sendState="sending";st();save();
+ var b=new URLSearchParams();b.append("entry.1725147629",nm.value.trim());b.append("entry.1337438438",cid.value.trim());b.append("entry.94430376","V1");b.append("entry.1209481090",ans.map(function(a){return a===null?"-":"ABCD"[a]}).join("").match(/.{1,5}/g).join(" "));
+ fetch(FORM,{method:"POST",mode:"no-cors",body:b}).then(function(){sendState="sent";st();save()},function(){sendState="sendFail";st();save()})}
 function finish(auto){if(finished&&!auto)return;finished=true;clearInterval(timer);save();$("test").hidden=true;$("intro").hidden=true;$("done").hidden=false;
- $("code").value=code();window.scrollTo(0,0)}
+ $("code").value=code();send();window.scrollTo(0,0)}
 $("start").addEventListener("click",function(){if(!nm.value.trim()||!/^\d{5,8}$/.test(cid.value.trim())){$("err").textContent=T[lang].errName;return}
  $("err").textContent="";end=Date.now()+20*60*1000;save();begin()});
 $("fin").addEventListener("click",function(){if(ans.indexOf(null)>=0){$("confirm").hidden=false;$("confirm").scrollIntoView({block:"center"})}else finish()});
@@ -124,8 +130,8 @@ $("yes").addEventListener("click",function(){finish()});$("no").addEventListener
 $("copy").addEventListener("click",function(){var t=$("code");t.select();var ok=function(){$("copy").textContent=T[lang].copied};
  if(navigator.clipboard)navigator.clipboard.writeText(t.value).then(ok,function(){document.execCommand("copy");ok()});else{document.execCommand("copy");ok()}});
 document.querySelectorAll(".lang button").forEach(function(b){b.addEventListener("click",function(){lang=b.dataset.l;txt();save()})});
-try{var s=JSON.parse(localStorage.getItem(K)||"null");if(s){ans=s.ans||ans;end=s.end||0;finished=!!s.finished;nm.value=s.nm||"";cid.value=s.cid||"";lang=s.lang||lang}}catch(e){}
-txt();if(finished){$("intro").hidden=true;$("done").hidden=false;$("code").value=code()}else if(end){if(Date.now()>=end)finish(true);else begin()}
+try{var s=JSON.parse(localStorage.getItem(K)||"null");if(s){ans=s.ans||ans;end=s.end||0;finished=!!s.finished;sendState=s.sendState||"";nm.value=s.nm||"";cid.value=s.cid||"";lang=s.lang||lang}}catch(e){}
+txt();if(finished){$("intro").hidden=true;$("done").hidden=false;$("code").value=code();if(sendState!=="sent")send();else st()}else if(end){if(Date.now()>=end)finish(true);else begin()}
 </script>
 </body>
 </html>
