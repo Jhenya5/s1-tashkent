@@ -3190,7 +3190,8 @@ footer{margin-top:48px;color:var(--muted);font-size:13px;max-width:72ch}
 <li>В примерах АП РУз частота пишется с запятой и в английском тексте: 121,7. Позывной борта в примерах — «Узбек 411» / «Uzbek 411».</li>
 </ul>
 <h2 id="phr_ru-2">Clearance delivery: Ташкент-Деливери</h2>
-<p>Разрешение на полёт по маршруту (п. 122) содержит элементы в таком порядке:</p>
+<p>Разрешение на вылет даётся в двух вариантах. По АП РУз номер ВПП сообщает Руление; на VATSIM его обычно даёт сам DEL.</p>
+<p><strong>Вариант АП РУз.</strong> Разрешение на полёт по маршруту (п. 122) содержит элементы в таком порядке:</p>
 <ol>
 <li>Позывной борта.</li>
 <li>Аэродром назначения.</li>
@@ -3237,6 +3238,39 @@ footer{margin-top:48px;color:var(--muted);font-size:13px;max-width:72ch}
 </tr>
 </tbody>
 </table></div>
+<p><strong>Вариант VATSIM.</strong> DEL включает в разрешение номер ВПП и начальный набор: позывной, пункт назначения, SID, ВПП, начальный набор, код ответчика. Так разрешение описано в местных процедурах UZTT (раздел 3) и в учебных материалах (раздел 7).</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Кто</th>
+<th>По-русски</th>
+<th>In English</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Пилот</td>
+<td>Ташкент-Деливери, Узбек 411, стоянка C20, информация «Браво», прошу разрешение на Шереметьево</td>
+<td>Tashkent-Delivery, Uzbek 411, stand C20, information «Bravo», request clearance to Sheremetyevo</td>
+</tr>
+<tr>
+<td>DEL</td>
+<td>Узбек 411, Ташкент-Деливери, разрешено на Шереметьево, выход BAMUT 2C, ВПП 26 правая, набор 8000 футов, код ответчика 2041</td>
+<td>Uzbek 411, Tashkent-Delivery, cleared to Sheremetyevo, BAMUT 2C departure, runway 26 Right, climb altitude 8000 ft, squawk 2041</td>
+</tr>
+<tr>
+<td>Пилот</td>
+<td>Узбек 411, разрешено на Шереметьево, выход BAMUT 2C, ВПП 26 правая, набор 8000 футов, код ответчика 2041</td>
+<td>Uzbek 411, cleared to Sheremetyevo, BAMUT 2C departure, runway 26 Right, climb altitude 8000 ft, squawk 2041</td>
+</tr>
+<tr>
+<td>DEL</td>
+<td>Узбек 411, правильно, работайте с Ташкент-Руление 121,7</td>
+<td>Uzbek 411, correct, contact Tashkent-Ground 121,7</td>
+</tr>
+</tbody>
+</table></div>
+<p>На VATSIM пилот обычно сразу называет букву ATIS, а также может попросить разрешение текстом (PDC).</p>
 <p><strong>Другие случаи на DEL:</strong></p>
 <div class="tw"><table>
 <thead>
@@ -3339,6 +3373,7 @@ footer{margin-top:48px;color:var(--muted);font-size:13px;max-width:72ch}
 </tr>
 </tbody>
 </table></div>
+<p>В варианте АП РУз Руление называет ВПП при разрешении на запуск (п. 125), как в таблице. В варианте VATSIM ВПП уже дана в разрешении DEL, поэтому при запуске её можно не повторять: «Узбек 411, буксировку назад разрешаю на РД H, запуск по готовности» / «Uzbek 411, cleared push-back to taxiway H, start-up when ready». В указании на руление номер ВПП звучит в обоих вариантах (п. 132).</p>
 <p>Если остановка на предварительном не нужна (хорошая видимость, нет препятствий и конфликтов), Руление после согласования с Тауэр передаёт борт до его доклада (п. 1341).</p>
 <p><strong>Прилёт</strong> (п. 135–136). Указание даётся после доклада экипажа о месте ВС: маршрут, условия, стоянка и установка на ней. Пример: Узбек 321 освободил ВПП 26R по РД 5, стоянка C25, маршрут A04.</p>
 <div class="tw"><table>
@@ -3461,7 +3496,8 @@ footer{margin-top:48px;color:var(--muted);font-size:13px;max-width:72ch}
 <li>AP RUz misollarida chastota ingliz matnida ham vergul bilan yoziladi: 121,7. Misollardagi bort chaqiruv belgisi — «Узбек 411» / «Uzbek 411».</li>
 </ul>
 <h2 id="phr_uz-2">Clearance delivery: Toshkent-Delivery</h2>
-<p>Marshrut bo‘yicha parvozga ruxsat (122-band) quyidagi tartibdagi elementlardan iborat:</p>
+<p>Uchib ketishga ruxsat ikki variantda beriladi. AP RUz bo‘yicha UQY raqamini Rulejka aytadi; VATSIMda uni odatda DEL o‘zi beradi.</p>
+<p><strong>AP RUz varianti.</strong> Marshrut bo‘yicha parvozga ruxsat (122-band) quyidagi tartibdagi elementlardan iborat:</p>
 <ol>
 <li>Bort chaqiruv belgisi.</li>
 <li>Borish aerodromi.</li>
@@ -3508,6 +3544,39 @@ footer{margin-top:48px;color:var(--muted);font-size:13px;max-width:72ch}
 </tr>
 </tbody>
 </table></div>
+<p><strong>VATSIM varianti.</strong> DEL ruxsatga UQY raqami va boshlang‘ich ko‘tarilishni qo‘shadi: chaqiruv belgisi, borish punkti, SID, UQY, boshlang‘ich ko‘tarilish, javob bergich kodi. Ruxsat UZTT mahalliy tartiblarida (3-bo‘lim) va o‘quv materiallarida (7-bo‘lim) shunday tasvirlangan.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Kim</th>
+<th>Ruscha</th>
+<th>In English</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Uchuvchi</td>
+<td>Ташкент-Деливери, Узбек 411, стоянка C20, информация «Браво», прошу разрешение на Шереметьево</td>
+<td>Tashkent-Delivery, Uzbek 411, stand C20, information «Bravo», request clearance to Sheremetyevo</td>
+</tr>
+<tr>
+<td>DEL</td>
+<td>Узбек 411, Ташкент-Деливери, разрешено на Шереметьево, выход BAMUT 2C, ВПП 26 правая, набор 8000 футов, код ответчика 2041</td>
+<td>Uzbek 411, Tashkent-Delivery, cleared to Sheremetyevo, BAMUT 2C departure, runway 26 Right, climb altitude 8000 ft, squawk 2041</td>
+</tr>
+<tr>
+<td>Uchuvchi</td>
+<td>Узбек 411, разрешено на Шереметьево, выход BAMUT 2C, ВПП 26 правая, набор 8000 футов, код ответчика 2041</td>
+<td>Uzbek 411, cleared to Sheremetyevo, BAMUT 2C departure, runway 26 Right, climb altitude 8000 ft, squawk 2041</td>
+</tr>
+<tr>
+<td>DEL</td>
+<td>Узбек 411, правильно, работайте с Ташкент-Руление 121,7</td>
+<td>Uzbek 411, correct, contact Tashkent-Ground 121,7</td>
+</tr>
+</tbody>
+</table></div>
+<p>VATSIMda uchuvchi odatda ATIS harfini darhol aytadi, shuningdek ruxsatni matn orqali (PDC) so‘rashi mumkin.</p>
 <p><strong>DEL dagi boshqa holatlar:</strong></p>
 <div class="tw"><table>
 <thead>
@@ -3610,6 +3679,7 @@ footer{margin-top:48px;color:var(--muted);font-size:13px;max-width:72ch}
 </tr>
 </tbody>
 </table></div>
+<p>AP RUz variantida Rulejka UQYni ishga tushirishga ruxsat berishda aytadi (125-band), jadvaldagidek. VATSIM variantida UQY DEL ruxsatida allaqachon berilgan, shuning uchun ishga tushirishda uni takrorlamaslik mumkin: «Узбек 411, буксировку назад разрешаю на РД H, запуск по готовности» / «Uzbek 411, cleared push-back to taxiway H, start-up when ready». Rulejka ko‘rsatmasida UQY raqami ikkala variantda ham aytiladi (132-band).</p>
 <p>Agar dastlabki startda to‘xtash shart bo‘lmasa (ko‘rinish yaxshi, to‘siq va ziddiyat yo‘q), Rulejka Tower bilan kelishgandan keyin bortni uning ma’lumotidan oldin topshiradi (1341-band).</p>
 <p><strong>Qo‘nish</strong> (135–136-bandlar). Ko‘rsatma ekipaj havo kemasining joyini ma’lum qilgandan keyin beriladi: marshrut, shartlar, turar joy va unga o‘rnatish. Misol: Uzbek 321 26R UQYni 5-RY orqali bo‘shatdi, turar joy C25, marshrut A04.</p>
 <div class="tw"><table>
@@ -3732,7 +3802,8 @@ footer{margin-top:48px;color:var(--muted);font-size:13px;max-width:72ch}
 <li>In the AP RUz examples the frequency is written with a comma in English too: 121,7. The aircraft callsign in the examples is «Узбек 411» / «Uzbek 411».</li>
 </ul>
 <h2 id="phr_en-2">Clearance delivery: Tashkent-Delivery</h2>
-<p>The en-route clearance (item 122) contains these elements in this order:</p>
+<p>The departure clearance comes in two variants. Under AP RUz the runway is given by Ground; on VATSIM it is usually given by DEL itself.</p>
+<p><strong>AP RUz variant.</strong> The en-route clearance (item 122) contains these elements in this order:</p>
 <ol>
 <li>Aircraft callsign.</li>
 <li>Destination aerodrome.</li>
@@ -3779,6 +3850,39 @@ footer{margin-top:48px;color:var(--muted);font-size:13px;max-width:72ch}
 </tr>
 </tbody>
 </table></div>
+<p><strong>VATSIM variant.</strong> DEL includes the runway and the initial climb in the clearance: callsign, destination, SID, runway, initial climb, squawk. This is how the clearance is described in the UZTT local procedures (section 3) and the training materials (section 7).</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Who</th>
+<th>In Russian</th>
+<th>In English</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pilot</td>
+<td>Ташкент-Деливери, Узбек 411, стоянка C20, информация «Браво», прошу разрешение на Шереметьево</td>
+<td>Tashkent-Delivery, Uzbek 411, stand C20, information «Bravo», request clearance to Sheremetyevo</td>
+</tr>
+<tr>
+<td>DEL</td>
+<td>Узбек 411, Ташкент-Деливери, разрешено на Шереметьево, выход BAMUT 2C, ВПП 26 правая, набор 8000 футов, код ответчика 2041</td>
+<td>Uzbek 411, Tashkent-Delivery, cleared to Sheremetyevo, BAMUT 2C departure, runway 26 Right, climb altitude 8000 ft, squawk 2041</td>
+</tr>
+<tr>
+<td>Pilot</td>
+<td>Узбек 411, разрешено на Шереметьево, выход BAMUT 2C, ВПП 26 правая, набор 8000 футов, код ответчика 2041</td>
+<td>Uzbek 411, cleared to Sheremetyevo, BAMUT 2C departure, runway 26 Right, climb altitude 8000 ft, squawk 2041</td>
+</tr>
+<tr>
+<td>DEL</td>
+<td>Узбек 411, правильно, работайте с Ташкент-Руление 121,7</td>
+<td>Uzbek 411, correct, contact Tashkent-Ground 121,7</td>
+</tr>
+</tbody>
+</table></div>
+<p>On VATSIM the pilot usually gives the ATIS letter straight away and may also ask for the clearance by text (PDC).</p>
 <p><strong>Other DEL situations:</strong></p>
 <div class="tw"><table>
 <thead>
@@ -3881,6 +3985,7 @@ footer{margin-top:48px;color:var(--muted);font-size:13px;max-width:72ch}
 </tr>
 </tbody>
 </table></div>
+<p>In the AP RUz variant Ground gives the runway with the start-up approval (item 125), as in the table. In the VATSIM variant the runway was already given in the DEL clearance, so it need not be repeated at start-up: «Узбек 411, буксировку назад разрешаю на РД H, запуск по готовности» / «Uzbek 411, cleared push-back to taxiway H, start-up when ready». The taxi instruction contains the runway in both variants (item 132).</p>
 <p>If no stop at the holding point is needed (good visibility, no obstacles or conflicts), Ground may hand the aircraft over before its report, after coordinating with Tower (item 1341).</p>
 <p><strong>Arrival</strong> (items 135–136). The instruction is given after the crew reports its position: route, conditions, stand and how to park. Example: Uzbek 321 vacated runway 26R via taxiway 5, stand C25, route A04.</p>
 <div class="tw"><table>
